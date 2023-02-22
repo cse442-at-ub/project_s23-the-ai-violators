@@ -1,0 +1,6 @@
+{
+    "name": "violators/nutrio",
+    "require": {
+        "mongodb/mongodb": "^1.15"
+    }
+}
