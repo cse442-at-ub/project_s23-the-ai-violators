@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__ . '/vendor/autoload.php';
-    $client = new MongoDB\Client('mongodb://mongo:27017');
+    $client = new MongoDB\Client('mongodb://mongoDB:27017');
 
     echo("Connected to MongoDB successfully!\n");
 

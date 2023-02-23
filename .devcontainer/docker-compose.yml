@@ -4,12 +4,12 @@ services:
     build: .
     volumes:
       - ../..:/workspaces:cached
-    network_mode: service:mongo
+    network_mode: service:mongoDB
     command: sleep infinity
     
-  mongo:
+  mongoDB:
     image: mongo:latest
-    container_name: mongo
+    container_name: mongoDB
     restart: always
     ports:
       - 27017:27017
