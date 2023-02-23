@@ -6,8 +6,6 @@ services:
       - ../..:/workspaces:cached
     network_mode: service:mongo
     command: sleep infinity
-    ports:
-      - 8080:8080
     
   mongo:
     image: mongo:latest
