@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  devcontainer:
+    build: .
+    volumes:
+      - ../..:/workspaces:cached
+    network_mode: service:mongo
+    command: sleep infinity
+    ports:
+      - 8080:8080
+    
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    ports:
+      - 27017:27017
