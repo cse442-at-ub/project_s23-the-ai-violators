@@ -17,7 +17,7 @@
 	],
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/devcontainers/features/sshd:1": {},
+		"ghcr.io/devcontainers/features/sshd:1": {}
 	},
 	"mounts": [
 		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached" // mounts ssh folder inside container so we can push to git
