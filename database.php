@@ -3,7 +3,15 @@
 
 // phpinfo();
     require_once __DIR__ . '/vendor/autoload.php';
-    $client = new MongoDB\Client('mongodb://localhost:27017');
+    $client = new MongoDB\Client('mongodb://0.0.0.0:27017');
     echo("Connected to MongoDB successfully!");
+    while (true) {
+        // $collection = $client->test->users;
+        // $result = $collection->insertOne(['x' => 1]);
+        // echo "Inserted with Object ID '{$result->getInsertedId()}'";
+        sleep(1);
+    }
+
+    // some extra stuff more stuff
 
 ?>

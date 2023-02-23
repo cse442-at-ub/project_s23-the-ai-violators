@@ -8,5 +8,7 @@ COPY . /app
 RUN pecl install mongodb \
     && docker-php-ext-enable mongodb
 
-CMD ["php", "database.php"]
 
+RUN apt-get update && apt-get install -y
+
+CMD ["php", "database.php" ]
