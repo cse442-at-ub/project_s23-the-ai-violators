@@ -1,0 +1,21 @@
+label{
+    display: none;
+}
+
+h1{
+    text-align: center;
+}
+
+#signupForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+    border: 1px solid black;
+    border-radius: 1rem;
+}
+
+form div{
+    padding: 4px;
+    margin: 4px;
+}
