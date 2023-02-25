@@ -20,7 +20,7 @@
     <form action="#">
       <div class = "userInfo">
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" placeholder="Email" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
       </div>
       <div class = "userInfo">
         <label for="username">Username:</label>
@@ -28,16 +28,18 @@
       </div>
       <div class = "userInfo"> 
         <label for="password">password:</label>
-        <input type="password" name="password" id="password" placeholder="Password" required>
+        <input type="password" name="password" id="password" placeholder="Password" oninput="check()" required>
       </div>
       <div class = "userInfo">
         <label for="confirmPassword">confirm password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" oninput="check()" required>
       </div>
-      <button type="submit">SignUp</button>
+      <button id="submitButton" type="submit">SignUp</button>
     </form>
     <footer>already have an account? <span><a href="/login.php">login</a></span></footer>
   </div>
+
+  <script src="signup.js"></script>
 </body>
 
 </html>
