@@ -33,3 +33,39 @@
    }
 
 ?>
+
+<!-- 
+
+DATABASE DESIGN IDEAS
+
+CREATE TABLE users (
+  user_id INT NOT NULL AUTO_INCREMENT,
+  email VARCHAR(255) NOT NULL,
+  password_hash CHAR(60) NOT NULL,
+  PRIMARY KEY (user_id),
+  UNIQUE KEY (email)
+);
+
+CREATE TABLE user_info (
+  user_id INT NOT NULL,
+  height DECIMAL(5,2) NOT NULL,
+  weight DECIMAL(5,2) NOT NULL,
+  goal ENUM('CUT', 'BULK', 'MAINTAIN') NOT NULL,
+  PRIMARY KEY (user_id),
+  CONSTRAINT fk_user_info_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE daily_intake (
+  user_id INT NOT NULL,
+  date DATE NOT NULL,
+  calories INT NOT NULL,
+  protein INT NOT NULL,
+  carbs INT NOT NULL,
+  fat INT NOT NULL,
+  PRIMARY KEY (user_id, date),
+  CONSTRAINT fk_daily_intake_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+Thanks chatGPT :)
+
+ -->
