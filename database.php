@@ -20,5 +20,16 @@
    }
 
    mysqli_free_result($result);
-   mysqli_close($mysqli);     
+   mysqli_close($mysqli);
+
+
+   function createUser($name, $email) {
+      // insert a row into the table
+      echo "Creating user $name with email $email\n";
+   }
+
+   function checkLogin($email, $password) {
+      
+   }
+
 ?>
