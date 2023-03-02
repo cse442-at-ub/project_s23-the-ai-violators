@@ -7,3 +7,8 @@
 4) in the lower left corner, click the blue button, then click `reopen in container`
 5) wait a few minutes for the container to build and install
 6) start developing!
+
+# HOW TO START SERVER
+1) Follow setps to open in dev conainer
+2) Run `php -S localhost:8080 -t public/`
+3) Navigate to `http://localhost:8080` to view website
