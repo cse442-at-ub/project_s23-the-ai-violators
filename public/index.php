@@ -2,18 +2,18 @@
 $request =  $_SERVER['REQUEST_URI'];
 
 switch ($request) {
-   
+
     case '/':
-        require __DIR__ . '/loginPage/login.php';
+        require __DIR__ . '/login/index.php';
         break;
     
-    case '/login':
-        require __DIR__ . '/loginPage/login.php';
-        break;
+    // case '/login':
+    //     require __DIR__ . '/loginPage/login.php';
+    //     break;
 
-    case '/signup':
-        require __DIR__ . '/signupPage/signup.php';
-        break; 
+    // case '/signup':
+    //     require __DIR__ . '/signupPage/signup.php';
+    //     break; 
 
     // case '/historym':
     //     require __DIR__ . '/phistorym.php';
