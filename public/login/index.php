@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="loginPage/login.css">
+    <link rel="stylesheet" href="login/login.css">
     <title>login</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
     <div id="name">
         <h1>nutr.io</h1>
         <h3>nutrition made easy</h1>
-        <img src="image/carrot.png" alt="It's a carrot"/>
+        <img src="../image/carrot.png" alt="It's a carrot"/>
     </div>
     <div id="loginForm">
         <h2>login</h2>
