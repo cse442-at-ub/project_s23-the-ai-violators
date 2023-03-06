@@ -39,7 +39,7 @@
         <footer>don't have an account? <span><a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup">signup</a></span></footer>
     </div>
 
-    <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public//login/login.js"></script>
+    <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/login.js"></script>
 </body>
 
 </html>
