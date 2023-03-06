@@ -17,8 +17,8 @@ switch ($request) {
     //     require __DIR__ . '/public/signupPage/signup.php';
     //     break; 
 
-    case '/db':
-        require __DIR__ . '/../config/database.php';
+    case '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/db':
+        require __DIR__ . '/config/database.php';
         testDB();
         break;
 
