@@ -10,5 +10,12 @@
 
 # HOW TO START SERVER
 1) Follow setps to open in dev conainer
-2) Run `php -S localhost:8080 -t public`
+2) Run `php -S localhost:8080 -t /web`
 3) Navigate to `http://localhost:8080` to view website
+
+# HOW TO DEPLOY TO PROD
+1) ssh into cheshire with `ssh <YOUR-UBIT>@cheshire.cse.buffalo.edu` and input your ubit password
+    * Note: You must be connected to the UB network to access cheshire. You must either be physicly on camput or be running UB's VPN
+2) go to our project directory with `cd /web/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators`
+3) call `git pull origin dev`
+   * Note: If this failes, make sure you have your ssh keys installed on cheshire
