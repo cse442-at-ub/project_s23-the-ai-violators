@@ -13,7 +13,8 @@ function check(){
 }
 
 form.addEventListener("submit", e => {
-    e.preventDefault();
-    alert("Account Created")
+   e.preventDefault()
+   let success = document.querySelector(".success-msg")
+   success.style.display = "block"
 })
 

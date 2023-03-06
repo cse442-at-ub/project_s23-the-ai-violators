@@ -64,3 +64,14 @@ footer{
     padding: 10px;
     margin-bottom: .5em;
 }
+.success-msg {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+  }
+  .success-msg {
+    display: none;
+    color: #270;
+    background-color: #DFF2BF;
+    font-size: .8em;
+  }
