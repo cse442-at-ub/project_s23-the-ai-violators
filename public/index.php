@@ -13,7 +13,12 @@ switch ($request) {
 
     case '/signup':
         require __DIR__ . '/signupPage/signup.php';
-        break; 
+        break;
+
+    case '/db':
+        require __DIR__ . '/../config/database.php';
+        testDB();
+        break;
 
     // case '/historym':
     //     require __DIR__ . '/phistorym.php';
