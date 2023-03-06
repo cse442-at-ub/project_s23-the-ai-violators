@@ -4,7 +4,7 @@ services:
   devcontainer:
     build: .
     volumes:
-      - ../..:/workspaces:cached
+      - ../..:/web/CSE442-542/2023-Spring/cse-442g/:cached
     network_mode: service:db
     command: sleep infinity
     
