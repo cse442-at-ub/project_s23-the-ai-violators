@@ -21,7 +21,7 @@
     </div>
     <div id="loginForm">
         <h2>login</h2>
-        <form action="#">
+        <form action="login/content.php">
         <div class = "userInfo">
             <label for="username">username:</label>
             <input type="text" id="username" name="username" placeholder="username" required>
@@ -34,12 +34,12 @@
             <label for="remember">remember me</label>
             <input type="checkbox" id="remember" name="remember">
         </div-->
-        <button type="submit" id="button" onclick=checkInfo()>Login</button>
+        <button type="submit" id="button">Login</button>
         </form>
         <footer>don't have an account? <span><a href="/signup">signup</a></span></footer>
     </div>
 
-    <script src="login.js"></script>
+    <script src="login/login.js"></script>
 </body>
 
 </html>
