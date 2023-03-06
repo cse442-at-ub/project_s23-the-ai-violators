@@ -34,11 +34,9 @@ form.addEventListener("submit", e => {
    else if(email.value === takenEmail){
         error.style.display = "block"
         error.innerHTML = error.innerHTML.replace("%Error%", "Email already taken")
-
-
    }
    else{
-    submitForm() //This function has no current functionality
+    //submitForm() //This function has no current functionality
     let success = document.querySelector(".success-msg")
     success.style.display = "block"
    }

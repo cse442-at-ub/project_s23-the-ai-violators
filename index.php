@@ -1,18 +1,20 @@
 <?php
 $request =  $_SERVER['REQUEST_URI'];
 
+// echo $request;
+
 switch ($request) {
 
-    case '/':
-        require __DIR__ . '/login/index.php';
+    case '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/':
+        require __DIR__ . '/public/login/index.php';
         break;
     
     // case '/login':
-    //     require __DIR__ . '/loginPage/login.php';
+    //     require __DIR__ . '/public/loginPage/login.php';
     //     break;
 
     // case '/signup':
-    //     require __DIR__ . '/signupPage/signup.php';
+    //     require __DIR__ . '/public/signupPage/signup.php';
     //     break; 
 
     case '/db':
