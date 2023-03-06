@@ -4,15 +4,20 @@
 function testDB()
 {
   $mysqli = mysqli_connect("db", "admin", "password", "test_db");
+
+  $result = mysqli_query($mysqli, "DROP TABLE IF EXISTS users");
   
   // create a table
   echo "Testing creating user table<br>";
   createUserTable();
 
   // insert a row into the table
-  echo "Testing creating user with email user@email.com<br>";
+  echo "Testing creating user with new email user@email.com<br>";
   createUser("user@email.com", "password123");
   echo "User created successfully<br>";
+
+  echo "<br>Testing creating user with used email user@email.com. Should print Email already in use<br>";
+  createUser("user@email.com", "password123");
 
   echo "<br>Testing correct login for user@email.com<br>";
   $loggedIn = checkLogin("user@email.com", "password123");
@@ -21,16 +26,16 @@ function testDB()
   $loggedIn = checkLogin("user@email.com", "password1234");
 
   // select all rows from the table
-  $result = mysqli_query($mysqli, "SELECT * FROM users");
-  $row = mysqli_fetch_row($result);
+  // $result = mysqli_query($mysqli, "SELECT * FROM users");
+  // $row = mysqli_fetch_row($result);
 
-  echo "<br>If you see emails and password hashes below, retrieval from the database was successful!<br>";
-  // print the results
-  while ($row = mysqli_fetch_row($result)) {
-    echo "ID: " . $row[0] . "  &nbsp &nbsp &nbsp EMAIL: " . $row[1] . " &nbsp &nbsp &nbsp PASSWORD HASH: " . $row[2] . "<br>";
-  }
+  // echo "<br>If you see emails and password hashes below, retrieval from the database was successful!<br>";
+  // // print the results
+  // while ($row = mysqli_fetch_row($result)) {
+  //   echo "ID: " . $row[0] . "  &nbsp &nbsp &nbsp EMAIL: " . $row[1] . " &nbsp &nbsp &nbsp PASSWORD HASH: " . $row[2] . "<br>";
+  // }
 
-  mysqli_free_result($result);
+  // mysqli_free_result($result);
   mysqli_close($mysqli);
 }
 
@@ -49,11 +54,10 @@ function createUser($email, $password)
   $result = mysqli_query($mysqli, "SELECT * FROM users WHERE email='$email'");
   $row = mysqli_fetch_row($result);
 
-  // commented out email check for testing purposes
-  // if ($row) {
-  //   echo "Email already in use!<br>";
-  //   return;
-  // }
+  if ($row) {
+    echo "Email already in use!<br>";
+    return;
+  }
 
   $hashed = password_hash($password, PASSWORD_DEFAULT);
   $result = mysqli_query($mysqli, "INSERT INTO users (email, password) VALUES ('$email', '$hashed')");
