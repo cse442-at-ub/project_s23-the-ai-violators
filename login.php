@@ -30,14 +30,16 @@
             <label for="password">password:</label>
             <input type="password" name="password" id="password" placeholder="password" required>
         </div>
-        <div class = "remember"> 
+        <!--div class = "remember"> 
             <label for="remember">remember me</label>
             <input type="checkbox" id="remember" name="remember">
-        </div>
-        <button type="submit">Login</button>
+        </div-->
+        <button type="submit" id="button" onclick=checkInfo()>Login</button>
         </form>
-        <footer>don't have an account? <span><a href="/signup.php">signup</a></span></footer>
+        <footer>don't have an account? <span><a href="/signup">signup</a></span></footer>
     </div>
+
+    <script src="login.js"></script>
 </body>
 
 </html>
