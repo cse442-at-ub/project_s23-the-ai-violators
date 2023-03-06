@@ -36,7 +36,7 @@
         </div-->
         <button type="submit" id="button">Login</button>
         </form>
-        <footer>don't have an account? <span><a href="/signup">signup</a></span></footer>
+        <footer>don't have an account? <span><a href="signup/index.html">signup</a></span></footer>
     </div>
 
     <script src="login/login.js"></script>
