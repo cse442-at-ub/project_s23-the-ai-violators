@@ -24,7 +24,8 @@
 	// "customizations": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
-		8080
+		8080, // app
+		8181  // mySQL admin page
 	],
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {},
