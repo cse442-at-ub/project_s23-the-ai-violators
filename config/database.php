@@ -3,22 +3,29 @@
 
 function testDB()
 {
-  $mysqli = mysqli_connect("db", "admin", "password", "test_db");
-  
-  // create a table
-  echo "Testing creating user table<br>";
-  createUserTable();
+
+  $db_hostname = getenv('IN_DOCKER');
+
+  if ($db_hostname == 'yes') {
+    $db_hostname = 'db';
+  } else {
+    $db_hostname = 'oceanus.cse.buffalo.edu';
+  }
+
+  $mysqli = mysqli_connect($db_hostname, "sjrichel", "50338787", "cse442_2023_spring_team_g_db", 3306);
+
+  checkTablesAndCols($mysqli);
 
   // insert a row into the table
   echo "Testing creating user with email user@email.com<br>";
-  createUser("user@email.com", "password123");
+  createUser($mysqli, "user", "user@email.com", "password123");
   echo "User created successfully<br>";
 
   echo "<br>Testing correct login for user@email.com<br>";
-  $loggedIn = checkLogin("user@email.com", "password123");
+  $loggedIn = checkLogin($mysqli, "user@email.com", "password123");
 
   echo "<br>Testing incorrect login for user@email.com<br>";
-  $loggedIn = checkLogin("user@email.com", "password1234");
+  $loggedIn = checkLogin($mysqli, "user@email.com", "password1234");
 
   // select all rows from the table
   $result = mysqli_query($mysqli, "SELECT * FROM users");
@@ -34,17 +41,52 @@ function testDB()
   mysqli_close($mysqli);
 }
 
-function createUserTable() {
-  $mysqli = mysqli_connect("db", "admin", "password", "test_db");
-  $result = mysqli_query($mysqli, "CREATE TABLE IF NOT EXISTS users (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, email TEXT, password TEXT)");
-  echo "Table created successfully<br><br>";
+
+
+function checkTablesAndCols($mysqli) {
+  // get column names from the users table
+  $result = mysqli_query($mysqli, "SHOW columns FROM users");
+
+  $usersCols = array("user_id", "user_name", "email", "password_hash");
+  
+  for ($i = 0; $i < count($usersCols); $i++) {
+    $row = mysqli_fetch_row($result);
+    if ($row[0] != $usersCols[$i]) {
+      echo "Table users is missing column " . $usersCols[$i] . "<br>";
+      return;
+    }
+  }
+  echo "Table users exists and has all the correct columns<br>";
+
+  $userInfoCols = array("user_id", "sex", "height", "weight", "goal", "focus");
+  $result = mysqli_query($mysqli, "SHOW columns FROM user_info");
+
+  for ($i = 0; $i < count($userInfoCols); $i++) {
+    $row = mysqli_fetch_row($result);
+    if ($row[0] != $userInfoCols[$i]) {
+      echo "Table user_info is missing column " . $userInfoCols[$i] . "<br>";
+      return;
+    }
+  }
+  echo "Table user_info exists and has all the correct columns<br>";
+
+
+  $result = mysqli_query($mysqli, "SHOW columns FROM daily_intake");
+  $dailyIntakeCols = array("user_id", "date", "calories", "protein", "carbs", "fat");
+  for ($i = 0; $i < count($dailyIntakeCols); $i++) {
+    $row = mysqli_fetch_row($result);
+    if ($row[0] != $dailyIntakeCols[$i]) {
+      echo "Table daily_intake is missing column " . $dailyIntakeCols[$i] . "<br>";
+      return;
+    }
+  }
+  echo "Table daily_intake exists and has all the correct columns<br>";
+
 }
 
 
-function createUser($email, $password)
+function createUser($mysqli, $user_name, $email, $password)
 {
-  $mysqli = mysqli_connect("db", "admin", "password", "test_db");
-
   // check that the email is not already in the database
   $result = mysqli_query($mysqli, "SELECT * FROM users WHERE email='$email'");
   $row = mysqli_fetch_row($result);
@@ -56,14 +98,13 @@ function createUser($email, $password)
   // }
 
   $hashed = password_hash($password, PASSWORD_DEFAULT);
-  $result = mysqli_query($mysqli, "INSERT INTO users (email, password) VALUES ('$email', '$hashed')");
+  $result = mysqli_query($mysqli, "INSERT INTO users (user_name, email, password_hash) VALUES ('$user_name', '$email', '$hashed')");
   // echo "Row inserted successfully<br>";
 }
 
-function checkLogin($email, $password)
+function checkLogin($mysqli, $user_name, $password)
 {
-  $mysqli = mysqli_connect("db", "admin", "password", "test_db");
-  $result = mysqli_query($mysqli, "SELECT * FROM users WHERE email='$email'");
+  $result = mysqli_query($mysqli, "SELECT * FROM users WHERE user_name='$user_name'");
   $row = mysqli_fetch_row($result);
   if ($row) {
     $hashed = $row[2];
@@ -90,24 +131,24 @@ a: yes, but you have to escape it with a backslash
 
 DATABASE DESIGN IDEAS
 
-CREATE TABLE users (
-  user_id INT NOT NULL AUTO_INCREMENT,
-  email VARCHAR(255) NOT NULL,
-  password_hash CHAR(60) NOT NULL,
-  PRIMARY KEY (user_id),
-  UNIQUE KEY (email)
+CREATE TABLE IF NOT EXISTS users (
+  user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_name text NOT NULL,
+  email text NOT NULL,
+  password_hash text NOT NULL,
 );
 
-CREATE TABLE user_info (
-  user_id INT NOT NULL,
+CREATE TABLE IF NOT EXISTS user_info (
+  user_id INT NOT NULL PRIMARY KEY,
+  sex ENUM('male', 'female') NOT NULL,
   height DECIMAL(5,2) NOT NULL,
   weight DECIMAL(5,2) NOT NULL,
   goal ENUM('CUT', 'BULK', 'MAINTAIN') NOT NULL,
-  PRIMARY KEY (user_id),
+  focus ENUM('PROTIEN', 'CARBS', 'FATS') NOT NULL,
   CONSTRAINT fk_user_info_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
-CREATE TABLE daily_intake (
+CREATE TABLE IF NOT EXISTS daily_intake (
   user_id INT NOT NULL,
   date DATE NOT NULL,
   calories INT NOT NULL,

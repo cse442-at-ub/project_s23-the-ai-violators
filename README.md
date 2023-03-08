@@ -10,5 +10,5 @@
 
 # HOW TO START SERVER
 1) Follow setps to open in dev conainer
-2) Run `php -S localhost:8080 -t public`
+2) Run `./start.sh`
 3) Navigate to `http://localhost:8080` to view website
