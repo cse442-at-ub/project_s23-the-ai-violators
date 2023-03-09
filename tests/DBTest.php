@@ -8,6 +8,11 @@ require __DIR__ . '/../config/database.php';
 
 final class DBTest extends TestCase
 {
+
+    protected function setUp(): void {
+        $result = mysqli_query(getConnection(), "DELETE FROM users WHERE user_name='testUser'");
+    }
+
     public function testUserTableStructuredCorrectly(): void
     {
         $mysqli = getConnection();
@@ -24,7 +29,7 @@ final class DBTest extends TestCase
     {
         $mysqli = getConnection();
         
-        $userInfoCols = array("user_id", "sex", "height", "weight", "goal", "focus");
+        $userInfoCols = array("user_id", "height", "weight", "sex", "targetCAL", "targetPROTIEN", "targetCARBS", "targetFAT", "goal", "focus");
         $result = mysqli_query($mysqli, "SHOW columns FROM user_info");
         for ($i = 0; $i < count($userInfoCols); $i++) {
             $row = mysqli_fetch_row($result);
@@ -63,8 +68,6 @@ final class DBTest extends TestCase
         $didCreateUser = createUser("testUser123", "test@email.com", "testPassword");
         $this->assertFalse($didCreateUser);
 
-        // remove test user for next round of testing
-        $result = mysqli_query($mysqli, "DELETE FROM users WHERE user_name='testUser'");
     }
 
     public function testCheckInitalLogin(): void {
