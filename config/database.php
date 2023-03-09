@@ -1,9 +1,8 @@
 <?php
 // connect to the mySQL database, create a table called users with rows for id, name, and email
 
-function testDB()
-{
 
+function getConnection() {
   $db_hostname = getenv('IN_DOCKER');
 
   if ($db_hostname == 'yes') {
@@ -12,7 +11,15 @@ function testDB()
     $db_hostname = 'oceanus.cse.buffalo.edu';
   }
 
-  $mysqli = mysqli_connect($db_hostname, "sjrichel", "50338787", "cse442_2023_spring_team_g_db", 3306);
+  return mysqli_connect($db_hostname, "sjrichel", "50338787", "cse442_2023_spring_team_g_db", 3306);
+
+}
+
+
+function testDB()
+{
+
+  $mysqli = getConnection();
 
   checkTablesAndCols($mysqli);
 
@@ -43,67 +50,61 @@ function testDB()
 
 
 
-function checkTablesAndCols($mysqli) {
-  // get column names from the users table
-  $result = mysqli_query($mysqli, "SHOW columns FROM users");
-
-  $usersCols = array("user_id", "user_name", "email", "password_hash");
-  
-  for ($i = 0; $i < count($usersCols); $i++) {
-    $row = mysqli_fetch_row($result);
-    if ($row[0] != $usersCols[$i]) {
-      echo "Table users is missing column " . $usersCols[$i] . "<br>";
-      return;
-    }
-  }
-  echo "Table users exists and has all the correct columns<br>";
-
-  $userInfoCols = array("user_id", "sex", "height", "weight", "goal", "focus");
-  $result = mysqli_query($mysqli, "SHOW columns FROM user_info");
-
-  for ($i = 0; $i < count($userInfoCols); $i++) {
-    $row = mysqli_fetch_row($result);
-    if ($row[0] != $userInfoCols[$i]) {
-      echo "Table user_info is missing column " . $userInfoCols[$i] . "<br>";
-      return;
-    }
-  }
-  echo "Table user_info exists and has all the correct columns<br>";
-
-
-  $result = mysqli_query($mysqli, "SHOW columns FROM daily_intake");
-  $dailyIntakeCols = array("user_id", "date", "calories", "protein", "carbs", "fat");
-  for ($i = 0; $i < count($dailyIntakeCols); $i++) {
-    $row = mysqli_fetch_row($result);
-    if ($row[0] != $dailyIntakeCols[$i]) {
-      echo "Table daily_intake is missing column " . $dailyIntakeCols[$i] . "<br>";
-      return;
-    }
-  }
-  echo "Table daily_intake exists and has all the correct columns<br>";
+function checkTablesAndCols()
+{
 
 }
 
 
-function createUser($mysqli, $user_name, $email, $password)
+function trackCaloriesAndMacros() {
+  $mysqli = getConnection();
+
+}
+
+function getCalorieGoals() {
+  $mysqli = getConnection();
+
+}
+
+function getDailyCalories() {
+  $mysqli = getConnection();
+
+}
+
+
+function storeSurveyInformation() {
+  $mysqli = getConnection();
+
+}
+
+function checkIfEmailUsed($mysqli, $email)
 {
+  $mysqli = getConnection();
+}
+
+function checkIfUserNameUsed($mysqli, $user_name)
+{
+  $mysqli = getConnection();
+}
+
+
+function createUser($user_name, $email, $password)
+{
+  $mysqli = getConnection();
   // check that the email is not already in the database
   $result = mysqli_query($mysqli, "SELECT * FROM users WHERE email='$email'");
   $row = mysqli_fetch_row($result);
 
-  // commented out email check for testing purposes
-  // if ($row) {
-  //   echo "Email already in use!<br>";
-  //   return;
-  // }
+
 
   $hashed = password_hash($password, PASSWORD_DEFAULT);
   $result = mysqli_query($mysqli, "INSERT INTO users (user_name, email, password_hash) VALUES ('$user_name', '$email', '$hashed')");
   // echo "Row inserted successfully<br>";
 }
 
-function checkLogin($mysqli, $user_name, $password)
+function checkLogin($user_name, $password)
 {
+  $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT * FROM users WHERE user_name='$user_name'");
   $row = mysqli_fetch_row($result);
   if ($row) {
@@ -120,45 +121,3 @@ function checkLogin($mysqli, $user_name, $password)
     return false;
   }
 }
-
-?>
-
-<!-- 
-
-
-q: can I have a + characher in my git branch name?
-a: yes, but you have to escape it with a backslash
-
-DATABASE DESIGN IDEAS
-
-CREATE TABLE IF NOT EXISTS users (
-  user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  user_name text NOT NULL,
-  email text NOT NULL,
-  password_hash text NOT NULL,
-);
-
-CREATE TABLE IF NOT EXISTS user_info (
-  user_id INT NOT NULL PRIMARY KEY,
-  sex ENUM('male', 'female') NOT NULL,
-  height DECIMAL(5,2) NOT NULL,
-  weight DECIMAL(5,2) NOT NULL,
-  goal ENUM('CUT', 'BULK', 'MAINTAIN') NOT NULL,
-  focus ENUM('PROTIEN', 'CARBS', 'FATS') NOT NULL,
-  CONSTRAINT fk_user_info_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS daily_intake (
-  user_id INT NOT NULL,
-  date DATE NOT NULL,
-  calories INT NOT NULL,
-  protein INT NOT NULL,
-  carbs INT NOT NULL,
-  fat INT NOT NULL,
-  PRIMARY KEY (user_id, date),
-  CONSTRAINT fk_daily_intake_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
-);
-
-Thanks chatGPT :)
-
- -->
