@@ -1,6 +1,4 @@
 <?php
-// connect to the mySQL database, create a table called users with rows for id, name, and email
-
 
 function getConnection() {
   $db_hostname = getenv('IN_DOCKER');
@@ -14,47 +12,6 @@ function getConnection() {
   return mysqli_connect($db_hostname, "sjrichel", "50338787", "cse442_2023_spring_team_g_db", 3306);
 
 }
-
-
-function testDB()
-{
-
-  $mysqli = getConnection();
-
-  checkTablesAndCols($mysqli);
-
-  // insert a row into the table
-  echo "Testing creating user with email user@email.com<br>";
-  createUser($mysqli, "user", "user@email.com", "password123");
-  echo "User created successfully<br>";
-
-  echo "<br>Testing correct login for user@email.com<br>";
-  $loggedIn = checkLogin($mysqli, "user@email.com", "password123");
-
-  echo "<br>Testing incorrect login for user@email.com<br>";
-  $loggedIn = checkLogin($mysqli, "user@email.com", "password1234");
-
-  // select all rows from the table
-  $result = mysqli_query($mysqli, "SELECT * FROM users");
-  $row = mysqli_fetch_row($result);
-
-  echo "<br>If you see emails and password hashes below, retrieval from the database was successful!<br>";
-  // print the results
-  while ($row = mysqli_fetch_row($result)) {
-    echo "ID: " . $row[0] . "  &nbsp &nbsp &nbsp EMAIL: " . $row[1] . " &nbsp &nbsp &nbsp PASSWORD HASH: " . $row[2] . "<br>";
-  }
-
-  mysqli_free_result($result);
-  mysqli_close($mysqli);
-}
-
-
-
-function checkTablesAndCols()
-{
-
-}
-
 
 function trackCaloriesAndMacros() {
   $mysqli = getConnection();
@@ -101,6 +58,7 @@ function createUser($user_name, $email, $password)
   $result = mysqli_query($mysqli, "INSERT INTO users (user_name, email, password_hash) VALUES ('$user_name', '$email', '$hashed')");
   // echo "Row inserted successfully<br>";
 }
+
 
 function checkLogin($user_name, $password)
 {
