@@ -24,9 +24,7 @@ form.addEventListener("submit", e => {
    let error = document.querySelector(".error-msg")
    if(email.value === takenEmail && username.value === takenUsername){
         error.style.display = "block"
-        //error.innerHTML = error.innerHTML.replace("%Error%", "Email and Username already taken")
         error.innerHTML = `${errorCircle} Email and Username already taken`
-
     }
     else if(username.value === takenUsername){
         error.style.display = "block"
