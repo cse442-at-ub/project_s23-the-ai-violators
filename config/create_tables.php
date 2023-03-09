@@ -1,5 +1,7 @@
 <?php
 
+// This script will run after building the docker devcontainer
+
 $db_hostname = getenv('IN_DOCKER');
 
 if ($db_hostname == 'yes') {

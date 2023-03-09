@@ -43,4 +43,38 @@ final class DBTest extends TestCase
             $this->assertEquals($row[0], $dailyIntakeCols[$i]);
         }
     }
+
+    public function testCreateUser(): void
+    {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+
+        $result = mysqli_query($mysqli, "SELECT * FROM users WHERE user_name='testUser'");
+        $row = mysqli_fetch_row($result);
+        $this->assertEquals($row[1], "testUser");
+
+
+        // expect error because user already exists
+        $didCreateUser = createUser("testUser", "test123@email.com", "testPassword");
+        $this->assertFalse($didCreateUser);
+
+        // expect error because email already exists
+        $didCreateUser = createUser("testUser123", "test@email.com", "testPassword");
+        $this->assertFalse($didCreateUser);
+
+        // remove test user for next round of testing
+        $result = mysqli_query($mysqli, "DELETE FROM users WHERE user_name='testUser'");
+    }
+
+    public function testCheckInitalLogin(): void {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+
+        $didInitalLogin = checkInitalLogin("testUser");
+        $this->assertFalse($didInitalLogin);
+
+    }
+
 }
