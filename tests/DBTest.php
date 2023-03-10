@@ -86,6 +86,15 @@ final class DBTest extends TestCase
 
     }
 
+    public function testGetCalorieGoals(): void {
+        $mysqli = getConnection();
+        createUser("testUser", "test@email.com", "testPassword");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        $userId = getIDFromUsername("testUser");
+        $result = getCalorieGoals($userId);
+        $this->assertEquals($result, 3719.84)
+    }
+
     public function testCheckInitalLogin(): void {
         $mysqli = getConnection();
         $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
