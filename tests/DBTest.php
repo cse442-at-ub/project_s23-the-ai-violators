@@ -8,6 +8,11 @@ require __DIR__ . '/../config/database.php';
 
 final class DBTest extends TestCase
 {
+
+    protected function setUp(): void {
+        $result = mysqli_query(getConnection(), "DELETE FROM users WHERE user_name='testUser'");
+    }
+
     public function testUserTableStructuredCorrectly(): void
     {
         $mysqli = getConnection();
@@ -24,7 +29,7 @@ final class DBTest extends TestCase
     {
         $mysqli = getConnection();
         
-        $userInfoCols = array("user_id", "sex", "height", "weight", "goal", "focus");
+        $userInfoCols = array("user_id", "height", "weight", "sex", "targetCAL", "targetPROTIEN", "targetCARBS", "targetFAT", "goal", "focus");
         $result = mysqli_query($mysqli, "SHOW columns FROM user_info");
         for ($i = 0; $i < count($userInfoCols); $i++) {
             $row = mysqli_fetch_row($result);
@@ -43,4 +48,36 @@ final class DBTest extends TestCase
             $this->assertEquals($row[0], $dailyIntakeCols[$i]);
         }
     }
+
+    public function testCreateUser(): void
+    {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+
+        $result = mysqli_query($mysqli, "SELECT * FROM users WHERE user_name='testUser'");
+        $row = mysqli_fetch_row($result);
+        $this->assertEquals($row[1], "testUser");
+
+
+        // expect error because user already exists
+        $didCreateUser = createUser("testUser", "test123@email.com", "testPassword");
+        $this->assertFalse($didCreateUser);
+
+        // expect error because email already exists
+        $didCreateUser = createUser("testUser123", "test@email.com", "testPassword");
+        $this->assertFalse($didCreateUser);
+
+    }
+
+    public function testCheckInitalLogin(): void {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+
+        $didInitalLogin = checkInitalLogin("testUser");
+        $this->assertFalse($didInitalLogin);
+
+    }
+
 }

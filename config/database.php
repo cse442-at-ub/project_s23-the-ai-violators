@@ -13,6 +13,25 @@ function getConnection() {
 
 }
 
+function getIDFromUsername($user_name) {
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT user_id FROM users WHERE user_name='$user_name'");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
+}
+
+function checkInitalLogin($user_name) {
+  $mysqli = getConnection();
+  $userID = getIDFromUsername($user_name);
+  $result = mysqli_query($mysqli, "SELECT * FROM user_info WHERE user_id='$userID'");
+  $row = mysqli_fetch_row($result);
+  if ($row) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function trackCaloriesAndMacros() {
   $mysqli = getConnection();
 
@@ -34,29 +53,41 @@ function storeSurveyInformation() {
 
 }
 
-function checkIfEmailUsed($mysqli, $email)
+function checkIfEmailUsed($email)
 {
   $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT * FROM users WHERE email='$email'");
+  $row = mysqli_fetch_row($result);
+  if ($row) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-function checkIfUserNameUsed($mysqli, $user_name)
+function checkIfUserNameUsed($user_name)
 {
   $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT * FROM users WHERE user_name='$user_name'");
+  $row = mysqli_fetch_row($result);
+  if ($row) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 
 function createUser($user_name, $email, $password)
 {
   $mysqli = getConnection();
-  // check that the email is not already in the database
-  $result = mysqli_query($mysqli, "SELECT * FROM users WHERE email='$email'");
-  $row = mysqli_fetch_row($result);
 
-
-
+  if (checkIfEmailUsed($email) || checkIfUserNameUsed($user_name)) {
+    return false;
+  }
   $hashed = password_hash($password, PASSWORD_DEFAULT);
-  $result = mysqli_query($mysqli, "INSERT INTO users (user_name, email, password_hash) VALUES ('$user_name', '$email', '$hashed')");
-  // echo "Row inserted successfully<br>";
+  mysqli_query($mysqli, "INSERT INTO users (user_name, email, password_hash) VALUES ('$user_name', '$email', '$hashed')");
+  return true;
 }
 
 
