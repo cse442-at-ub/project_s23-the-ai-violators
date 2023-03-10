@@ -37,9 +37,11 @@ function trackCaloriesAndMacros() {
 
 }
 
-function getCalorieGoals() {
+function getCalorieGoals($user_id) {
   $mysqli = getConnection();
-
+  $result = mysqli_query($mysqli, "SELECT targetCAL FROM user_info WHERE user_id='$user_id'");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
 }
 
 function getDailyCalories() {
