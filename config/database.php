@@ -48,9 +48,39 @@ function getDailyCalories() {
 }
 
 
-function storeSurveyInformation() {
+function storeSurveyInformation($user_name, $height, $weight, $sex, $age, $activityLvl, $goal, $focus) {
   $mysqli = getConnection();
+  $userID = getIDFromUsername($user_name);
+  $bmr = 0;
 
+  if ($sex == "MALE") {
+    $bmr = 88.362 + (6.23 * $weight) + (12.7 * $height) - (6.76 * $age);
+  } else {
+    $bmr = 447.593 + (4.3 * $weight) + (4.7 * $height) - (4.68 * $age);
+  }
+
+  $targetCAL = $bmr * $activityLvl;
+
+  if ($goal == "CUT") {
+    $targetCAL = $targetCAL - 500;
+  } else if ($goal == "BULK") {
+    $targetCAL = $targetCAL + 500;
+  }
+
+  $targetPROTIEN = $weight;
+  $targetFAT = $weight * 0.4;
+  $targetCARBS = ($targetCAL - ($targetPROTIEN * 4.) - ($targetFAT * 9.)) / 4.;
+
+  if ($focus == "PROTIEN") {
+    $targetPROTIEN = $weight * 1.2;
+  } else if ($focus == "CARB") {
+    $targetCARBS *= 1.2 ;
+  } else if ($focus == "FAT") {
+    $targetFAT *= 1.1;
+  }
+
+  $result = mysqli_query($mysqli, "INSERT INTO user_info ('user_id', 'user_id', 'height', 'activityLevel', 'weight', 'sex', 'targetCAL', 'targetPROTIEN','targetCARBS', 'targetFAT', 'goal', 'focus') VALUES ('$userID', '$height', '$weight', '$sex', '$age', '$activityLvl', '$goal', '$focus', '$bmr', '$targetCAL', '$targetPROTIEN', '$targetFAT', '$targetCARBS')");
+  
 }
 
 function checkIfEmailUsed($email)

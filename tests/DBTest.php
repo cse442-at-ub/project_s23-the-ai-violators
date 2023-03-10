@@ -29,7 +29,7 @@ final class DBTest extends TestCase
     {
         $mysqli = getConnection();
         
-        $userInfoCols = array("user_id", "height", "weight", "sex", "targetCAL", "targetPROTIEN", "targetCARBS", "targetFAT", "goal", "focus");
+        $userInfoCols = array("user_id", "height", "weight", "age", "sex", "activityLevel", "targetCAL", "targetPROTIEN", "targetCARBS", "targetFAT", "goal", "focus");
         $result = mysqli_query($mysqli, "SHOW columns FROM user_info");
         for ($i = 0; $i < count($userInfoCols); $i++) {
             $row = mysqli_fetch_row($result);
