@@ -92,7 +92,7 @@ final class DBTest extends TestCase
         storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
         $userId = getIDFromUsername("testUser");
         $result = getCalorieGoals($userId);
-        $this->assertEquals($result, 3719.84);
+        $this->assertEquals($result, 3719.84)
     }
 
     public function testCheckInitalLogin(): void {
