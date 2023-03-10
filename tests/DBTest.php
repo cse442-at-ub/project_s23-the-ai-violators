@@ -94,6 +94,11 @@ final class DBTest extends TestCase
         $didInitalLogin = checkInitalLogin("testUser");
         $this->assertFalse($didInitalLogin);
 
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+
+        $didInitalLogin = checkInitalLogin("testUser");
+        $this->assertTrue($didInitalLogin);
+
     }
 
 }
