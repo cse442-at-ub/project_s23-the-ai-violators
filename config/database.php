@@ -48,7 +48,7 @@ function getDailyCalories() {
 }
 
 
-function storeSurveyInformation($user_name, $height, $weight, $sex, $age, $activityLvl, $goal, $focus) {
+function storeSurveyInformation(string $user_name, int $height, int $weight, string $sex, int $age, float $activityLvl, string $goal, string $focus) {
   $mysqli = getConnection();
   $userID = getIDFromUsername($user_name);
   $bmr = 0;
@@ -61,10 +61,11 @@ function storeSurveyInformation($user_name, $height, $weight, $sex, $age, $activ
 
   $targetCAL = $bmr * $activityLvl;
 
+
   if ($goal == "CUT") {
     $targetCAL = $targetCAL - 500;
   } else if ($goal == "BULK") {
-    $targetCAL = $targetCAL + 500;
+    $targetCAL = $targetCAL + 200;
   }
 
   $targetPROTIEN = $weight;
@@ -79,7 +80,8 @@ function storeSurveyInformation($user_name, $height, $weight, $sex, $age, $activ
     $targetFAT *= 1.1;
   }
 
-  $result = mysqli_query($mysqli, "INSERT INTO user_info ('user_id', 'user_id', 'height', 'activityLevel', 'weight', 'sex', 'targetCAL', 'targetPROTIEN','targetCARBS', 'targetFAT', 'goal', 'focus') VALUES ('$userID', '$height', '$weight', '$sex', '$age', '$activityLvl', '$goal', '$focus', '$bmr', '$targetCAL', '$targetPROTIEN', '$targetFAT', '$targetCARBS')");
+  // SQL INJECTION?
+  $result = mysqli_query($mysqli, "INSERT INTO user_info (user_id, height, weight, age, sex, activityLevel, targetCAL, targetPROTIEN, targetCARBS, targetFAT, goal, focus) VALUES ('$userID', '$height', '$weight', '$age', '$sex', '$activityLvl', '$targetCAL', '$targetPROTIEN', '$targetCARBS', '$targetFAT', '$goal', '$focus')");
   
 }
 

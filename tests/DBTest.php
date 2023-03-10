@@ -70,6 +70,22 @@ final class DBTest extends TestCase
 
     }
 
+    public function testStoreSurveyInformation(): void {
+        $mysqli = getConnection();
+        createUser("testUser", "test@email.com", "testPassword");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        $userId = getIDFromUsername("testUser");
+        $result = mysqli_query($mysqli, "SELECT * FROM user_info WHERE user_id=$userId");
+        $row = mysqli_fetch_row($result);
+        // targetCal[6], targetProtien[7], targetCarbs[8], targetFat[9]
+        $this->assertEquals($row[6], 3719.84);
+        $this->assertEquals($row[7], 210);
+        $this->assertEquals($row[8], 597.461);
+        $this->assertEquals($row[9], 70);
+
+
+    }
+
     public function testCheckInitalLogin(): void {
         $mysqli = getConnection();
         $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
