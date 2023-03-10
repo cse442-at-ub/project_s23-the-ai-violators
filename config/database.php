@@ -13,6 +13,25 @@ function getConnection() {
 
 }
 
+function getIDFromUsername($user_name) {
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT user_id FROM users WHERE user_name='$user_name'");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
+}
+
+function checkInitalLogin($user_name) {
+  $mysqli = getConnection();
+  $userID = getIDFromUsername($user_name);
+  $result = mysqli_query($mysqli, "SELECT * FROM user_info WHERE user_id='$userID'");
+  $row = mysqli_fetch_row($result);
+  if ($row) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function trackCaloriesAndMacros() {
   $mysqli = getConnection();
 
@@ -29,34 +48,78 @@ function getDailyCalories() {
 }
 
 
-function storeSurveyInformation() {
+function storeSurveyInformation(string $user_name, int $height, int $weight, string $sex, int $age, float $activityLvl, string $goal, string $focus) {
   $mysqli = getConnection();
+  $userID = getIDFromUsername($user_name);
+  $bmr = 0;
 
+  if ($sex == "MALE") {
+    $bmr = 88.362 + (6.23 * $weight) + (12.7 * $height) - (6.76 * $age);
+  } else {
+    $bmr = 447.593 + (4.3 * $weight) + (4.7 * $height) - (4.68 * $age);
+  }
+
+  $targetCAL = $bmr * $activityLvl;
+
+
+  if ($goal == "CUT") {
+    $targetCAL = $targetCAL - 500;
+  } else if ($goal == "BULK") {
+    $targetCAL = $targetCAL + 200;
+  }
+
+  $targetPROTIEN = $weight;
+  $targetFAT = $weight * 0.4;
+  $targetCARBS = ($targetCAL - ($targetPROTIEN * 4.) - ($targetFAT * 9.)) / 4.;
+
+  if ($focus == "PROTIEN") {
+    $targetPROTIEN = $weight * 1.2;
+  } else if ($focus == "CARB") {
+    $targetCARBS *= 1.2 ;
+  } else if ($focus == "FAT") {
+    $targetFAT *= 1.1;
+  }
+
+  // SQL INJECTION?
+  $result = mysqli_query($mysqli, "INSERT INTO user_info (user_id, height, weight, age, sex, activityLevel, targetCAL, targetPROTIEN, targetCARBS, targetFAT, goal, focus) VALUES ('$userID', '$height', '$weight', '$age', '$sex', '$activityLvl', '$targetCAL', '$targetPROTIEN', '$targetCARBS', '$targetFAT', '$goal', '$focus')");
+  
 }
 
-function checkIfEmailUsed($mysqli, $email)
+function checkIfEmailUsed($email)
 {
   $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT * FROM users WHERE email='$email'");
+  $row = mysqli_fetch_row($result);
+  if ($row) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-function checkIfUserNameUsed($mysqli, $user_name)
+function checkIfUserNameUsed($user_name)
 {
   $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT * FROM users WHERE user_name='$user_name'");
+  $row = mysqli_fetch_row($result);
+  if ($row) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 
 function createUser($user_name, $email, $password)
 {
   $mysqli = getConnection();
-  // check that the email is not already in the database
-  $result = mysqli_query($mysqli, "SELECT * FROM users WHERE email='$email'");
-  $row = mysqli_fetch_row($result);
 
-
-
+  if (checkIfEmailUsed($email) || checkIfUserNameUsed($user_name)) {
+    return false;
+  }
   $hashed = password_hash($password, PASSWORD_DEFAULT);
-  $result = mysqli_query($mysqli, "INSERT INTO users (user_name, email, password_hash) VALUES ('$user_name', '$email', '$hashed')");
-  // echo "Row inserted successfully<br>";
+  mysqli_query($mysqli, "INSERT INTO users (user_name, email, password_hash) VALUES ('$user_name', '$email', '$hashed')");
+  return true;
 }
 
 
