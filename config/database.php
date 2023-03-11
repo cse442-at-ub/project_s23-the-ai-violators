@@ -44,9 +44,12 @@ function getCalorieGoals($user_id) {
   return $row[0];
 }
 
-function getDailyCalories() {
+// date should be a string in the format of "YYYY-MM-DD"
+function getDailyCalories(int $user_id, string $date) {
   $mysqli = getConnection();
-
+  $result = mysqli_query($mysqli, "SELECT calories FROM daily_intake WHERE user_id='$user_id' AND date='$date'");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
 }
 
 
