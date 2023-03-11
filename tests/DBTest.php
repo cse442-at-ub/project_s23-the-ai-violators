@@ -110,4 +110,18 @@ final class DBTest extends TestCase
 
     }
 
+    public function testTrackCaloriesAndMacros(): void {
+        $mysqli = getConnection();
+        createUser("testUser", "test@email.com", "testPassword");
+        $date = date("Y-m-d");
+        $userId = getIDFromUsername("testUser");
+        $didTrackCaloriesAndMacros = trackCaloriesAndMacros($userId, $date, 2000, 100, 100, 100);
+        $this->assertTrue($didTrackCaloriesAndMacros);
+
+        $cals = getDailyCalories($userId, $date);
+        $this->assertEquals($cals, 2000);
+
+
+    }
+
 }
