@@ -13,7 +13,7 @@ function getConnection() {
 
 }
 
-function getIDFromUsername(string $user_name) {
+function getIDFromUsername(string $user_name): int {
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT user_id FROM users WHERE user_name='$user_name'");
   $row = mysqli_fetch_row($result);
@@ -32,9 +32,8 @@ function checkInitalLogin(string $user_name) {
   }
 }
 
-function trackCaloriesAndMacros(int $user_id, float $calroies, float $protein, float $carbs, float $fat) {
+function trackCaloriesAndMacros(int $user_id, string $date, float $calroies, float $protein, float $carbs, float $fat) {
   $mysqli = getConnection();
-  $date = date("Y-m-d");
   $result = mysqli_query($mysqli, "INSERT INTO daily_intake (user_id, date, calories, protein, carbs, fat) VALUES ('$user_id', '$date', '$calroies', '$protein', '$carbs', '$fat')");
   if ($result) {
     return true;
