@@ -10,23 +10,58 @@ ul {
   }
 
 body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
     height: 100dvh;
+    /*background:aqua;*/
+}
+
+.profilePic{
+    border: 1px solid black;
+    padding: 10px;
+    margin: 50px;
+}
+
+.profilePic img{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 150px;
+}
+
+.stats{
+    flex-basis: 2;
+    padding: 0;
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: aqua;
+}
+
+.userInfo{
+    flex-grow: 1;
+    flex-basis: 50%;
 }
 
 .container{
     display: flex;
+    width: 50%;
     background: #fff;
-    width: auto;
-    padding: 50px 10px;
     border-radius: 8px;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    align-items: top;
+}
+.macros{
+    padding-left: 20px;
+}
+
+.macros li{
+    font-family: 'Michroma';
+}
+
+.macros li:not(:last-child) {
+    margin-bottom: 70%;
 }
 
 .progress-bar{
@@ -64,8 +99,4 @@ body{
     height: 78.57%;
     width: 78.57%;
     background: white;
-}
-
-.stats{
-    padding: 50px;
 }
