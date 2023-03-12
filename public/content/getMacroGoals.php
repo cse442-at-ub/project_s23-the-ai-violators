@@ -4,6 +4,6 @@
 
     $user_id = $_GET['user_id'];
 
-    $goal = getCalorieGoals($user_id);
+    $macros = getMacroGoals($user_id);
 
-    echo json_encode($goal);
+    echo json_encode($macros);
