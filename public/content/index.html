@@ -9,36 +9,71 @@
   <link rel="stylesheet" href="mainpage.css">
     <title>content</title>
 
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@200;400;500;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="profilePic">
+        <img src="../image/carrot.png" alt="">
+    </div>
 
-    <div class = "container">
-        <div class="progress-bar">
-            <div class="inner">
-                <div class="inner inner-1">
-                    <div class="inner inner-2"></div>
-                </div>
-            </div>
-        </div>
-        <div class="stats">
+    <div class="stats">
+       
+        <div class="userInfo">
             <ul>
                 <li>
-                    Protien
+                    Username: <span class="userData">Test</span>
                 </li>
                 <li>
-                    Carbs
+                    Name: <span class="userData">Test</span>
                 </li>
                 <li>
-                    Fats
+                    Height: <span class="userData">Test</span>
+                </li>
+                <li>
+                    Weight: <span class="userData">Test</span>
+                </li>
+                <li>
+                    Goal: <span class="userData">Test</span>
+                </li>
+                <li>
+                    Dietary Restrictions <span class="userData">Test</span>
                 </li>
             </ul>
         </div>
+
+        <div class = "container">
+            <div class="protienProgress">
+                <div class="inner carbsProgress">
+                    <div class="inner fatsProgress">
+                        <div class="inner inner-2">
+                            <div>
+                                Calories: <br/>
+                                <span id="cals"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="macros">
+                <ul>
+                    <li>
+                        Protien: <span id="protien">%protien%</span>
+                    </li>
+                    <li>
+                        Carbs: <span id="carbs">%carbs%</span>
+                    </li>
+                    <li>
+                        Fats: <span id="fats">%fats%</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+
+    
       
     
     <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup/mainpage.js"></script>
