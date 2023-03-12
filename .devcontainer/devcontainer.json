@@ -33,7 +33,7 @@
 		"ghcr.io/devcontainers/features/sshd:1": {}
 	},
 	"mounts": [
-		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached" // mounts ssh folder inside container so we can push to git
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached" // mounts ssh folder inside container so we can push to git
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.

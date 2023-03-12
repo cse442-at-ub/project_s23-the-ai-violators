@@ -21,6 +21,10 @@ let curPro_K = currentProtien * 4
 let curCarb_K = currentCarb * 4
 let curFat_K = currentFat * 9
 
+let userId = 69;
+
+getCalorieGoals()
+
 let totalCur_K = curPro_K + curCarb_K + curFat_K
 
 let protienProgress = document.querySelector(".protienProgress"),

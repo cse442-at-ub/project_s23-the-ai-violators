@@ -7,5 +7,3 @@ RUN chmod +x /wait
 
 
 RUN docker-php-ext-install mysqli
-
-RUN /wait

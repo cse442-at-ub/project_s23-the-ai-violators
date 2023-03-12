@@ -8,6 +8,11 @@ require __DIR__ . '/../config/database.php';
 
 final class DBTest extends TestCase
 {
+
+    protected function setUp(): void {
+        $result = mysqli_query(getConnection(), "DELETE FROM users WHERE user_name='testUser'");
+    }
+
     public function testUserTableStructuredCorrectly(): void
     {
         $mysqli = getConnection();
@@ -24,7 +29,7 @@ final class DBTest extends TestCase
     {
         $mysqli = getConnection();
         
-        $userInfoCols = array("user_id", "sex", "height", "weight", "goal", "focus");
+        $userInfoCols = array("user_id", "height", "weight", "age", "sex", "activityLevel", "targetCAL", "targetPROTIEN", "targetCARBS", "targetFAT", "goal", "focus");
         $result = mysqli_query($mysqli, "SHOW columns FROM user_info");
         for ($i = 0; $i < count($userInfoCols); $i++) {
             $row = mysqli_fetch_row($result);
@@ -43,4 +48,86 @@ final class DBTest extends TestCase
             $this->assertEquals($row[0], $dailyIntakeCols[$i]);
         }
     }
+
+    public function testCreateUser(): void
+    {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+
+        $result = mysqli_query($mysqli, "SELECT * FROM users WHERE user_name='testUser'");
+        $row = mysqli_fetch_row($result);
+        $this->assertEquals($row[1], "testUser");
+
+
+        // expect error because user already exists
+        $didCreateUser = createUser("testUser", "test123@email.com", "testPassword");
+        $this->assertFalse($didCreateUser);
+
+        // expect error because email already exists
+        $didCreateUser = createUser("testUser123", "test@email.com", "testPassword");
+        $this->assertFalse($didCreateUser);
+
+    }
+
+    public function testStoreSurveyInformation(): void {
+        $mysqli = getConnection();
+        createUser("testUser", "test@email.com", "testPassword");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        $userId = getIDFromUsername("testUser");
+        $result = mysqli_query($mysqli, "SELECT * FROM user_info WHERE user_id=$userId");
+        $row = mysqli_fetch_row($result);
+        // targetCal[6], targetProtien[7], targetCarbs[8], targetFat[9]
+        $this->assertEquals($row[6], 3719.84);
+        $this->assertEquals($row[7], 210);
+        $this->assertEquals($row[8], 597.461);
+        $this->assertEquals($row[9], 70);
+        $this->assertEquals(getCalorieGoals($userId), 3719.84);
+
+        $targetMacros = getMacroGoals($userId);
+        $this->assertEquals($targetMacros[0], 210);
+        $this->assertEquals($targetMacros[1], 597.461);
+        $this->assertEquals($targetMacros[2], 70);
+
+
+    }
+
+    public function testGetCalorieGoals(): void {
+        $mysqli = getConnection();
+        createUser("testUser", "test@email.com", "testPassword");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        $userId = getIDFromUsername("testUser");
+        $result = getCalorieGoals($userId);
+        $this->assertEquals($result, 3719.84);
+    }
+
+    public function testCheckInitalLogin(): void {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+
+        $didInitalLogin = checkInitalLogin("testUser");
+        $this->assertFalse($didInitalLogin);
+
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+
+        $didInitalLogin = checkInitalLogin("testUser");
+        $this->assertTrue($didInitalLogin);
+
+    }
+
+    public function testTrackCaloriesAndMacros(): void {
+        $mysqli = getConnection();
+        createUser("testUser", "test@email.com", "testPassword");
+        $date = date("Y-m-d");
+        $userId = getIDFromUsername("testUser");
+        $didTrackCaloriesAndMacros = trackCaloriesAndMacros($userId, $date, 2000, 100, 100, 100);
+        $this->assertTrue($didTrackCaloriesAndMacros);
+
+        $cals = getDailyCalories($userId, $date);
+        $this->assertEquals($cals, 2000);
+
+
+    }
+
 }
