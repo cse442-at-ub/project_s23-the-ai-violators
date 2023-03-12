@@ -82,8 +82,23 @@ final class DBTest extends TestCase
         $this->assertEquals($row[7], 210);
         $this->assertEquals($row[8], 597.461);
         $this->assertEquals($row[9], 70);
+        $this->assertEquals(getCalorieGoals($userId), 3719.84);
+
+        $targetMacros = getMacroGoals($userId);
+        $this->assertEquals($targetMacros[0], 210);
+        $this->assertEquals($targetMacros[1], 597.461);
+        $this->assertEquals($targetMacros[2], 70);
 
 
+    }
+
+    public function testGetCalorieGoals(): void {
+        $mysqli = getConnection();
+        createUser("testUser", "test@email.com", "testPassword");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        $userId = getIDFromUsername("testUser");
+        $result = getCalorieGoals($userId);
+        $this->assertEquals($result, 3719.84);
     }
 
     public function testCheckInitalLogin(): void {
@@ -98,6 +113,20 @@ final class DBTest extends TestCase
 
         $didInitalLogin = checkInitalLogin("testUser");
         $this->assertTrue($didInitalLogin);
+
+    }
+
+    public function testTrackCaloriesAndMacros(): void {
+        $mysqli = getConnection();
+        createUser("testUser", "test@email.com", "testPassword");
+        $date = date("Y-m-d");
+        $userId = getIDFromUsername("testUser");
+        $didTrackCaloriesAndMacros = trackCaloriesAndMacros($userId, $date, 2000, 100, 100, 100);
+        $this->assertTrue($didTrackCaloriesAndMacros);
+
+        $cals = getDailyCalories($userId, $date);
+        $this->assertEquals($cals, 2000);
+
 
     }
 

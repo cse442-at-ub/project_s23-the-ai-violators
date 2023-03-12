@@ -1,5 +1,13 @@
 <?php
 
+if (isset($_GET['functionName'])) {
+  $functionName = $_GET['functionName'];
+
+  if (function_exists($functionName)) {
+      $functionName();
+  }
+}
+
 function getConnection() {
   $db_hostname = getenv('IN_DOCKER');
 
@@ -13,14 +21,14 @@ function getConnection() {
 
 }
 
-function getIDFromUsername($user_name) {
+function getIDFromUsername(string $user_name): int {
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT user_id FROM users WHERE user_name='$user_name'");
   $row = mysqli_fetch_row($result);
   return $row[0];
 }
 
-function checkInitalLogin($user_name) {
+function checkInitalLogin(string $user_name) {
   $mysqli = getConnection();
   $userID = getIDFromUsername($user_name);
   $result = mysqli_query($mysqli, "SELECT * FROM user_info WHERE user_id='$userID'");
@@ -32,20 +40,40 @@ function checkInitalLogin($user_name) {
   }
 }
 
-function trackCaloriesAndMacros() {
+function trackCaloriesAndMacros(int $user_id, string $date, float $calroies, float $protein, float $carbs, float $fat) {
+  echo "HELLO! This probaly worked, but useres arent set up yet, so expect error";
   $mysqli = getConnection();
-
+  $result = mysqli_query($mysqli, "INSERT INTO daily_intake (user_id, date, calories, protein, carbs, fat) VALUES ('$user_id', '$date', '$calroies', '$protein', '$carbs', '$fat')");
+  echo $result;
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-function getCalorieGoals() {
+function getCalorieGoals($user_id) {
   $mysqli = getConnection();
-
+  $result = mysqli_query($mysqli, "SELECT targetCAL FROM user_info WHERE user_id='$user_id'");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
 }
 
-function getDailyCalories() {
+function getMacroGoals($user_id) {
   $mysqli = getConnection();
-
+  $result = mysqli_query($mysqli, "SELECT targetPROTIEN, targetCARBS, targetFAT FROM user_info WHERE user_id='$user_id'");
+  $row = mysqli_fetch_row($result);
+  return $row;
 }
+
+// date should be a string in the format of "YYYY-MM-DD"
+function getDailyCalories(int $user_id, string $date) {
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT calories FROM daily_intake WHERE user_id='$user_id' AND date='$date'");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
+}
+
 
 
 function storeSurveyInformation(string $user_name, int $height, int $weight, string $sex, int $age, float $activityLvl, string $goal, string $focus) {
