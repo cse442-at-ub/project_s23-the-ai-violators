@@ -36,12 +36,17 @@ body{
     flex-basis: 2;
     padding: 0;
     height: 100%;
+    width: 100%;
     display: flex;
 }
 
 .userInfo{
     flex-grow: 1;
     flex-basis: 50%;
+}
+
+.userInfo ul{
+    padding: 0 10px;
 }
 
 .container{
@@ -103,4 +108,8 @@ body{
 
 .macros span{
     color: grey;
+}
+
+.userData{
+    float: right;
 }
