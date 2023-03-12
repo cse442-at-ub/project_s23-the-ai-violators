@@ -4,6 +4,11 @@ html{
     font-family: 'Montserrat', Courier, monospace;
 }
 
+body {
+    overflow-x: hidden;
+  }
+  
+
 
 h1{
     text-align: center;
@@ -150,8 +155,9 @@ label{
 
 .sub {
     position: relative;
-    top: 90px;
+    top: 60px;
     left: 400px;
+    height: 5px;
 }
 
   
