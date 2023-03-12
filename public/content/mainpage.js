@@ -50,13 +50,13 @@ cals.innerHTML = `${totalCur_K}/${calorieGoal}`
 
 function getCalorieGoals(user_id, div_id) {
     let xhr = new XMLHttpRequest();
+
   xhr.onreadystatechange = function(){
     if(this.readyState === 4 && this.status === 200)
       {
         document.getElementById(div_id).innerHTML = this.responseText
       }
     }
-	//get request with params
-    xhr.open('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup/getCals.php?user_id=' + user_id);
+    xhr.open('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup/getCals.php?user_id=' + user_id, true);
   xhr.send();
 }

@@ -33,3 +33,5 @@ if (mysqli_query($mysqli, $daily_intake_query)) {
 } else {
     echo "Error creating table: " . mysqli_error($mysqli) . "\n";
 }
+
+
