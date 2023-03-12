@@ -61,10 +61,10 @@ body{
 }
 
 .macros li:not(:last-child) {
-    margin-bottom: 70%;
+    margin-bottom: 10%;
 }
 
-.progress-bar{
+.protienProgress{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +87,7 @@ body{
     border: 1px solid white;
 }
 
-.inner-1{
+.fatsProgress{
     position: absolute;
     height: 82.35%;
     width: 82.35%;
@@ -99,4 +99,8 @@ body{
     height: 78.57%;
     width: 78.57%;
     background: white;
+}
+
+.macros span{
+    color: grey;
 }
