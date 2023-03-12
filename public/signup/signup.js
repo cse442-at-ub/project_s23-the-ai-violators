@@ -10,6 +10,7 @@ let form = document.getElementsByTagName("form")[0]
 let takenEmail = "Taken@example.com"
 let takenUsername = "Taken"
 
+
 function check(){
     if(password.value != confirm.value){
         confirm.setCustomValidity("Passwords must be matching")
