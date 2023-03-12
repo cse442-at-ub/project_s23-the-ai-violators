@@ -82,6 +82,12 @@ final class DBTest extends TestCase
         $this->assertEquals($row[7], 210);
         $this->assertEquals($row[8], 597.461);
         $this->assertEquals($row[9], 70);
+        $this->assertEquals(getCalorieGoals($userId), 3719.84);
+
+        $targetMacros = getMacroGoals($userId);
+        $this->assertEquals($targetMacros[0], 210);
+        $this->assertEquals($targetMacros[1], 597.461);
+        $this->assertEquals($targetMacros[2], 70);
 
 
     }

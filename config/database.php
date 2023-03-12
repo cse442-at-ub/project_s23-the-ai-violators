@@ -59,6 +59,13 @@ function getCalorieGoals($user_id) {
   return $row[0];
 }
 
+function getMacroGoals($user_id) {
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT targetPROTIEN, targetCARBS, targetFAT FROM user_info WHERE user_id='$user_id'");
+  $row = mysqli_fetch_row($result);
+  return $row;
+}
+
 // date should be a string in the format of "YYYY-MM-DD"
 function getDailyCalories(int $user_id, string $date) {
   $mysqli = getConnection();
@@ -66,6 +73,7 @@ function getDailyCalories(int $user_id, string $date) {
   $row = mysqli_fetch_row($result);
   return $row[0];
 }
+
 
 
 function storeSurveyInformation(string $user_name, int $height, int $weight, string $sex, int $age, float $activityLvl, string $goal, string $focus) {
