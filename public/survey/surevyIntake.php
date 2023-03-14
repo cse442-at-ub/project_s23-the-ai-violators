@@ -3,11 +3,14 @@
     require __DIR__ . '/../../config/database.php';
 
 
-    $date = $_POST['date'];
-    $calories = $_POST['calories'];
-    $protein = $_POST['protein'];
-    $carbs = $_POST['carbs'];
-    $fats = $_POST['fats'];
+    $age = $_POST['age'];
+    $height = $_POST['height'];
+    $weight = $_POST['weight'];
+    $macros = $_POST['macros'];
+    $actlevel = $_POST['actlevel'];
+    $sex = $_POST['sex'];
+    $goal = $_POST['goal'];
 
-    trackCaloriesAndMacros(69, $date, $calories, $protein, $carbs, $fats);
+
+    storeSurveyInformation("Chad", $height, $weight, $sex, $age, $actlevel,$goal,$macros);
 
