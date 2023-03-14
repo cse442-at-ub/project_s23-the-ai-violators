@@ -21,7 +21,7 @@
     </div>
     <div id="loginForm">
         <h2>login</h2>
-        <form action="login/handleIntake.php" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <div class = "userInfo">
             <label for="username">username:</label>
             <input type="text" id="username" name="username" placeholder="username" required>
@@ -37,9 +37,41 @@
         <button type="submit" id="button">Login</button>
         </form>
         <footer>don't have an account? <span><a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup">signup</a></span></footer>
+
+        <div class="error-msg">
+           <i class="fa fa-times-circle"></i>
+           %Error%
+       </div>
     </div>
 
     <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/login.js"></script>
 </body>
 
 </html>
+
+<?php
+      
+   require __DIR__ . '/../../config/database.php';
+
+
+   $username = $_POST['username'];
+   $password = $_POST['password'];
+
+
+   if (checkLogin($username, $password)){
+       if (checkInitalLogin($username)){
+           header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey/");
+           exit();
+       }
+       else{
+           header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/");
+           exit();
+       }
+   }
+   else{
+       echo "<script>mess();</script>";
+       header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/");
+       exit();
+   }
+
+?>

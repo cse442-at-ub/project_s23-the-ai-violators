@@ -3,9 +3,12 @@ let password = document.getElementById("password")
 let button = document.getElementById("button")
 let form = document.getElementsByTagName("form")[0];
 
-form.addEventListener("submit", login => {
-    if (password.value != "test_password" || username.value != "test_username") {
-        login.preventDefault();
-        alert("Please Enter Valid Username and Password")
-    }
-})
+let errorCircle = '<i class="fa fa-times-circle"></i>'
+let error = document.querySelector(".error-msg")
+
+function mess(){
+   error.style.display = "block"
+   error.innerHTML = `${errorCircle} Please Enter Valid Username and Password`
+
+
+}
