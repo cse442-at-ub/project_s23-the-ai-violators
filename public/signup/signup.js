@@ -21,6 +21,7 @@ function check(){
 
 form.addEventListener("submit",  async (e) => {
    let res = await makeRequest('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup/HandleSignup.php/?username='+username.value+'&email='+email.value+'&password='+password.value)
+   console.log(res);
    e.preventDefault()
    let errorCircle = '<i class="fa fa-times-circle"></i>'
    let error = document.querySelector(".error-msg")

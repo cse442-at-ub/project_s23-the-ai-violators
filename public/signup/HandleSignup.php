@@ -9,12 +9,12 @@
     // header("Content-Type: application/json");
 
     if(checkIfEmailUsed($email)){
-        echo json_encode(array(1));
+        echo 1;
     }
     elseif(checkIfUserNameUsed($user)){
-        echo json_encode(2);
+        echo 2;
     }else{
-        echo json_encode(3);
+        echo 3;
         createUser($user, $email, $password);
     }
     
