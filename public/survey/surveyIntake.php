@@ -12,5 +12,7 @@
     $goal = $_POST['goal'];
 
 
-    storeSurveyInformation("Chad", $height, $weight, $sex, $age, $actlevel,$goal,$macros);
+    storeSurveyInformation("timmy", $height, $weight, strtoupper($sex), $age, $actlevel,strtoupper($goal),$macros);
+
+    header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content");
 

@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/database.php';
 
 // This script will run after building the docker devcontainer
 
@@ -33,3 +34,5 @@ if (mysqli_query($mysqli, $daily_intake_query)) {
 } else {
     echo "Error creating table: " . mysqli_error($mysqli) . "\n";
 }
+
+createUser("timmy", "tim@email.com", "password");
