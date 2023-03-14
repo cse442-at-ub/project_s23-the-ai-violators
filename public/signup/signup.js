@@ -20,9 +20,10 @@ function check(){
 }
 
 form.addEventListener("submit",  async (e) => {
-   let res = await makeRequest('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup/HandleSignup.php/?username='+username.value+'&email='+email.value+'&password='+password.value)
-   console.log(res);
-   e.preventDefault()
+    e.preventDefault()
+    let res = await makeRequest('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup/HandleSignup.php/?username='+username.value+'&email='+email.value+'&password='+password.value)
+    let success = document.querySelector(".success-msg")
+   
    let errorCircle = '<i class="fa fa-times-circle"></i>'
    let error = document.querySelector(".error-msg")
    /*if(email.value === takenEmail && username.value === takenUsername){
@@ -30,17 +31,19 @@ form.addEventListener("submit",  async (e) => {
         error.innerHTML = `${errorCircle} Email and Username already taken`
     }*/
     if(res == 2){
+        success.style.display = "none"
         error.style.display = "block"
         error.innerHTML = `${errorCircle} Username already taken`
    }
    else if(res == 1){
+
+        success.style.display = "none"
         error.style.display = "block"
         error.innerHTML = `${errorCircle} Email already taken`
    }
    else{
     //submitForm() //This function has no current functionality
     error.style.display = "none"
-    let success = document.querySelector(".success-msg")
     success.style.display = "block"
    }
 })
