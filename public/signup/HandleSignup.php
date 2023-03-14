@@ -6,16 +6,18 @@
     $user = $_GET['username'];
     $password = $_GET['password'];
 
+    // header("Content-Type: application/json");
+
     if(checkIfEmailUsed($email)){
-        echo 1;
+        echo json_encode(array(1));
     }
     elseif(checkIfUserNameUsed($user)){
-        echo 2;
+        echo json_encode(2);
     }else{
-        echo 3;
+        echo json_encode(3);
         createUser($user, $email, $password);
     }
-    ?>
+    
 
     
 
