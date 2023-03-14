@@ -1,25 +1,22 @@
+
 <?php
+      
+   require __DIR__ . '/../../config/database.php';
 
 
-require __DIR__ . '/../../config/database.php';
+   $user_name = $_POST['username'];
+   $password_hash = $_POST['password'];
 
 
-   $username = $_POST['username'];
-   $password = $_POST['password'];
-
-
-   if (checkLogin($username, $password)){
-       if (checkInitalLogin($username)){
-           header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey/");
-           exit();
+   if (checkLogin($user_name, $password_hash)){
+       if (checkInitalLogin($user_name)){
+        echo "<script>window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content'</script>";
        }
        else{
-           header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/");
-           exit();
+        echo "<script>window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey'</script>";
        }
    }
    else{
-       echo "<script>mess();</script>";
-       header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/");
-       exit();
+        echo "<script>window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'</script>";
    }
+?>
