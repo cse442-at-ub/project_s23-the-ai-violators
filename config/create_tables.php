@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/database.php';
 
 // This script will run after building the docker devcontainer
 
@@ -49,3 +50,5 @@ storeSurveyInformation("chad", 74, 180, "MALE", 25, 1.8, "BULK", "PROTIEN");
 
 $date = date("Y-m-d");
 trackCaloriesAndMacros(69, $date, 2000, 100, 200, 50);
+
+createUser("timmy", "tim@email.com", "password");
