@@ -3,7 +3,6 @@ require __DIR__ . '/database.php';
 
 // This script will run after building the docker devcontainer
 
-require __DIR__ . '/database.php';
 
 $db_hostname = getenv('IN_DOCKER');
 

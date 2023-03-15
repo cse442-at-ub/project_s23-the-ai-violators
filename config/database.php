@@ -1,13 +1,5 @@
 <?php
 
-if (isset($_GET['functionName'])) {
-  $functionName = $_GET['functionName'];
-
-  if (function_exists($functionName)) {
-      $functionName();
-  }
-}
-
 function getConnection() {
   $db_hostname = getenv('IN_DOCKER');
 
@@ -41,10 +33,10 @@ function checkInitalLogin(string $user_name) {
 }
 
 function trackCaloriesAndMacros(int $user_id, string $date, float $calroies, float $protein, float $carbs, float $fat) {
-  echo "HELLO! This probaly worked, but useres arent set up yet, so expect error";
+  // echo "HELLO! This probaly worked, but useres arent set up yet, so expect error";
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "INSERT INTO daily_intake (user_id, date, calories, protein, carbs, fat) VALUES ('$user_id', '$date', '$calroies', '$protein', '$carbs', '$fat')");
-  echo $result;
+  // echo $result;
   if ($result) {
     return true;
   } else {
@@ -154,19 +146,19 @@ function createUser($user_name, $email, $password)
 function checkLogin($user_name, $password)
 {
   $mysqli = getConnection();
-  $result = mysqli_query($mysqli, "SELECT * FROM users WHERE user_name='$user_name'");
+  $result = mysqli_query($mysqli, "SELECT password_hash FROM users WHERE user_name='$user_name'");
   $row = mysqli_fetch_row($result);
   if ($row) {
-    $hashed = $row[2];
+    $hashed = $row[0];
     if (password_verify($password, $hashed)) {
-      echo "Login successful!<br>";
+      // echo "Login successful!<br>";
       return true;
     } else {
-      echo "Login failed! Password doesn't match!<br>";
+      // echo "Login failed! Password doesn't match!<br>";
       return false;
     }
   } else {
-    echo "Login failed! No user found with that email!<br>";
+    // echo "Login failed! No user found with that email!<br>";
     return false;
   }
 }

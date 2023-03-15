@@ -70,6 +70,13 @@ final class DBTest extends TestCase
 
     }
 
+    public function testCheckLogin(): void {
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $didLogin = checkLogin("testUser", "testPassword");
+
+        $this->assertTrue($didLogin);
+    }
+
     public function testStoreSurveyInformation(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
