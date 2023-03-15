@@ -1,18 +1,17 @@
+
 <?php
+      
+   require __DIR__ . '/../../config/database.php';
 
-    require __DIR__ . '/../../config/database.php';
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+   $user_name = $_GET['username'];
+   $password_hash = $_GET['password']; 
 
-    if (checkLogin($username, $password)){
-        if (checkInitalLogin($username)){
-            require __DIR__ . '/public/survey/index.html';
-        }
-        else{
-            require __DIR__ . '/public/content/index.php';
-        }
-    }
-    else{
-        require __DIR__ . '/public/login/index.html';
-    }
+   if (checkLogin($user_name, $password_hash)){
+       if (checkInitalLogin($user_name)){
+        echo "<script>window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content'</script>";
+       }
+       else{
+        echo "<script>window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey'</script>";
+       }
+   }
