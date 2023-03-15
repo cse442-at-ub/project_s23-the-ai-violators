@@ -32,8 +32,9 @@ function checkInitalLogin(string $user_name) {
   }
 }
 
-function trackCaloriesAndMacros(int $user_id, string $date, float $calroies, float $protein, float $carbs, float $fat) {
+function trackCaloriesAndMacros(string $user_name, string $date, float $calroies, float $protein, float $carbs, float $fat) {
   // echo "HELLO! This probaly worked, but useres arent set up yet, so expect error";
+  $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "INSERT INTO daily_intake (user_id, date, calories, protein, carbs, fat) VALUES ('$user_id', '$date', '$calroies', '$protein', '$carbs', '$fat')");
   // echo $result;
@@ -44,14 +45,16 @@ function trackCaloriesAndMacros(int $user_id, string $date, float $calroies, flo
   }
 }
 
-function getCalorieGoals($user_id) {
+function getCalorieGoals(string $user_name) {
+  $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT targetCAL FROM user_info WHERE user_id='$user_id'");
   $row = mysqli_fetch_row($result);
   return $row[0];
 }
 
-function getMacroGoals($user_id) {
+function getMacroGoals(string $user_name) {
+  $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT targetPROTIEN, targetCARBS, targetFAT FROM user_info WHERE user_id='$user_id'");
   $row = mysqli_fetch_row($result);
@@ -59,7 +62,8 @@ function getMacroGoals($user_id) {
 }
 
 // date should be a string in the format of "YYYY-MM-DD"
-function getDailyCalories(int $user_id, string $date) {
+function getDailyCalories(string $user_name, string $date) {
+  $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT calories FROM daily_intake WHERE user_id='$user_id' AND date='$date'");
   $row = mysqli_fetch_row($result);

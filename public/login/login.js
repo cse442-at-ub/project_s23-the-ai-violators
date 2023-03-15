@@ -22,6 +22,10 @@ form.addEventListener("submit", async (e) => {
     else { // logged in with survey
         window.location.replace("/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content");
     }
+
+    sessionStorage.setItem("username", username.value);
+    sessionStorage.getItem("username")
+
 })
 
 function makeRequest(method, url) {
