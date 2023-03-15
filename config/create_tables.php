@@ -2,6 +2,8 @@
 
 // This script will run after building the docker devcontainer
 
+require __DIR__ . '/database.php';
+
 $db_hostname = getenv('IN_DOCKER');
 
 if ($db_hostname == 'yes') {
@@ -33,3 +35,17 @@ if (mysqli_query($mysqli, $daily_intake_query)) {
 } else {
     echo "Error creating table: " . mysqli_error($mysqli) . "\n";
 }
+
+// Create test user Chad with id 69 if it doesn't exist
+$hash = password_hash('password', PASSWORD_DEFAULT);
+$chad_query = "INSERT INTO users (user_id, user_name, email, password_hash) SELECT 69, 'Chad', 'chad@email.com', '$hash' FROM dual WHERE NOT EXISTS (SELECT * FROM users WHERE user_id = 69);";
+if (mysqli_query($mysqli, $chad_query)) {
+    echo "Chad created successfully\n";
+} else {
+    echo "Error creating Chad: " . mysqli_error($mysqli) . "\n";
+}
+
+storeSurveyInformation("chad", 74, 180, "MALE", 25, 1.8, "BULK", "PROTIEN");
+
+$date = date("Y-m-d");
+trackCaloriesAndMacros(69, $date, 2000, 100, 200, 50);
