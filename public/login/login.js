@@ -18,13 +18,13 @@ form.addEventListener("submit", async (e) => {
     }
     else if (res.includes("1")) { // logged in without survey
         window.location.replace("/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey");
+        sessionStorage.setItem("username", username.value);
     }
     else { // logged in with survey
         window.location.replace("/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content");
+        sessionStorage.setItem("username", username.value);
     }
-
-    sessionStorage.setItem("username", username.value);
-    sessionStorage.getItem("username")
+    //sessionStorage.getItem("username")
 
 })
 

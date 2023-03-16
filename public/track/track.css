@@ -14,6 +14,16 @@ h1{
     text-align: center;
     font-weight: 700;
     font-size: 2.5rem;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+p{
+    margin: 5px;
+    text-align: left;
+}
+#username{
+    text-align: center;
 }
 
 
@@ -43,7 +53,9 @@ label{
     box-sizing: border-box;
     border-radius: .7em;
     border: none;
-    margin: 40px;
+    margin: 20px;
+    /**/
+    margin-top: 60px;
     margin-left: 15px;
     margin-right: 15px;
     font-size: 15px;
@@ -54,7 +66,7 @@ label{
 }
 
 .meals button{
-    display: inline-block;
+    display: none;
     background: white;
     color: black;
     font-size: 15px;
@@ -77,7 +89,7 @@ label{
 .cal label{
     display:block;
     margin-left: 220px;
-    margin-top: 90px;
+    margin-top: 100px;
     width: 50px;
 }
 
@@ -86,7 +98,7 @@ label{
     box-sizing:content-box;
     border-radius: .5em;
     border: none;
-    margin: 40px;
+    margin: 20px;
     margin-top: 20px;
     margin-left: 190px;
     margin-right: 80px;
@@ -100,7 +112,7 @@ label{
 .carb {
     float: right;
     margin-top: 60px;
-    margin-right: 121px;
+    margin-right: 141px;
 }
 
 .carb input{
@@ -119,7 +131,7 @@ label{
 .pro {
     float: right;
     margin-top: 20px;
-    margin-right: 123px;
+    margin-right: 143px;
 }
 
 .pro input{
@@ -137,7 +149,7 @@ label{
 .fat {
     float: right;
     margin-top: 20px;
-    margin-right: 123px;
+    margin-right: 143px;
 }
 
 .fat input{
@@ -170,7 +182,8 @@ button{
     padding: 1em 5em;
     border-radius: .4em;
     cursor: pointer;
-    margin-top: 0.5rem;
+    /*margin-top: 0.5rem;*/
+    margin-top: 70px;
     margin-bottom: 1rem;
     font-size: 15px;
     
@@ -182,4 +195,33 @@ button:hover{
 form div{
     padding: 0;
     margin: 4px;
+}
+
+
+
+.error-msg {
+    display: none;
+    margin: 10px 0;
+    margin-bottom: 0px;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+    font-size: .8em;
+    text-align: center;
+    /*margin-top: 460px*/
+    margin-top: 540px;
+}
+    
+    .error-msg {
+    color: #270;
+    background-color: #DFF2BF;
+    }
+
+.header {
+    display: inline-block;
+    margin: 0px;
+    padding: 1px;
+    font-size: .8em;
+    background: #D9D9D9;
+    width: 1500px;
+
 }
