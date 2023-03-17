@@ -33,6 +33,8 @@ let form = document.getElementsByTagName("form")[0]
 
 let errorCircle = '<i class="fa fa-times-circle"></i>'
 let error = document.querySelector(".error-msg")
+//let header = document.querySelector(".header")
+//let user = '<h2 id ="username">{{username}}</h2>'
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
