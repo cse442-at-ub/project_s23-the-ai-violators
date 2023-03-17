@@ -6,6 +6,7 @@ html{
 
 body {
     overflow-x: hidden;
+    margin: 0;
   }
   
 
@@ -18,12 +19,27 @@ h1{
     margin-bottom: 10px;
 }
 
+img{
+    height: 40px;
+    width: 40px;
+}
+
 p{
     margin: 5px;
+    font-weight: 700;
+    font-size: 25px;
     text-align: left;
+    display: inline-block;
 }
-#username{
+h2{
     text-align: center;
+    margin: 5px;
+    font-weight: 400;
+    font-size: 25px;
+    text-align: right;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 1100px;
 }
 
 
@@ -217,11 +233,11 @@ form div{
     }
 
 .header {
-    display: inline-block;
-    margin: 0px;
-    padding: 1px;
+    margin: 0;
+    padding: 5px;
     font-size: .8em;
     background: #D9D9D9;
-    width: 1500px;
+    width: 100%;
+    display: flex;
 
 }
