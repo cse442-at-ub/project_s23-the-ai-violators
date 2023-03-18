@@ -31,6 +31,11 @@ body {
 
 }
 
+#username{
+    float: right;
+    padding-right: 1.4rem;
+}
+
 .navbar {
     border: 1px solid rgb(168, 168, 168);
     border-top: none;
