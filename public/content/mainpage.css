@@ -15,16 +15,27 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    height: 100dvh;
-    background-image: linear-gradient(180deg, rgb(116, 114, 114), #262626);
+    height: 98dvh;
+    overflow-x: hidden;
+    /*background-image: linear-gradient(180deg, aqua, yellow);*/
     /*background:aqua;*/
+    background-color: white;
+}
+
+#carrot{
+    width: 50px;
+    float: left;
+    padding-left: 1.2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
 }
 
 .navbar {
     border: 1px solid rgb(168, 168, 168);
+    border-top: none;
     width: 100%;
     text-align: center;
-    padding: 1rem;
     background-color: white;
 
 }
@@ -37,14 +48,14 @@ body {
     max-width: 1300px;
     height: 100%;
     border: 1px solid rgb(151, 143, 143);
-    border-radius: 5px;
     justify-content: flex-start;
     align-items: flex-start;
+    border-top: none;
 }
 
 .historyContainer {
     margin-top: 3rem;
-    background-color: rgb(202, 200, 200);
+    background-color: rgb(247, 247, 247);
     width: 100%;
     height: 100%;
 }
@@ -56,7 +67,7 @@ body {
     font-weight: bold;
     font-size: large;
     border-bottom: 1px solid black;
-    background-color: #ffcc00;
+    background-color: #08e94c;
 }
 
 .stats {
@@ -193,7 +204,7 @@ table.GeneratedTable {
 table.GeneratedTable td,
 table.GeneratedTable th {
     border-width: 2px;
-    border-color: #ffcc00;
+    border-color: #08e94c;
     border-style: solid;
     padding: 3px;
 }
@@ -204,5 +215,5 @@ table.GeneratedTable th {
 }
 
 table.GeneratedTable thead {
-    background-color: #ffcc00;
+    background-color: #08e94c;
 }
