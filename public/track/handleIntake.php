@@ -2,13 +2,19 @@
 
     require __DIR__ . '/../../config/database.php';
 
+    $date = $_GET['date'];
+    $calories = $_GET['calories'];
+    $protein = $_GET['protein'];
+    $carbs = $_GET['carbs'];
+    $fat = $_GET['fats'];
+    $user_name = $_GET['username'];
 
-    $date = $_POST['date'];
-    $calories = $_POST['calories'];
-    $protein = $_POST['protein'];
-    $carbs = $_POST['carbs'];
-    $fats = $_POST['fats'];
+ 
+    if (trackCaloriesAndMacros($user_name, $date, $calories, $protein, $carbs, $fat)){
+        echo 1;
+    } else {
+        echo 2;
+    }
 
-    trackCaloriesAndMacros(69, $date, $calories, $protein, $carbs, $fats);
 
 

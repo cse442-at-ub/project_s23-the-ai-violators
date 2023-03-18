@@ -8,7 +8,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/track.css">
-  <link rel="stylesheet" href="track.css">
 
   <title>track</title>
 
@@ -18,9 +17,13 @@
 </head>
 
 <body>
+  <div class = "header" id="header">
+    <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="It's a carrot"/>
+    <p>nutr.io</p>
+  </div>
   <h1>Add a meal / snack</h1>
   <div id="trackForm">
-    <form action="track/handleIntake.php" method="POST">
+    <form>
       <div class = "dateIn">
         <label for="date">Date</label>
         <input type="date" id="date" name="date" required>
@@ -51,8 +54,14 @@
         <button id="submitButton" type="submit">Add</button>
       </div>
     </form>
+
+    <div class="error-msg">
+      <i class="fa fa-times-circle"></i>
+      %Error%
+    </div>
   </div>
 
   <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/track.js"></script>
 
 </body>
+</html>

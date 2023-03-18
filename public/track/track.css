@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
 
 html{
@@ -7,6 +6,7 @@ html{
 
 body {
     overflow-x: hidden;
+    margin: 0;
   }
   
 
@@ -15,6 +15,31 @@ h1{
     text-align: center;
     font-weight: 700;
     font-size: 2.5rem;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+img{
+    height: 40px;
+    width: 40px;
+}
+
+p{
+    margin: 5px;
+    font-weight: 700;
+    font-size: 25px;
+    text-align: left;
+    display: inline-block;
+}
+h2{
+    text-align: center;
+    margin: 5px;
+    font-weight: 400;
+    font-size: 25px;
+    text-align: right;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 1100px;
 }
 
 
@@ -44,7 +69,9 @@ label{
     box-sizing: border-box;
     border-radius: .7em;
     border: none;
-    margin: 40px;
+    margin: 20px;
+    /**/
+    margin-top: 60px;
     margin-left: 15px;
     margin-right: 15px;
     font-size: 15px;
@@ -55,7 +82,7 @@ label{
 }
 
 .meals button{
-    display: inline-block;
+    display: none;
     background: white;
     color: black;
     font-size: 15px;
@@ -78,7 +105,7 @@ label{
 .cal label{
     display:block;
     margin-left: 220px;
-    margin-top: 90px;
+    margin-top: 100px;
     width: 50px;
 }
 
@@ -87,7 +114,7 @@ label{
     box-sizing:content-box;
     border-radius: .5em;
     border: none;
-    margin: 40px;
+    margin: 20px;
     margin-top: 20px;
     margin-left: 190px;
     margin-right: 80px;
@@ -101,7 +128,7 @@ label{
 .carb {
     float: right;
     margin-top: 60px;
-    margin-right: 121px;
+    margin-right: 141px;
 }
 
 .carb input{
@@ -120,7 +147,7 @@ label{
 .pro {
     float: right;
     margin-top: 20px;
-    margin-right: 123px;
+    margin-right: 143px;
 }
 
 .pro input{
@@ -138,7 +165,7 @@ label{
 .fat {
     float: right;
     margin-top: 20px;
-    margin-right: 123px;
+    margin-right: 143px;
 }
 
 .fat input{
@@ -171,7 +198,8 @@ button{
     padding: 1em 5em;
     border-radius: .4em;
     cursor: pointer;
-    margin-top: 0.5rem;
+    /*margin-top: 0.5rem;*/
+    margin-top: 70px;
     margin-bottom: 1rem;
     font-size: 15px;
     
@@ -184,184 +212,32 @@ form div{
     padding: 0;
     margin: 4px;
 }
-=======
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
-
-html{
-    font-family: 'Montserrat', Courier, monospace;
-}
 
 
-h1{
+
+.error-msg {
+    display: none;
+    margin: 10px 0;
+    margin-bottom: 0px;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+    font-size: .8em;
     text-align: center;
-    font-weight: 700;
-    font-size: 2.5rem;
+    /*margin-top: 460px*/
+    margin-top: 540px;
 }
+    
+    .error-msg {
+    color: #270;
+    background-color: #DFF2BF;
+    }
 
-
-#trackForm {
-    margin: auto;
-    border: none;
-    border-radius: 2rem;
-    max-width: 999px;
-    height: 700px;
+.header {
+    margin: 0;
+    padding: 5px;
+    font-size: .8em;
     background: #D9D9D9;
-    
-}
+    width: 100%;
+    display: flex;
 
-label{
-    display: inline-block;
-    font-size: 30px;
-    font-weight: 700;
 }
-
-.dateIn {
-    text-align: center;
-}
-
-.dateIn input{
-    width: 15%;
-    padding: 12px 10px;
-    box-sizing: border-box;
-    border-radius: .7em;
-    border: none;
-    margin: 40px;
-    margin-left: 15px;
-    margin-right: 15px;
-    font-size: 15px;
-}
-
-.meals {
-    text-align: center;
-}
-
-.meals button{
-    display: inline-block;
-    background: white;
-    color: black;
-    font-size: 15px;
-}
-
-.meals button:hover{
-    background: #0658d3;
-    color: white;
-}
-
-.meals button:active{
-    color: white;
-    background: #0D6EFD;
-}
-
-.cal {
-    float: left;
-}
-
-.cal label{
-    display:block;
-    margin-left: 220px;
-    margin-top: 90px;
-    width: 50px;
-}
-
-.cal input{
-    padding: 50px 110px;
-    box-sizing:content-box;
-    border-radius: .5em;
-    border: none;
-    margin: 40px;
-    margin-top: 20px;
-    margin-left: 190px;
-    margin-right: 80px;
-    font-size: 40px;
-    padding: 10px 10px;
-    height: 80px;
-    width: 170px;
-    text-align: center;
-}
-
-.carb {
-    float: right;
-    margin-top: 60px;
-    margin-right: 121px;
-}
-
-.carb input{
-    padding: 1px 1px;
-    box-sizing:content-box;
-    border-radius: .5em;
-    border: none;
-    margin: 20px;
-    margin-left: 48px;
-    width: 100px;
-    height: 35px;
-    font-size: 20px;
-    text-align: center;
-}
-
-.pro {
-    float: right;
-    margin-top: 20px;
-    margin-right: 123px;
-}
-
-.pro input{
-    padding: 1px 1px;
-    box-sizing:content-box;
-    border-radius: .5em;
-    border: none;
-    margin: 20px;
-    width: 100px;
-    height: 35px;
-    font-size: 20px;
-    text-align: center;
-}
-
-.fat {
-    float: right;
-    margin-top: 20px;
-    margin-right: 123px;
-}
-
-.fat input{
-    padding: 1px 1px;
-    box-sizing:content-box;
-    border-radius: .5em;
-    border: none;
-    margin: 20px;
-    margin-left: 67px;
-    width: 100px;
-    height: 35px;
-    font-size: 20px;
-    text-align: center;
-}
-
-.sub {
-    position: relative;
-    top: 90px;
-    left: 400px;
-}
-
-  
-
-button{
-    border: none;
-    color: white;
-    text-align: center;
-    background: #0D6EFD;
-    padding: 1em 5em;
-    border-radius: .4em;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 15px;
-    
-}
-button:hover{
-    background: #0658d3;
-}
-
-form div{
-    padding: 0;
-    margin: 4px;
-}
->>>>>>> 45-contentpage
