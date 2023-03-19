@@ -17,7 +17,7 @@
 
 
     <body>
-    <form action="survey/surveyIntake.php" method ="POST">
+    <form>
         
         <div class = "userIcon">
             <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/user.png" alt="">
@@ -37,7 +37,7 @@
 
         
         <div id = "logout">
-            <button id="submitButton" type="submit">Logout</button>
+            <button id="logoutButton" type="button" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'; sessionStorage.removeItem('username')">Logout</button>
         </div>
 
         <div id = "editProfile">
