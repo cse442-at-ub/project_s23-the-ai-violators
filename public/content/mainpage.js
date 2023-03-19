@@ -1,7 +1,7 @@
 
 //set these to adjust goals in grams
 
-getMacroGoals(69, main)
+getMacroGoals(sessionStorage.getItem('username'), main)
 
 function main(res) {
 
@@ -28,23 +28,26 @@ function main(res) {
 
   let totalCur_K = curPro_K + curCarb_K + curFat_K
 
+  let user = document.querySelector('#username')
+  user.innerText = sessionStorage.getItem('username')
+
   let protienProgress = document.querySelector(".protienProgress"),
     protienValue = document.querySelector("#protien");
 
   protienValue.innerHTML = `${currentProtien} / ${protienGoalGrams} grams`
-  protienProgress.style.background = `conic-gradient(rgb(196, 32, 60) ${(currentProtien/protienGoalGrams) * 360}deg, #ededed 0deg)`
+  protienProgress.style.background = `conic-gradient(rgb(196, 32, 60) ${(currentProtien / protienGoalGrams) * 360}deg, #ededed 0deg)`
 
   let carbProgress = document.querySelector(".carbsProgress"),
     carbValue = document.querySelector("#carbs");
 
-    carbValue.innerHTML = `${currentCarb} / ${carbGoalGrams} grams`
-    carbProgress.style.background = `conic-gradient(rgb(33, 157, 205) ${(currentCarb/carbGoalGrams) * 360}deg, #ededed 0deg)`
+  carbValue.innerHTML = `${currentCarb} / ${carbGoalGrams} grams`
+  carbProgress.style.background = `conic-gradient(rgb(33, 157, 205) ${(currentCarb / carbGoalGrams) * 360}deg, #ededed 0deg)`
 
   let fatProgress = document.querySelector(".fatsProgress"),
     fatValue = document.querySelector("#fats");
 
-    fatValue.innerHTML = `${currentFat} / ${fatGoalGrams} grams`
-    fatProgress.style.background = `conic-gradient(rgb(230, 227, 71) ${(currentFat/fatGoalGrams) * 360}deg, #ededed 0deg)`
+  fatValue.innerHTML = `${currentFat} / ${fatGoalGrams} grams`
+  fatProgress.style.background = `conic-gradient(rgb(230, 227, 71) ${(currentFat / fatGoalGrams) * 360}deg, #ededed 0deg)`
 
   let cals = document.querySelector('#cals')
 
@@ -53,19 +56,18 @@ function main(res) {
 
 }
 
-function getMacroGoals(user_id, cfunc) {
-    let xhr = new XMLHttpRequest();
+function getMacroGoals(user_name, cfunc) {
+  let xhr = new XMLHttpRequest();
 
-  xhr.onreadystatechange = function(){
-    if(this.readyState === 4 && this.status === 200)
-      {
-        let res = JSON.parse(this.responseText)
-        console.log(res)
+  xhr.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      let res = JSON.parse(this.responseText)
+      console.log(res)
 
-        cfunc(res)
+      cfunc(res)
 
-      }
     }
-    xhr.open('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/getMacroGoals.php?user_id=' + user_id, true);
+  }
+  xhr.open('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/getMacroGoals.php?user_name=' + user_name, true);
   xhr.send();
 }
