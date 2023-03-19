@@ -37,7 +37,7 @@ let hed = document.getElementById("header")
 let user = sessionStorage.getItem("username")
 //let username = '<h2 id ="username">{{username}}</h2>'
 
-hed.innerHTML = `<img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="It's a carrot"/><p>nutr.io</p><h2 id ="username">` + user + `</h2>`
+hed.innerHTML = `<img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="It's a carrot"/><p>nutr.io</p><button id="breakfast" type="button" onclick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content'">Back To Content</button><h2 id ="username">` + user + `</h2>` + `<button id="meals" type="button" onclick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'">Logout</button>`
 
 
 
@@ -51,7 +51,7 @@ form.addEventListener("submit", async (e) => {
     }
     else if (res.includes("1")) { // logged in without survey
         error.style.display = "block"
-        error.innerHTML = qe
+        error.innerHTML = `${errorCircle} Successfully Added`
     }
 })
 

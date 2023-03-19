@@ -20,6 +20,8 @@
   <div class = "header" id="header">
     <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="It's a carrot"/>
     <p>nutr.io</p>
+    <button id="meals" type="button" onclick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content'">Back To Content</button>
+    <button id="meals" type="button" onclick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'">Logout</button>
   </div>
   <h1>Add a meal / snack</h1>
   <div id="trackForm">
@@ -28,12 +30,12 @@
         <label for="date">Date</label>
         <input type="date" id="date" name="date" required>
       </div>
-      <div class = "meals">
+      <!--div class = "meals">
         <button id="breakfast" type="button">Breakfast</button>
         <button id="lunch" type="button">Lunch</button>
         <button id="dinner" type="button">Dinner</button>
         <button id="snack" type="button">Snack</button>
-      </div>
+      </div-->
       <div class = "cal">
         <label for="calories">Calories</label>
         <input type="number" name="calories" id="calories" required>
@@ -51,7 +53,7 @@
         <input type="number" name="fats" id="fats" placeholder="g" required>
       </div>
       <div class = "sub">
-        <button id="submitButton" type="submit">Add</button>
+        <button id="add" type="submit">Add</button>
       </div>
     </form>
 

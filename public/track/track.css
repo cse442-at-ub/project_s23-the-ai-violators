@@ -15,7 +15,7 @@ h1{
     text-align: center;
     font-weight: 700;
     font-size: 2.5rem;
-    margin-top: 25px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -39,7 +39,7 @@ h2{
     text-align: right;
     display: inline-block;
     margin-right: 10px;
-    margin-left: 1100px;
+    margin-left: 720px;
 }
 
 
@@ -77,20 +77,18 @@ label{
     font-size: 15px;
 }
 
-.meals {
-    text-align: center;
-}
 
-.meals button{
-    display: none;
+.meals {
+    display: flex;
     background: white;
     color: black;
     font-size: 15px;
+    margin-top: 0px;
 }
 
 .meals button:hover{
-    background: #0658d3;
-    color: white;
+    background: #939496;
+    color: black;
 }
 
 .meals button:active{
@@ -199,8 +197,8 @@ button{
     border-radius: .4em;
     cursor: pointer;
     /*margin-top: 0.5rem;*/
-    margin-top: 70px;
-    margin-bottom: 1rem;
+    margin-top: 2px;
+    margin-bottom: 1px;
     font-size: 15px;
     
 }
