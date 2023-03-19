@@ -8,6 +8,8 @@ let form = document.getElementsByTagName("form")[0]
 let errorCircle = '<i class="fa fa-times-circle"></i>'
 let error = document.querySelector(".error-msg")
 
+
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
     let res = await makeRequest('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/handleIntake.php/?username=' + username.value + '&password=' + password.value)
