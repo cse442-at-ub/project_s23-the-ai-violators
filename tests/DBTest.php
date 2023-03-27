@@ -82,9 +82,10 @@ final class DBTest extends TestCase
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
         storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
-        $userId = getIDFromUsername("testUser");
-        $result = mysqli_query($mysqli, "SELECT * FROM user_info WHERE user_id=$userId");
-        $row = mysqli_fetch_row($result);
+
+        $row = getUserInfo("testUser");
+
+
         // targetCal[6], targetProtien[7], targetCarbs[8], targetFat[9]
         $this->assertEquals($row[6], 3719.84);
         $this->assertEquals($row[7], 210);

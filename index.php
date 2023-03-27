@@ -1,6 +1,8 @@
 <?php
 $request =  $_SERVER['REQUEST_URI'];
 
+
+
 // echo $request;
 
 switch ($request) {
@@ -19,7 +21,10 @@ switch ($request) {
 
     case '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/db':
         require __DIR__ . '/config/database.php';
-        testDB();
+        $info =  getUserInfo("chad");
+        for ($i =0; $i<count($info); $i++) {
+            echo $info[$i] . " ";
+        }
         break;
 
     // case '/historym':

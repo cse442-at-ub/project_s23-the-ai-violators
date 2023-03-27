@@ -45,6 +45,13 @@ function trackCaloriesAndMacros(string $user_name, string $date, float $calroies
   }
 }
 
+
+/**
+
+    Retrieves the daily calorie goal for the given user.
+    @param string $user_name The username of the user whose calorie goal should be retrieved.
+    @return float The user's daily calorie goal.
+*/
 function getCalorieGoals(string $user_name) {
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
@@ -53,6 +60,13 @@ function getCalorieGoals(string $user_name) {
   return $row[0];
 }
 
+
+/**
+
+    Retrieves the daily macro nutrient goals for the given user.
+    @param string $user_name The username of the user whose macro nutrient goals should be retrieved.
+    @return array An array representing the user's daily macro nutrient goals, including targetPROTIEN, targetCARBS, and targetFAT.
+*/
 function getMacroGoals(string $user_name) {
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
@@ -61,7 +75,13 @@ function getMacroGoals(string $user_name) {
   return $row;
 }
 
-// date should be a string in the format of "YYYY-MM-DD"
+/**
+
+    Retrieves the daily calorie intake for the given user on the given date.
+    @param string $user_name The username of the user whose calorie intake should be retrieved.
+    @param string $date The date for which the calorie intake should be retrieved.
+    @return float The user's daily calorie intake on the given date.
+*/
 function getDailyCalories(string $user_name, string $date) {
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
@@ -71,7 +91,35 @@ function getDailyCalories(string $user_name, string $date) {
 }
 
 
+/**
 
+    Retrieves user information from the database based on the given username.
+    @param string $user_name The username of the user whose information should be retrieved.
+    @return array An array representing the user's information, including user_id, height, weight, age, sex,
+                  activityLevel, targetCAL, targetPROTIEN, targetCARBS, targetFAT, goal, and focus in that order.
+*/
+function getUserInfo(string $user_name) {
+  $user_id = getIDFromUsername($user_name);
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT * FROM user_info WHERE user_id='$user_id'");
+  $row = mysqli_fetch_row($result);
+  return $row;
+}
+
+
+/**
+
+    Stores the survey information for the given user in the database.
+    @param string $user_name The username of the user whose survey information should be stored.
+    @param int $height The user's height in centimeters.
+    @param int $weight The user's weight in kilograms.
+    @param string $sex "MALE" or "FEMALE", The user's biological sex.
+    @param int $age The user's age.
+    @param float $activityLvl Range from 1.2 to 1.9, The user's activity level.
+    @param string $goal "BULK" OR "CUT" OR "MAINT", The user's primary fitness goal.
+    @param string $focus The user's primary area of focus.
+    @return void
+*/
 function storeSurveyInformation(string $user_name, int $height, int $weight, string $sex, int $age, float $activityLvl, string $goal, string $focus) {
   $mysqli = getConnection();
   $userID = getIDFromUsername($user_name);
