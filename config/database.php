@@ -140,7 +140,7 @@ function getUserInfo(string $user_name)
 
 
 /**
- * Updates the user's information in the database. Only the parameters you pass in will be updated.  EXAMPLE: updateUserInfo("chad", age: 20, weight: 180) - This will only update the user's age and weight.
+ * Updates the user's information in the database. Only the parameters you pass in will be updated ---  EXAMPLE: updateUserInfo("chad", age: 20, weight: 180) - This will only update the user's age and weight.
  * @param string $user_name The username of the user whose information should be updated.
  * @param int $height The user's height in inches.
  * @param int $weight The user's weight in pounds.
