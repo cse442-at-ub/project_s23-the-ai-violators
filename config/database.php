@@ -153,6 +153,36 @@ function getUserInfo(string $user_name)
  */
 function updateUserInfo(string $user_name, int $height = NULL, int $weight = NULL, string $sex = NULL, int $age = NULL, float $activityLvl = NULL, string $goal = NULL, string $focus = NULL)
 {
+  $mysqli = getConnection();
+  $user_id = getIDFromUsername($user_name);
+  $query = "UPDATE user_info SET ";
+  if ($height != NULL) {
+    $query .= "height='$height', ";
+  }
+  if ($weight != NULL) {
+    $query .= "weight='$weight', ";
+  }
+  if ($sex != NULL) {
+    $query .= "sex='$sex', ";
+  }
+  if ($age != NULL) {
+    $query .= "age='$age', ";
+  }
+  if ($activityLvl != NULL) {
+    $query .= "activityLevel='$activityLvl', ";
+  }
+  if ($goal != NULL) {
+    $query .= "goal='$goal', ";
+  }
+  if ($focus != NULL) {
+    $query .= "focus='$focus', ";
+  }
+
+  $query = substr($query, 0, -2);
+  $query .= " WHERE user_id='$user_id'";
+
+  $result = mysqli_query($mysqli, $query);                                                                                                                                                                                                                                                                                                                                         
+
 
 }
 
