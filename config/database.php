@@ -147,8 +147,8 @@ function getUserInfo(string $user_name)
  * @param string $sex "MALE" or "FEMALE", The user's biological sex.
  * @param int $age The user's age.
  * @param float $activityLvl Range from 1.2 to 1.9, The user's activity level.
- * @param string $goal "BULK" OR "CUT" OR "MAINT", The user's primary fitness goal.
- * @param string $focus "PROTIEN" OR "CARBS" OR "FATS", The user's primary area of focus.
+ * @param string $goal "BULK" OR "CUT" OR "MAINTAIN", The user's primary fitness goal.
+ * @param string $focus "PROTIEN" OR "CARB" OR "FAT", The user's primary area of focus.
  * @return void
  */
 function updateUserInfo(string $user_name, int $height = NULL, int $weight = NULL, string $sex = NULL, int $age = NULL, float $activityLvl = NULL, string $goal = NULL, string $focus = NULL)
