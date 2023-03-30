@@ -98,6 +98,10 @@ final class DBTest extends TestCase
         $this->assertEquals($targetMacros[1], 597.461);
         $this->assertEquals($targetMacros[2], 70);
 
+        updateUserInfo("testUser", weight: 190);
+
+        $this->assertEquals(getUserInfo('testUser')[2], 190);
+
 
     }
 
