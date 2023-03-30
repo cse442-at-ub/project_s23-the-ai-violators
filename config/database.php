@@ -5,7 +5,8 @@
  * @return mysqli A connection to the database.
  */
 
-function getConnection() {
+function getConnection()
+{
   $db_hostname = getenv('IN_DOCKER');
 
   if ($db_hostname == 'yes') {
@@ -15,7 +16,6 @@ function getConnection() {
   }
 
   return mysqli_connect($db_hostname, "sjrichel", "50338787", "cse442_2023_spring_team_g_db", 3306);
-
 }
 
 
@@ -24,7 +24,8 @@ function getConnection() {
  * @param string $user_name The username of the user.
  * @return int The user ID of the user.
  */
-function getIDFromUsername(string $user_name): int {
+function getIDFromUsername(string $user_name): int
+{
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT user_id FROM users WHERE user_name='$user_name'");
   $row = mysqli_fetch_row($result);
@@ -36,7 +37,8 @@ function getIDFromUsername(string $user_name): int {
  * @param string $user_name The username of the user.
  * @return bool True if the user has taken the survey, false otherwise.
  */
-function checkInitalLogin(string $user_name) {
+function checkInitalLogin(string $user_name)
+{
   $mysqli = getConnection();
   $userID = getIDFromUsername($user_name);
   $result = mysqli_query($mysqli, "SELECT * FROM user_info WHERE user_id='$userID'");
@@ -59,7 +61,8 @@ function checkInitalLogin(string $user_name) {
  * @param float $fat The number of grams of fat in the meal.
  * @return bool True if the meal was added successfully, false otherwise.
  */
-function trackCaloriesAndMacros(string $user_name, string $date, float $calroies, float $protein, float $carbs, float $fat) {
+function trackCaloriesAndMacros(string $user_name, string $date, float $calroies, float $protein, float $carbs, float $fat)
+{
   // echo "HELLO! This probaly worked, but useres arent set up yet, so expect error";
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
@@ -74,11 +77,12 @@ function trackCaloriesAndMacros(string $user_name, string $date, float $calroies
 
 
 /**
-  *  Retrieves the daily calorie goal for the given user.
-  *  @param string $user_name The username of the user whose calorie goal should be retrieved.
-  *  @return float The user's daily calorie goal.
-*/
-function getCalorieGoals(string $user_name) {
+ *  Retrieves the daily calorie goal for the given user.
+ *  @param string $user_name The username of the user whose calorie goal should be retrieved.
+ *  @return float The user's daily calorie goal.
+ */
+function getCalorieGoals(string $user_name)
+{
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT targetCAL FROM user_info WHERE user_id='$user_id'");
@@ -88,11 +92,12 @@ function getCalorieGoals(string $user_name) {
 
 
 /**
-  *  Retrieves the daily macro nutrient goals for the given user.
-  *  @param string $user_name The username of the user whose macro nutrient goals should be retrieved.
-  *  @return array An array representing the user's daily macro nutrient goals, including targetPROTIEN, targetCARBS, and targetFAT.
-*/
-function getMacroGoals(string $user_name) {
+ *  Retrieves the daily macro nutrient goals for the given user.
+ *  @param string $user_name The username of the user whose macro nutrient goals should be retrieved.
+ *  @return array An array representing the user's daily macro nutrient goals, including targetPROTIEN, targetCARBS, and targetFAT.
+ */
+function getMacroGoals(string $user_name)
+{
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT targetPROTIEN, targetCARBS, targetFAT FROM user_info WHERE user_id='$user_id'");
@@ -101,12 +106,13 @@ function getMacroGoals(string $user_name) {
 }
 
 /**
-  *  Retrieves the daily calorie intake for the given user on the given date.
-  *  @param string $user_name The username of the user whose calorie intake should be retrieved.
-  *  @param string $date The date for which the calorie intake should be retrieved.
-  *  @return float The user's daily calorie intake on the given date.
-  */
-function getDailyCalories(string $user_name, string $date) {
+ *  Retrieves the daily calorie intake for the given user on the given date.
+ *  @param string $user_name The username of the user whose calorie intake should be retrieved.
+ *  @param string $date The date for which the calorie intake should be retrieved.
+ *  @return float The user's daily calorie intake on the given date.
+ */
+function getDailyCalories(string $user_name, string $date)
+{
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT calories FROM daily_intake WHERE user_id='$user_id' AND date='$date'");
@@ -116,37 +122,85 @@ function getDailyCalories(string $user_name, string $date) {
 
 
 /**
-  *  Retrieves user information from the database based on the given username.
-  *  @param string $user_name The username of the user whose information should be retrieved.
-  *  @return array An array representing the user's information, including user_id, height, weight, age, sex,
-  *                activityLevel, targetCAL, targetPROTIEN, targetCARBS, targetFAT, goal, and focus in that order.
-*/
-function getUserInfo(string $user_name) {
+ *  Retrieves user information from the database based on the given username.
+ *  @param string $user_name The username of the user whose information should be retrieved.
+ *  @return array An array representing the user's information, including user_id, height, weight, age, sex,
+ *                activityLevel, targetCAL, targetPROTIEN, targetCARBS, targetFAT, goal, and focus in that order.
+ */
+function getUserInfo(string $user_name)
+{
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT * FROM user_info WHERE user_id='$user_id'");
   $row = mysqli_fetch_row($result);
+
   return $row;
 }
 
-function updateUserInfo() {
+
+
+/**
+ * Updates the user's information in the database. Only the parameters you pass in will be updated ---  EXAMPLE: updateUserInfo("chad", age: 20, weight: 180) - This will only update the user's age and weight.
+ * @param string $user_name The username of the user whose information should be updated.
+ * @param int $height The user's height in inches.
+ * @param int $weight The user's weight in pounds.
+ * @param string $sex "MALE" or "FEMALE", The user's biological sex.
+ * @param int $age The user's age.
+ * @param float $activityLvl Range from 1.2 to 1.9, The user's activity level.
+ * @param string $goal "BULK" OR "CUT" OR "MAINTAIN", The user's primary fitness goal.
+ * @param string $focus "PROTIEN" OR "CARB" OR "FAT", The user's primary area of focus.
+ * @return void
+ */
+function updateUserInfo(string $user_name, int $height = NULL, int $weight = NULL, string $sex = NULL, int $age = NULL, float $activityLvl = NULL, string $goal = NULL, string $focus = NULL)
+{
+  $mysqli = getConnection();
+  $user_id = getIDFromUsername($user_name);
+  $query = "UPDATE user_info SET ";
+  if ($height != NULL) {
+    $query .= "height='$height', ";
+  }
+  if ($weight != NULL) {
+    $query .= "weight='$weight', ";
+  }
+  if ($sex != NULL) {
+    $query .= "sex='$sex', ";
+  }
+  if ($age != NULL) {
+    $query .= "age='$age', ";
+  }
+  if ($activityLvl != NULL) {
+    $query .= "activityLevel='$activityLvl', ";
+  }
+  if ($goal != NULL) {
+    $query .= "goal='$goal', ";
+  }
+  if ($focus != NULL) {
+    $query .= "focus='$focus', ";
+  }
+
+  $query = substr($query, 0, -2);
+  $query .= " WHERE user_id='$user_id'";
+
+  $result = mysqli_query($mysqli, $query);                                                                                                                                                                                                                                                                                                                                         
+
 
 }
 
 
 /**
-  *  Stores the survey information for the given user in the database.
-  *  @param string $user_name The username of the user whose survey information should be stored.
-  *  @param int $height The user's height in centimeters.
-  *  @param int $weight The user's weight in kilograms.
-  *  @param string $sex "MALE" or "FEMALE", The user's biological sex.
-  *  @param int $age The user's age.
-  *  @param float $activityLvl Range from 1.2 to 1.9, The user's activity level.
-  *  @param string $goal "BULK" OR "CUT" OR "MAINT", The user's primary fitness goal.
-  *  @param string $focus The user's primary area of focus.
-  *  @return void
-*/
-function storeSurveyInformation(string $user_name, int $height, int $weight, string $sex, int $age, float $activityLvl, string $goal, string $focus) {
+ *  Stores the survey information for the given user in the database.
+ *  @param string $user_name The username of the user whose survey information should be stored.
+ *  @param int $height The user's height in inches.
+ *  @param int $weight The user's weight in pounds.
+ *  @param string $sex "MALE" or "FEMALE", The user's biological sex.
+ *  @param int $age The user's age.
+ *  @param float $activityLvl Range from 1.2 to 1.9, The user's activity level.
+ *  @param string $goal "BULK" OR "CUT" OR "MAINT", The user's primary fitness goal.
+ *  @param string $focus "PROTIEN" OR "CARBS" OR "FATS", The user's primary area of focus.
+ *  @return void
+ */
+function storeSurveyInformation(string $user_name, int $height, int $weight, string $sex, int $age, float $activityLvl, string $goal, string $focus)
+{
   $mysqli = getConnection();
   $userID = getIDFromUsername($user_name);
   $bmr = 0;
@@ -173,14 +227,13 @@ function storeSurveyInformation(string $user_name, int $height, int $weight, str
   if ($focus == "PROTIEN") {
     $targetPROTIEN = $weight * 1.2;
   } else if ($focus == "CARB") {
-    $targetCARBS *= 1.2 ;
+    $targetCARBS *= 1.2;
   } else if ($focus == "FAT") {
     $targetFAT *= 1.1;
   }
 
   // SQL INJECTION?
   $result = mysqli_query($mysqli, "INSERT INTO user_info (user_id, height, weight, age, sex, activityLevel, targetCAL, targetPROTIEN, targetCARBS, targetFAT, goal, focus) VALUES ('$userID', '$height', '$weight', '$age', '$sex', '$activityLvl', '$targetCAL', '$targetPROTIEN', '$targetCARBS', '$targetFAT', '$goal', '$focus')");
-  
 }
 
 /**
