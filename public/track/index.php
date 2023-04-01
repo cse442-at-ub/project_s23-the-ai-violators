@@ -1,4 +1,13 @@
+<?php
+session_start();
 
+// Redirect to login page if user is not logged in
+if (!isset($_SESSION['user_name'])) {
+    header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+    exit();
+}
+
+?> 
 
 <!DOCTYPE html>
 <html lang="en">

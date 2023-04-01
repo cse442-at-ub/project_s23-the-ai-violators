@@ -12,7 +12,7 @@ let error = document.querySelector(".error-msg")
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
-    let res = await makeRequest('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/handleIntake.php/?username=' + username.value + '&password=' + password.value)
+    let res = await makeRequest('POST', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/handleIntake.php/',  [username.value,  password.value])
 
     if (res.includes("2")) { // failed to login
         error.style.display = "block"
@@ -30,8 +30,11 @@ form.addEventListener("submit", async (e) => {
 
 })
 
-function makeRequest(method, url) {
+function makeRequest(method, url, data) {
     return new Promise(function (resolve, reject) {
+        formData = new FormData();
+        formData.append("username", data[0])
+        formData.append("password", data[1])
         let xhr = new XMLHttpRequest();
         xhr.open(method, url);
         xhr.onload = function () {
@@ -50,7 +53,7 @@ function makeRequest(method, url) {
                 statusText: xhr.statusText
             });
         };
-        xhr.send();
+        xhr.send(formData);
     });
 }
 

@@ -19,13 +19,13 @@ switch ($request) {
     //     require __DIR__ . '/public/signupPage/signup.php';
     //     break; 
 
-    case '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/db':
-        require __DIR__ . '/config/database.php';
-        $info =  getUserInfo("chad");
-        for ($i =0; $i<count($info); $i++) {
-            echo $info[$i] . " ";
-        }
-        break;
+    // case '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/db':
+    //     require __DIR__ . '/config/database.php';
+    //     $info =  getUserInfo("chad");
+    //     for ($i =0; $i<count($info); $i++) {
+    //         echo $info[$i] . " ";
+    //     }
+    //     break;
 
     // case '/historym':
     //     require __DIR__ . '/phistorym.php';
@@ -47,9 +47,9 @@ switch ($request) {
     //     require __DIR__ . '/mealtrack.php';
     //     break;
     
-    default:
-        http_response_code(404);
-        require __DIR__ . '/public/404.php';
-        break;
+    // default:
+    //     http_response_code(404);
+    //     require __DIR__ . '/public/404.php';
+    //     break;
 }
 
