@@ -63,7 +63,7 @@ if (!isset($_SESSION['user_name'])) {
                 <ul>
                     <li class="macroListItem">
                         <div class="macroHolder">
-                            <span class="macsName">Protein:</span> <span class="macs" id="protien">%protien%</span>
+                            <span class="macsName">Protein:</span> <span class="macs" id="protien"><?php </span>
                         </div>
                     </li>
                     <li class="macroListItem">
