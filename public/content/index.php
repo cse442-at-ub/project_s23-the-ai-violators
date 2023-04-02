@@ -65,7 +65,7 @@ require __DIR__ . "../../../config/database.php";
                 <ul>
                     <li class="macroListItem">
                         <div class="macroHolder">
-                            <span class="macsName">Protein:</span> <span class="macs" id="protien"><?php </span>
+                            <span class="macsName">Protein:</span> <span class="macs" id="protien"></span>
                         </div>
                     </li>
                     <li class="macroListItem">
@@ -99,13 +99,6 @@ require __DIR__ . "../../../config/database.php";
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr>
-                            <td>Cum</td>
-                            <td><?php echo getDailyCalories($_SESSION['user_name'], date("y-m-d"))[0] ?> </td>
-                            <td><?php echo getDailyCalories($_SESSION['user_name'], date("y-m-d"))[1] ?> </td>
-                            <td><?php echo getDailyCalories($_SESSION['user_name'], date("y-m-d"))[2] ?> </td>
-                            <td><?php echo getDailyCalories($_SESSION['user_name'], date("y-m-d"))[3] ?> </td>
-                        </tr> -->
 
 
                         <?php
