@@ -7,7 +7,9 @@ if (!isset($_SESSION['user_name'])) {
     exit();
 }
 
-?> 
+require __DIR__ . "../../../config/database.php";
+
+?>
 
 
 <!DOCTYPE html>
@@ -98,35 +100,37 @@ if (!isset($_SESSION['user_name'])) {
                     </thead>
                     <tbody>
                         <!-- <tr>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                        </tr>
-                        <tr>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                        </tr>
-                        <tr>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                            <td>Cell</td>
-                            <td>Cell</td>
+                            <td>Cum</td>
+                            <td><?php echo getDailyCalories($_SESSION['user_name'], date("y-m-d"))[0] ?> </td>
+                            <td><?php echo getDailyCalories($_SESSION['user_name'], date("y-m-d"))[1] ?> </td>
+                            <td><?php echo getDailyCalories($_SESSION['user_name'], date("y-m-d"))[2] ?> </td>
+                            <td><?php echo getDailyCalories($_SESSION['user_name'], date("y-m-d"))[3] ?> </td>
                         </tr> -->
+
+
+                        <?php
+                        $output = "";
+                        $meals = getDailyCalories($_SESSION['user_name'], date("y-m-d"));
+                        for ($i=0; $i<count($meals); $i++) {
+                            $meal = $meals[$i];
+                            $output .= "<tr><td> piss </td>";
+                            $output .= "<td>" . $meal[0] .  "</td>";
+                            $output .= "<td>" . $meal[1] .  "</td>";
+                            $output .= "<td>" . $meal[2] .  "</td>";
+                            $output .= "<td>" . $meal[3] .  "</td></tr>";
+                        }
+
+                        echo $output;
+                        ?>
+
                     </tbody>
-                    <div>
-
-                    </div>
-                </table>
-
 
             </div>
+            </table>
+
+
         </div>
+    </div>
     </div>
 
 

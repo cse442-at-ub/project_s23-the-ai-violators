@@ -109,15 +109,18 @@ function getMacroGoals(string $user_name)
  *  Retrieves the daily calorie intake for the given user on the given date.
  *  @param string $user_name The username of the user whose calorie intake should be retrieved.
  *  @param string $date The date for which the calorie intake should be retrieved.
- *  @return float The user's daily calorie intake on the given date.
+ *  @return array A 2D Matrix with rows in the form [calories, protien, carbs, fat]. Each row is a seperate meal.
  */
 function getDailyCalories(string $user_name, string $date)
 {
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
-  $result = mysqli_query($mysqli, "SELECT calories FROM daily_intake WHERE user_id='$user_id' AND date='$date'");
-  $row = mysqli_fetch_row($result);
-  return $row[0];
+  $result = mysqli_query($mysqli, "SELECT calories, protein, carbs, fat FROM daily_intake WHERE user_id='$user_id' AND date='$date'");
+  $rows = array();
+  while ($row = mysqli_fetch_row($result)) {
+    $rows[] = $row;
+  }
+  return $rows;
 }
 
 
@@ -181,9 +184,7 @@ function updateUserInfo(string $user_name, int $height = NULL, int $weight = NUL
   $query = substr($query, 0, -2);
   $query .= " WHERE user_id='$user_id'";
 
-  $result = mysqli_query($mysqli, $query);                                                                                                                                                                                                                                                                                                                                         
-
-
+  $result = mysqli_query($mysqli, $query);
 }
 
 

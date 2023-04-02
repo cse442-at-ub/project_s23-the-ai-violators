@@ -140,8 +140,8 @@ final class DBTest extends TestCase
         $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", $date, 2000, 100, 100, 100);
         $this->assertTrue($didTrackCaloriesAndMacros);
 
-        $cals = getDailyCalories("testUser", $date);
-        $this->assertEquals($cals, 2000);
+        $cals = getDailyCalories("testUser", $date)[0];
+        $this->assertEquals($cals[0], 2000);
 
 
     }
