@@ -35,7 +35,7 @@ if (!isset($_SESSION['user_name'])) {
         
 
 
-        <h1>Editing</h1>
+        <h1>Your Profile</h1>
         <h2>Here's a look at you...</h2>
        
         <div id ="profileForm">
@@ -51,7 +51,9 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "editProfile">
-            <button id="submitButton" type="submit">Finish</button>
+            <button id="submitButton" type="submit" onclick="window.location.href= '/public/content/profile'">
+            Save
+            </button>
         </div>
 
 
@@ -76,29 +78,90 @@ if (!isset($_SESSION['user_name'])) {
         <div id = "sex">
             <p>Sex:</p>
         </div>
+
+        <div id = "sexEdit">
+            <select name = "sexEdit">
+              <option value="" disabled selected>Select your sex...</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other/Prefer Not To Say</option>
+            </select>
+        </div>
         
         <div id = "height">
             <p>Height:</p>
+        </div>
+
+        <div id = "heightEdit">
+            <input type="number" name="height" placeholder="Enter Your Height(In)" min = "1" max="999" oninput="check()" required>
         </div>
 
         <div id = "weight">
             <p>Weight:</p>
         </div>
 
+        <div id = "weightEdit">
+            <input type="number" name="weight" placeholder="Enter Your Weight(lbs)" min = "1" max="999" oninput="check()" required>
+        </div>
+
         <div id = "curgoal">
             <p>Current Goal:</p>
+        </div>
+
+        <div id = "curgoalEdit">
+            <select name="goal" id="goal">
+              <option value="" disabled selected>Select your goal...</option>
+              <option value="cut">Lose Weight/Cut</option>
+              <option value="bulk">Gain Weight/Bulk</option>
+              <option value="maintain">Maintain</option>
+            </select>  
         </div>
 
         <div id = "macro">
             <p>Focus Macro:</p>
         </div>
-       
+
+        <div id = "macroEdit">
+            <select name="goal" id="goal">
+              <option value="" disabled selected>Select your macro...</option>
+              <option value="proteins">Proteins</option>
+              <option value="bulk">Carbohydrates</option>
+              <option value="maintain">Fats</option>
+            </select>  
+        </div>
+
         <div id = "calgoal">
             <p>Current Calorie Goal:</p>
         </div>
 
+        <div id = "calgoalEdit">
+            <input type="number" name="calorie" id="calorie" placeholder="Enter Your Goal" min = "1" max="9999999" oninput="check()" required>
+        </div>
+
+        
         <div id = "restrict">
             <p>Restrictions:</p>
+        </div>
+
+        <div id = "restrictEdit">
+        <input type="checkbox" id="lactose" name="lactose" checked>
+          <label for="lactose">Lactose Intolerance</label>
+          <input type="checkbox" id="" name="gluten" checked>
+          <label for="gluten">Gluten Intolerance</label>
+          <input type="checkbox" id="vegetarian" name="vegetarian" checked>
+          <label for="vegetarian">Vegetarian</label>
+          <input type="checkbox" id="vegan" name="vegan" checked>
+          <label for="vegan">Vegan</label>
+          <input type="checkbox" id="kosher" name="kosher" checked>
+          <label for="kosher">Kosher</label>
+          <input type="checkbox" id="dairy" name="dairy" checked>
+          <label for="dairy">Dairy Free</label>
+          <input type="checkbox" id="peanuts" name="peanuts" checked>
+          <label for="peanuts">Peanut Allergy</label>
+          <input type="checkbox" id="fish" name="fish" checked>
+          <label for="fish">Fish/Shellfish Allergy</label>
+          <input type="checkbox" id="wheat" name="wheat" checked>
+          <label for="wheat">Wheat Allergy</label>
         </div>
 
 
