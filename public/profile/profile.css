@@ -71,12 +71,57 @@ text-align: center;
 color: #000000;
 
 }
+#sexDisplay{
+    position: absolute;
+    width: 64px;
+    height: 39px;
+    left: 905px;
+    top: 201px;
+    
+    
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    text-align: center;
+    
+    
+    
+    color: #000000;
+    
+    }
+
 #height{
     position: absolute;
     width: 64px;
     height: 39px;
     left: 830px;
     top: 260px;
+    
+    
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    text-align: center;
+    
+    
+    
+    color: #000000;
+    
+}
+#heightDisplay{
+    position: absolute;
+    width: 64px;
+    height: 39px;
+    left: 945px;
+    top: 261px;
     
     
     
@@ -115,12 +160,56 @@ color: #000000;
     color: #000000;
      
 }
+#weightDisplay{
+    position: absolute;
+    width: 64px;
+    height: 39px;
+    left: 953px;
+    top: 321px;
+    
+    
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    text-align: center;
+    
+    
+    
+    color: #000000;
+    
+}
 #curgoal{
     position: absolute;
     width: 300px;
     height: 39px;
     left: 792px;
     top: 380px;
+    
+    
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    text-align: center;
+    
+    
+    
+    color: #000000;
+    
+}
+#goalDisplay{
+    position: absolute;
+    width: 300px;
+    height: 39px;
+    left: 945px;
+    top: 381px;
     
     
     
@@ -159,11 +248,55 @@ color: #000000;
     color: #000000;
     
 }
+#macroDisplay{
+    position: absolute;
+    width: 300px;
+    height: 39px;
+    left: 990px;
+    top: 442px;
+    
+    
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    text-align: center;
+    
+    
+    
+    color: #000000;
+    
+}
 #calgoal{
     position: absolute;
     width: 600px;
     height: 39px;
     left: 706px;
+    top: 500px;
+    
+    
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    text-align: center;
+    
+    
+    
+    color: #000000;
+    
+}
+#calDisplay{
+    position: absolute;
+    width: 200px;
+    height: 39px;
+    left: 1155px;
     top: 500px;
     
     

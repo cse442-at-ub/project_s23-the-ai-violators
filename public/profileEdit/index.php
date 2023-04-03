@@ -15,8 +15,8 @@ if (!isset($_SESSION['user_name'])) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/profile-edit.css">
-  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/profile-edit.css">
+  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/profileEdit.css">
+  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/profileEdit.css">
 
   
 
@@ -27,7 +27,7 @@ if (!isset($_SESSION['user_name'])) {
 
 
     <body>
-    <form>
+    <form method="POST" action = "editIntake.php">
         
         <div class = "userIcon">
             <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/user.png" alt="">
@@ -42,7 +42,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id ="userName">
-            <p>chad69</p>
+            <p> <?php echo $_SESSION['user_name'] ?> </p>
         </div>
 
         
@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "editProfile">
-            <button id="submitButton" type="submit" onclick="window.location.href= '/public/content/profile'">
+            <button id="submitButton" type="submit">
             Save
             </button>
         </div>
@@ -64,14 +64,17 @@ if (!isset($_SESSION['user_name'])) {
     
         
         <div class="navbar">
+        <a id="NUTRIO" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content">
             <div>
                 <img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
                 <p id="logoName">nutr.io</p>
             </div>
-            <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-    
-            <div id="user">chad69</div>
-        </div>
+        </a>
+        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile
+            Page</a>
+        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
+        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
+        <div>
 
 
         
@@ -80,7 +83,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "sexEdit">
-            <select name = "sexEdit">
+            <select name = "sex">
               <option value="" disabled selected>Select your sex...</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -93,7 +96,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "heightEdit">
-            <input type="number" name="height" placeholder="Enter Your Height(In)" min = "1" max="999" oninput="check()" required>
+            <input type="number" name="height" placeholder="Enter Your Height(In)" min = "1" max="999" oninput="check()" >
         </div>
 
         <div id = "weight">
@@ -101,7 +104,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "weightEdit">
-            <input type="number" name="weight" placeholder="Enter Your Weight(lbs)" min = "1" max="999" oninput="check()" required>
+            <input type="number" name="weight" placeholder="Enter Your Weight(lbs)" min = "1" max="999" oninput="check()" >
         </div>
 
         <div id = "curgoal">
@@ -122,11 +125,11 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "macroEdit">
-            <select name="goal" id="goal">
+            <select name="macros" id="goal">
               <option value="" disabled selected>Select your macro...</option>
-              <option value="proteins">Proteins</option>
-              <option value="bulk">Carbohydrates</option>
-              <option value="maintain">Fats</option>
+              <option value="protien">Proteins</option>
+              <option value="carb">Carbohydrates</option>
+              <option value="fat">Fats</option>
             </select>  
         </div>
 
@@ -135,7 +138,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "calgoalEdit">
-            <input type="number" name="calorie" id="calorie" placeholder="Enter Your Goal" min = "1" max="9999999" oninput="check()" required>
+            <input type="number" name="targetCAL" id="calorie" placeholder="Enter Your Goal" min = "1" max="9999999" oninput="check()">
         </div>
 
         
