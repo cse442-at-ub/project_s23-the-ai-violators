@@ -35,7 +35,7 @@ if (!isset($_SESSION['user_name'])) {
         
 
 
-        <h1>Your Profile</h1>
+        <h1>Editing</h1>
         <h2>Here's a look at you...</h2>
        
         <div id ="profileForm">
@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "editProfile">
-            <button id="submitButton" type="submit" onclick="window.location.href= 'www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile-edit/'">Edit Profile</button>
+            <button id="submitButton" type="submit">Edit Profile</button>
         </div>
 
 
