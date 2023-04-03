@@ -33,11 +33,9 @@ let form = document.getElementsByTagName("form")[0]
 
 let errorCircle = '<i class="fa fa-times-circle"></i>'
 let error = document.querySelector(".error-msg")
-let hed = document.getElementById("header")
-let user = sessionStorage.getItem("username")
-//let username = '<h2 id ="username">{{username}}</h2>'
 
-hed.innerHTML = `<img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="It's a carrot"/><p>nutr.io</p><button id="breakfast" type="button" onclick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content'">Back To Content</button><h2 id ="username">` + user + `</h2>` + `<button id="meals" type="button" onclick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'">Logout</button>`
+let user = document.querySelector('#username')
+user.innerText = sessionStorage.getItem('username')
 
 
 
