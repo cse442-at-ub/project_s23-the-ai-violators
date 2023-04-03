@@ -7,6 +7,10 @@ if (!isset($_SESSION['user_name'])) {
     exit();
 }
 
+require __DIR__ . "../../../config/database.php";
+
+$userInfo = getUserInfo($_SESSION['user_name']);
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +46,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id ="userName">
-            <p>chad69</p>
+            <p> <?php echo $_SESSION['user_name'] ?> </p>
         </div>
 
         
@@ -51,7 +55,9 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "editProfile">
-            <button id="submitButton" type="submit">Edit Profile</button>
+        <button id="submitButton" type="button" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/'">
+            Edit Profile
+        </button>
         </div>
 
 
@@ -62,39 +68,76 @@ if (!isset($_SESSION['user_name'])) {
     
         
         <div class="navbar">
+        <a id="NUTRIO" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content">
             <div>
                 <img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
                 <p id="logoName">nutr.io</p>
             </div>
-            <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-    
-            <div id="user">chad69</div>
+        </a>
+        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile
+            Page</a>
+        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
+        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
+        <div>
+
+            <div id="username">
+                <p> <?php echo $_SESSION['user_name'] ?> </p>
+            </div>
+
         </div>
+
+    </div>
 
 
         
         <div id = "sex">
             <p>Sex:</p>
         </div>
+
+        <div id = "sexDisplay">
+            <p> <?php echo $userInfo[4] ?> </p>
+        </div>
+ 
         
         <div id = "height">
             <p>Height:</p>
         </div>
 
+        <div id = "heightDisplay">
+            <p> <?php echo $userInfo[1] ?> </p>
+        </div>
+
         <div id = "weight">
             <p>Weight:</p>
         </div>
+        
+        <div id = "weightDisplay">
+            <p> <?php echo $userInfo[2] ?> </p>
+        </div>
+
 
         <div id = "curgoal">
             <p>Current Goal:</p>
         </div>
 
+        <div id = "goalDisplay">
+            <p> <?php echo $userInfo[10] ?> </p>
+        </div>
+
         <div id = "macro">
             <p>Focus Macro:</p>
+        </div>
+
+        <div id = "macroDisplay">
+            <p> <?php echo $userInfo[11] ?> </p>
         </div>
        
         <div id = "calgoal">
             <p>Current Calorie Goal:</p>
+        </div>
+
+        <div id = "calDisplay">
+            <p> <?php echo $userInfo[6] ?> </p>
         </div>
 
         <div id = "restrict">
@@ -108,5 +151,8 @@ if (!isset($_SESSION['user_name'])) {
 
     </form>
     </body>
+
+  
+
 
 </html>
