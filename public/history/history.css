@@ -1,0 +1,176 @@
+
+html {
+    font-family: 'Montserrat', Courier, monospace;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+}
+
+#logoName {
+    margin: 5px;
+    font-weight: 700;
+    font-size: 25px;
+    text-align: left;
+    display: inline-block;
+}
+
+#carrot {
+    width: 40px;
+    float: left;
+    padding-left: 5px;
+    /*padding-left: 1.2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;*/
+}
+
+#username {
+    float: right;
+    padding-right: 1.4rem;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    /*border: 1px solid rgb(168, 168, 168);*/
+    border-top: none;
+    width: 100%;
+    background-color: #D9D9D9;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+img {
+    height: 40px;
+    width: 40px;
+}
+
+p {
+    margin: 5px;
+    font-weight: 700;
+    font-size: 25px;
+    text-align: left;
+    display: inline-block;
+}
+
+
+#box {
+    margin: auto;
+    border: none;
+    border-radius: 2rem;
+    max-width: 1200px;
+    height: 670px;
+    background: #D9D9D9;
+}
+
+#current {
+    position: relative;
+    top: 20px;
+}
+
+.tday {
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.mac {
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    display: inline-block;
+    margin: 20px;
+    padding: 0;
+    margin-left: 180px;
+}
+
+#lable {
+    display: inline;
+}
+
+#g {
+    display: inline;
+}
+
+#week {
+    width: 86.5%;
+    float: right;
+    display: inline;
+}
+
+.cal {
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+    display: inline-block;
+    margin: 20px;
+    padding: 0;
+    margin-left: 150px;
+}
+
+.goals {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    display: inline-block;
+    margin: 20px;
+    padding: 0;
+    margin-left: 180px;
+    margin-right: 5px;
+}
+
+.cgoals {
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    display: inline-block;
+    margin: 20px;
+    padding: 0;
+    margin-left: 160px;
+}
+
+.w {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    display: inline-block;
+    margin: 20px;
+    padding: 0;
+    margin-right: 165px;
+}
+
+.cw {
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    display: inline-block;
+    margin: 20px;
+    padding: 0;
+    margin-left: 0px;
+}
+
+#date {
+    width: 10;
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.d {
+    text-align: left;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 0;
+    margin-left: 0px;
+    margin-bottom: 39px;
+}
