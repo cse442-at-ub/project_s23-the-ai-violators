@@ -31,16 +31,19 @@ require __DIR__ . "../../../config/database.php";
 <body>
 
     <div class="navbar">
-        <div><img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
-            <p id="logoName">nutr.io</p>
-        </div>
+        <a id="NUTRIO" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content">
+            <div>
+                <img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
+                <p id="logoName">nutr.io</p>
+            </div>
+        </a>
         <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile
             Page</a>
         <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
         <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
         <div>
 
-            <div id="username">%Cusername%</div>
+            <div id="username">%username%</div>
 
         </div>
 
@@ -114,7 +117,7 @@ require __DIR__ . "../../../config/database.php";
                         $meals = getDailyCalories($_SESSION['user_name'], date("y-m-d"));
                         for ($i = 0; $i < count($meals); $i++) {
                             $meal = $meals[$i];
-                            $output .= "<tr><td> piss </td>";
+                            $output .= "<tr><td> PlaceHolder </td>";
                             $output .= "<td class = 'tableCalories'>" . $meal[0] .  "</td>";
                             $output .= "<td class = 'tableProtein'>" . $meal[1] .  "</td>";
                             $output .= "<td class = 'tableCarbs'>" . $meal[2] .  "</td>";
