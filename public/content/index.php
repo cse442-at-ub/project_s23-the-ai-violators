@@ -55,7 +55,14 @@ require __DIR__ . "../../../config/database.php";
                         <div class="inner inner-2">
                             <div>
                                 Calories: <br />
-                                <span id="cals"></span>
+                                <span id="cals">
+                                    <span id="curCals">
+                                        %cals%
+                                    </span>/
+                                    <span id="calGoal">
+                                        <?php echo getCalorieGoals($_SESSION['user_name']) ?>
+                                    </span>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -65,24 +72,24 @@ require __DIR__ . "../../../config/database.php";
                 <ul>
                     <li class="macroListItem">
                         <div class="macroHolder">
-                            <span class="macsName">Protein:</span> <span class="macs" id="protien"></span>
+                            <span class="macsName">Protein:</span> <span class="macs" id="protien"><span id="curPro">%curPro%</span>/ <span id="totalPro"><?php echo getMacroGoals($_SESSION['user_name'])[0] ?></span> </span>
                         </div>
                     </li>
                     <li class="macroListItem">
                         <div class="macroHolder">
-                            <span class="macsName">Carbs:</span> <span class="macs" id="carbs">%carbs%</span>
+                            <span class="macsName">Carbs:</span> <span class="macs" id="carbs"><span id="curCarb">%curCar%</span>/ <span id="totalCar"><?php echo getMacroGoals($_SESSION['user_name'])[1] ?></span></span>
                         </div>
                     </li>
                     <li class="macroListItem">
                         <div class="macroHolder">
-                            <span class="macsName">Fats:</span> <span class="macs" id="fats">%fats%</span>
+                            <span class="macsName">Fats:</span> <span class="macs" id="fats"><span id="curFat">%curFat%</span>/ <span id="totalFat"><?php echo getMacroGoals($_SESSION['user_name'])[2] ?></span></span>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="historyContainer">
-            <div class="history">
+            <div class=history">
                 Meal History
             </div>
 
@@ -92,10 +99,11 @@ require __DIR__ . "../../../config/database.php";
                     <thead>
                         <tr>
                             <th>Food</th>
+                            <th>Calories</th>
                             <th>Protein</th>
                             <th>Carbs</th>
                             <th>Fats</th>
-                            <th>Calories</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -104,13 +112,13 @@ require __DIR__ . "../../../config/database.php";
                         <?php
                         $output = "";
                         $meals = getDailyCalories($_SESSION['user_name'], date("y-m-d"));
-                        for ($i=0; $i<count($meals); $i++) {
+                        for ($i = 0; $i < count($meals); $i++) {
                             $meal = $meals[$i];
                             $output .= "<tr><td> piss </td>";
-                            $output .= "<td>" . $meal[0] .  "</td>";
-                            $output .= "<td>" . $meal[1] .  "</td>";
-                            $output .= "<td>" . $meal[2] .  "</td>";
-                            $output .= "<td>" . $meal[3] .  "</td></tr>";
+                            $output .= "<td class = 'tableCalories'>" . $meal[0] .  "</td>";
+                            $output .= "<td class = 'tableProtein'>" . $meal[1] .  "</td>";
+                            $output .= "<td class = 'tableCarbs'>" . $meal[2] .  "</td>";
+                            $output .= "<td class = 'tableFats'>" . $meal[3] .  "</td></tr>";
                         }
 
                         echo $output;
