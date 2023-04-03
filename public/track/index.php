@@ -26,13 +26,21 @@ if (!isset($_SESSION['user_name'])) {
 </head>
 
 <body>
-  <div class = "header" id="header">
-    <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="It's a carrot"/>
-    <p>nutr.io</p>
-    <button id="meals" type="button" onclick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content'">Back To Content</button>
-    <button id="meals" type="button" onclick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'">Logout</button>
+  
+  <div class="navbar">
+    <div><img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
+      <p id="logoName">nutr.io</p>
+    </div>
+    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile Page</a>
+    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/">Content Page</a>
+    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
+    <div>
+      <div id="username">%Cusername%</div>
+    </div>
+
   </div>
-  <h1>Add a meal / snack</h1>
+
+  <h1>Add a meal or snack</h1>
   <div id="trackForm">
     <form>
       <div class = "dateIn">
@@ -51,15 +59,15 @@ if (!isset($_SESSION['user_name'])) {
       </div>
       <div class = "carb"> 
         <label for="carbs">Carbs</label>
-        <input type="number" name="carbs" id="carbs" placeholder="g" required>
+        <input type="number" name="carbs" id="carbs" placeholder="             g" required>
       </div>
       <div class = "pro">
         <label for="protein">Protein</label>
-        <input type="number" name="protein" id="protein" placeholder="g" required>
+        <input type="number" name="protein" id="protein" placeholder="             g" required>
       </div>
       <div class = "fat">
         <label for="fats">Fats</label>
-        <input type="number" name="fats" id="fats" placeholder="g" required>
+        <input type="number" name="fats" id="fats" placeholder="             g" required>
       </div>
       <div class = "sub">
         <button id="add" type="submit">Add</button>
