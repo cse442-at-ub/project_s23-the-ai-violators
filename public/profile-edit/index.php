@@ -15,8 +15,8 @@ if (!isset($_SESSION['user_name'])) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/profile.css">
-  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/profile.css">
+  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/profile-edit.css">
+  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/profile-edit.css">
 
   
 
@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div id = "editProfile">
-            <button id="submitButton" type="submit">Edit Profile</button>
+            <button id="submitButton" type="submit">Finish</button>
         </div>
 
 
