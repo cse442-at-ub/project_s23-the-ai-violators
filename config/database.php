@@ -54,6 +54,7 @@ function checkInitalLogin(string $user_name)
 /**
  * Add new meal entry into the database.
  * @param string $user_name The username of the user.
+ * @param string $meal_name The name of the meal.
  * @param string $date In the format YYYY-MM-DD.
  * @param float $calroies The number of calories in the meal.
  * @param float $protein The number of grams of protein in the meal.
@@ -109,7 +110,7 @@ function getMacroGoals(string $user_name)
  *  Retrieves the daily calorie intake for the given user on the given date.
  *  @param string $user_name The username of the user whose calorie intake should be retrieved.
  *  @param string $date The date for which the calorie intake should be retrieved.
- *  @return array A 2D Matrix with rows in the form [calories, protien, carbs, fat]. Each row is a seperate meal.
+ *  @return array A 2D Matrix with rows in the form [calories, protien, carbs, fat, meal_name]. Each row is a seperate meal.
  */
 function getDailyCalories(string $user_name, string $date)
 {
