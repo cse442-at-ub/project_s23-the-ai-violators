@@ -42,7 +42,7 @@ final class DBTest extends TestCase
     {
         $mysqli = getConnection();
 
-        $dailyIntakeCols = array("user_id", "meal_id", "date", "calories", "protein", "carbs", "fat");
+        $dailyIntakeCols = array("user_id", "meal_id", "meal_name", "date", "calories", "protein", "carbs", "fat");
         $result = mysqli_query($mysqli, "SHOW columns FROM daily_intake");
         for ($i = 0; $i < count($dailyIntakeCols); $i++) {
             $row = mysqli_fetch_row($result);
@@ -134,14 +134,15 @@ final class DBTest extends TestCase
         createUser("testUser", "test@email.com", "testPassword");
         $date = date("Y-m-d");
         $userId = getIDFromUsername("testUser");
-        $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", $date, 2000, 100, 100, 100);
+        $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", "eggs", $date, 2000, 100, 100, 100);
         $this->assertTrue($didTrackCaloriesAndMacros);
 
-        $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", $date, 2000, 100, 100, 100);
+        $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", "steak", $date, 2000, 100, 100, 100);
         $this->assertTrue($didTrackCaloriesAndMacros);
 
         $cals = getDailyCalories("testUser", $date)[0];
         $this->assertEquals($cals[0], 2000);
+        $this->assertEquals($cals[4], "eggs");
 
 
     }
