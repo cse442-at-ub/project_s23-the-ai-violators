@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_name'])) {
 
 
 <body>
-    <form method="POST" action="editIntake.php">
+    <form method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/editIntake.php">
 
 
         <nav class="navbar navbar-expand-lg bg-secondary-subtle">
