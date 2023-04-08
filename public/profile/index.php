@@ -64,7 +64,7 @@ $userInfo = getUserInfo($_SESSION['user_name']);
 
 
     <div class="col-md-4 mb-3">
-        <div class="card">
+        <div>
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
                     <p><?php echo $_SESSION['user_name'] ?></p>
@@ -140,92 +140,17 @@ $userInfo = getUserInfo($_SESSION['user_name']);
                         <h6 class="mb-0">Restrictions:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        
+
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-sm-12">
-                        <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                        <button class="btn btn-primary" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit'">Edit Profile</button>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div id="editProfile">
-            <button id="submitButton" type="button" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/'">
-                Edit Profile
-            </button>
-        </div>
-
-        <div id="sex">
-            <p>Sex:</p>
-        </div>
-
-        <div id="sexDisplay">
-            <p> <?php echo $userInfo[4] ?> </p>
-        </div>
-
-
-        <div id="height">
-            <p>Height:</p>
-        </div>
-
-        <div id="heightDisplay">
-            <p> <?php echo $userInfo[1] ?> </p>
-        </div>
-
-        <div id="weight">
-            <p>Weight:</p>
-        </div>
-
-        <div id="weightDisplay">
-            <p> <?php echo $userInfo[2] ?> </p>
-        </div>
-
-
-        <div id="curgoal">
-            <p>Current Goal:</p>
-        </div>
-
-        <div id="goalDisplay">
-            <p> <?php echo $userInfo[10] ?> </p>
-        </div>
-
-        <div id="macro">
-            <p>Focus Macro:</p>
-        </div>
-
-        <div id="macroDisplay">
-            <p> <?php echo $userInfo[11] ?> </p>
-        </div>
-
-        <div id="calgoal">
-            <p>Current Calorie Goal:</p>
-        </div>
-
-        <div id="calDisplay">
-            <p> <?php echo $userInfo[6] ?> </p>
-        </div>
-
-        <div id="restrict">
-            <p>Restrictions:</p>
-        </div>
-
-
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
