@@ -40,7 +40,7 @@ $userInfo = getUserInfo($_SESSION['user_name']);
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav m-auto ">
                     <li class="nav-item">
                         <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/">Content Page</a>
                     </li>
@@ -48,135 +48,110 @@ $userInfo = getUserInfo($_SESSION['user_name']);
                         <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
+                        <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/" onclick="sessionStorage.removeItem('username')">Logout</a>
                     </li>
 
                 </ul>
-                
+
             </div>
         </div>
     </nav>
-
-
-
-
-    <div class="userIcon">
-        <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/user.png" alt="">
-    </div>
-
-
 
     <p class="fs-1">Your Profile
     <p>
     <p class="fs-4">Here's a look at you...
     <p>
 
-    <div id="profileForm">
-    </div>
-
-    <div id="userName">
-        <p> <?php echo $_SESSION['user_name'] ?> </p>
-    </div>
-
-
-    <div id="logout">
-        <button id="logoutButton" type="button" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'; sessionStorage.removeItem('username')">Logout</button>
-    </div>
-
-    <div id="editProfile">
-        <button id="submitButton" type="button" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/'">
-            Edit Profile
-        </button>
-    </div>
-
-
-    <div id="email">
-        <p>chad69@gmail.com</p>
-    </div>
-
-
-
-    <div class="navbar">
-        <a id="NUTRIO" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content">
-            <div>
-                <img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
-                <p id="logoName">nutr.io</p>
-            </div>
-        </a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile
-            Page</a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
-        <div>
-
-            <div id="username">
-                <p> <?php echo $_SESSION['user_name'] ?> </p>
+    <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <p><?php echo $_SESSION['user_name'] ?></p>
+                        <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/user.png" alt="Admin" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                            <p class="text-secondary mb-1">timmy2time@gmail.com</p>
+                            <button class="btn btn-primary" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'; sessionStorage.removeItem('username')">Logout</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-        </div>
-
-    </div>
-
-
-
-    <div id="sex">
-        <p>Sex:</p>
-    </div>
-
-    <div id="sexDisplay">
-        <p> <?php echo $userInfo[4] ?> </p>
-    </div>
-
-
-    <div id="height">
-        <p>Height:</p>
-    </div>
-
-    <div id="heightDisplay">
-        <p> <?php echo $userInfo[1] ?> </p>
-    </div>
-
-    <div id="weight">
-        <p>Weight:</p>
-    </div>
-
-    <div id="weightDisplay">
-        <p> <?php echo $userInfo[2] ?> </p>
-    </div>
-
-
-    <div id="curgoal">
-        <p>Current Goal:</p>
-    </div>
-
-    <div id="goalDisplay">
-        <p> <?php echo $userInfo[10] ?> </p>
-    </div>
-
-    <div id="macro">
-        <p>Focus Macro:</p>
-    </div>
-
-    <div id="macroDisplay">
-        <p> <?php echo $userInfo[11] ?> </p>
-    </div>
-
-    <div id="calgoal">
-        <p>Current Calorie Goal:</p>
-    </div>
-
-    <div id="calDisplay">
-        <p> <?php echo $userInfo[6] ?> </p>
-    </div>
-
-    <div id="restrict">
-        <p>Restrictions:</p>
-    </div>
 
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+
+
+
+
+        
+
+            <div id="editProfile">
+                <button id="submitButton" type="button" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/'">
+                    Edit Profile
+                </button>
+            </div>
+        
+            <div id="sex">
+                <p>Sex:</p>
+            </div>
+
+            <div id="sexDisplay">
+                <p> <?php echo $userInfo[4] ?> </p>
+            </div>
+
+
+            <div id="height">
+                <p>Height:</p>
+            </div>
+
+            <div id="heightDisplay">
+                <p> <?php echo $userInfo[1] ?> </p>
+            </div>
+
+            <div id="weight">
+                <p>Weight:</p>
+            </div>
+
+            <div id="weightDisplay">
+                <p> <?php echo $userInfo[2] ?> </p>
+            </div>
+
+
+            <div id="curgoal">
+                <p>Current Goal:</p>
+            </div>
+
+            <div id="goalDisplay">
+                <p> <?php echo $userInfo[10] ?> </p>
+            </div>
+
+            <div id="macro">
+                <p>Focus Macro:</p>
+            </div>
+
+            <div id="macroDisplay">
+                <p> <?php echo $userInfo[11] ?> </p>
+            </div>
+
+            <div id="calgoal">
+                <p>Current Calorie Goal:</p>
+            </div>
+
+            <div id="calDisplay">
+                <p> <?php echo $userInfo[6] ?> </p>
+            </div>
+
+            <div id="restrict">
+                <p>Restrictions:</p>
+            </div>
+
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 
 </body>
