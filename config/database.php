@@ -4,7 +4,6 @@
  * Returns a connection to the database.
  * @return mysqli A connection to the database.
  */
-
 function getConnection()
 {
   $db_hostname = getenv('IN_DOCKER');
@@ -16,6 +15,67 @@ function getConnection()
   }
 
   return mysqli_connect($db_hostname, "sjrichel", "50338787", "cse442_2023_spring_team_g_db", 3306);
+}
+
+/**
+ * Returns the ID of a recipe given its name.
+ * @param string $recipe_name The name of the recipe.
+ * @return int The ID of the recipe.
+ */
+function getRestrictionId(string $restriction_name) {
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT restriction_id FROM restrictions WHERE restriction_name = '$restriction_name';");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
+}
+
+/**
+ * Returns the name of a restriction given its ID.
+ * @param int $restriction_id The ID of the restriction.
+ * @return string The name of the restriction.
+ */
+function getRestrictionName(int $restriction_id) {
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT restriction_name FROM restrictions WHERE restriction_id = '$restriction_id';");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
+}
+
+/**
+ * Adds restrictions for a given user. No change if the user already has the restriction.
+ * @param string $user_name The username of the user.
+ * @param array $restrictions An array of strings representing the user's restrictions.
+ * @return bool True if the restrictions were set successfully, false otherwise.
+ */
+function addRestrictions(string $user_name, array $restrictions) {
+  $user_id = getIDFromUsername($user_name);
+  // print_r($user_id);
+  $mysqli = getConnection();
+  for ($i = 0; $i < count($restrictions); $i++) {
+    $restriction = $restrictions[$i];
+    $result = mysqli_query($mysqli, "SELECT restriction_id FROM restrictions WHERE restriction_name = '$restriction';");
+    $row = mysqli_fetch_row($result);
+    $restriction_id = $row[0];
+    mysqli_query($mysqli, "INSERT IGNORE INTO user_restrictions (user_id, restriction_id) VALUES ('$user_id', '$restriction_id');");
+  }
+  return true;
+}
+
+/**
+ * Returns the restrictions of a user.
+ * @param string $user_name The username of the user.
+ * @return array An array of the user's restrictions.
+ */
+function getRestrictions(string $user_name)
+{
+  $user_id = getIDFromUsername($user_name);
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT r.restriction_name FROM restrictions r JOIN user_restrictions ur ON r.restriction_id = ur.restriction_id WHERE ur.user_id = '$user_id';");
+  $restrictions = array();
+  while ($row = mysqli_fetch_row($result)) {
+    array_push($restrictions, $row[0]);
+  }
+  return $restrictions;
 }
 
 
