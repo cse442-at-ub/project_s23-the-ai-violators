@@ -1,4 +1,5 @@
 <?php
+session_start();
 
     require __DIR__ . '/../../config/database.php';
 
@@ -12,7 +13,7 @@
     $goal = $_POST['goal'];
 
 
-    storeSurveyInformation("timmy", $height, $weight, strtoupper($sex), $age, $actlevel,strtoupper($goal),$macros);
+    storeSurveyInformation($_SESSION['user_name'], $height, $weight, strtoupper($sex), $age, $actlevel,strtoupper($goal),$macros);
 
     header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content");
 
