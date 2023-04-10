@@ -41,6 +41,7 @@ user.innerText = sessionStorage.getItem('username')
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
+    console.log(date.value)
     let res = await makeRequest('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/handleIntake.php/?username=' + sessionStorage.getItem("username") + '&date=' + date.value + '&calories=' + calories.value + '&carbs=' + carbs.value + '&protein=' + protein.value + '&fats=' + fats.value)
 
     if (res.includes("2")) { // failed to login
