@@ -4,8 +4,8 @@ require __dir__ . '/database.php';
 
 /** 
  * Get a list of meals based on the users remaining macros for the day
- * @param $user_name string the username of the user
- * @param $number int Optional, defauts to 5; The number of meals to return
+ * @param string $user_name The username of the user
+ * @param int $number Optional, defauts to 5; The number of meals to return
  * @return json a json object containing the meals
  */
 function getMeal($user_name, $number = 5)
