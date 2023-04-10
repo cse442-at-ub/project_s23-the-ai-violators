@@ -54,6 +54,7 @@ function checkInitalLogin(string $user_name)
 /**
  * Add new meal entry into the database.
  * @param string $user_name The username of the user.
+ * @param string $meal_name The name of the meal.
  * @param string $date In the format YYYY-MM-DD.
  * @param float $calroies The number of calories in the meal.
  * @param float $protein The number of grams of protein in the meal.
@@ -61,12 +62,12 @@ function checkInitalLogin(string $user_name)
  * @param float $fat The number of grams of fat in the meal.
  * @return bool True if the meal was added successfully, false otherwise.
  */
-function trackCaloriesAndMacros(string $user_name, string $date, float $calroies, float $protein, float $carbs, float $fat)
+function trackCaloriesAndMacros(string $user_name, string $meal_name, string $date, float $calroies, float $protein, float $carbs, float $fat)
 {
   // echo "HELLO! This probaly worked, but useres arent set up yet, so expect error";
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
-  $result = mysqli_query($mysqli, "INSERT INTO daily_intake (user_id, date, calories, protein, carbs, fat) VALUES ('$user_id', '$date', '$calroies', '$protein', '$carbs', '$fat')");
+  $result = mysqli_query($mysqli, "INSERT INTO daily_intake (user_id, meal_name, date, calories, protein, carbs, fat) VALUES ('$user_id', '$meal_name', '$date', '$calroies', '$protein', '$carbs', '$fat')");
   // echo $result;
   if ($result) {
     return true;
@@ -109,13 +110,13 @@ function getMacroGoals(string $user_name)
  *  Retrieves the daily calorie intake for the given user on the given date.
  *  @param string $user_name The username of the user whose calorie intake should be retrieved.
  *  @param string $date The date for which the calorie intake should be retrieved.
- *  @return array A 2D Matrix with rows in the form [calories, protien, carbs, fat]. Each row is a seperate meal.
+ *  @return array A 2D Matrix with rows in the form [calories, protien, carbs, fat, meal_name]. Each row is a seperate meal.
  */
 function getDailyCalories(string $user_name, string $date)
 {
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
-  $result = mysqli_query($mysqli, "SELECT calories, protein, carbs, fat FROM daily_intake WHERE user_id='$user_id' AND date='$date'");
+  $result = mysqli_query($mysqli, "SELECT calories, protein, carbs, fat, meal_name FROM daily_intake WHERE user_id='$user_id' AND date='$date'");
   $rows = array();
   while ($row = mysqli_fetch_row($result)) {
     $rows[] = $row;

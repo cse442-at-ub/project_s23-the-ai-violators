@@ -51,7 +51,6 @@ if (!isset($_SESSION['user_name'])) {
               <option value="" disabled selected>Select your sex...</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
-              <option value="other">Other/Prefer Not To Say</option>
             </select>
         </div>
       
@@ -97,10 +96,10 @@ if (!isset($_SESSION['user_name'])) {
         <div>
           <input type="radio" id="protien" name="macros" value="protien">
           <label for="protein">Proteins</label><br>
-          <input type="radio" id="carbs" name="macros" value="carbohydrates">
-          <label for="carbohydrates">Carbohydrates</label><br>
-          <input type="radio" id="fats" name="macros" value="fats">
-          <label for="Fats">Fats</label>
+          <input type="radio" id="carbs" name="macros" value="carb">
+          <label for="carb">Carbohydrates</label><br>
+          <input type="radio" id="fats" name="macros" value="fat">
+          <label for="fat">Fats</label>
         </div>
         <div>
           <h4>Do you have any dietary restrictions?</h4>
