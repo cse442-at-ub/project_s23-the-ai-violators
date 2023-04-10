@@ -147,4 +147,28 @@ final class DBTest extends TestCase
 
     }
 
+    public function testAddRestriction(): void {
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+        $didAddRestriction = addRestrictions("testUser", ['Lactose Intolerance','Gluten Intolerance']);
+        $this->assertTrue($didAddRestriction);
+
+        $restrictions = getRestrictions("testUser");
+        $this->assertEquals($restrictions[0], "Lactose Intolerance");
+        $this->assertEquals($restrictions[1], "Gluten Intolerance");
+
+        $didAddRestriction = addRestrictions("testUser", ['Lactose Intolerance','Gluten Intolerance']);
+        $this->assertTrue($didAddRestriction);
+
+        $this->assertEquals(getRestrictionId("Lactose Intolerance"), 1);
+        $this->assertEquals(getRestrictionId("Gluten Intolerance"), 2);
+
+        $this->assertEquals(getRestrictionName(1), "Lactose Intolerance");
+        $this->assertEquals(getRestrictionName(2), "Gluten Intolerance");
+
+        $this->assertEquals(getRestrictionName(8), "Fish/Shellfish Allergy");
+        $this->assertEquals(getRestrictionName(9), "Wheat Allergy");
+
+    }
+
 }

@@ -94,15 +94,15 @@ label {
 .dateIn {
     text-align: center;
 }
-
+ 
 .dateIn input {
-    width: 15%;
+    width: 25%;
     padding: 12px 10px;
     box-sizing: border-box;
     border-radius: .7em;
     border: none;
     margin: 20px;
-    /**/
+    text-align: center;
     margin-top: 60px;
     margin-left: 15px;
     margin-right: 15px;
