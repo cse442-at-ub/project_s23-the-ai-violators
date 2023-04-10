@@ -56,7 +56,7 @@ function addRestrictions(string $user_name, array $restrictions) {
     $result = mysqli_query($mysqli, "SELECT restriction_id FROM restrictions WHERE restriction_name = '$restriction';");
     $row = mysqli_fetch_row($result);
     $restriction_id = $row[0];
-    mysqli_query($mysqli, "INSERT IGNORE INTO user_restrictions (user_id, restriction_id) VALUES ('$user_id', '$restriction_id');");
+    mysqli_query($mysqli, "INSERT INTO user_restrictions (user_id, restriction_id) VALUES ('$user_id', '$restriction_id');");
   }
   return true;
 }

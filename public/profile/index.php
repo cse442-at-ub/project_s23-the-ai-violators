@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_name'])) {
 require __DIR__ . "../../../config/database.php";
 
 $userInfo = getUserInfo($_SESSION['user_name']);
+$userRestrictions = getRestrictions($_SESSION['user_name']);
 
 ?>
 <!DOCTYPE html>
@@ -140,7 +141,13 @@ $userInfo = getUserInfo($_SESSION['user_name']);
                         <h6 class="mb-0">Restrictions:</h6>
                     </div>
                     <div class="col-sm-6 text-secondary">
-
+<?php
+    $out = "";
+    for ($i=0; $i<count($userRestrictions); $i++) {
+        $out .= $userRestrictions[$i] . ", ";
+    }
+    echo $out;
+?>
                     </div>
                 </div>
                 <hr>
