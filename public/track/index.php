@@ -45,10 +45,12 @@ if (!isset($_SESSION['user_name'])) {
 
   <h1>Add a meal or snack</h1>
   <div id="trackForm">
-    <form>
+    <form method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/handleIntake.php">
       <div class = "dateIn">
         <label for="date">Date</label>
         <input type="date" id="date" name="date" required>
+        <label for="meal">Meal</label>
+        <input type="text" id="meal" name="meal" placeholder="name" required>
       </div>
       <!--div class = "meals">
         <button id="breakfast" type="button">Breakfast</button>
