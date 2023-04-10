@@ -36,6 +36,7 @@ if (!isset($_SESSION['user_name'])) {
     </a>
     <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile Page</a>
     <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
+    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation">Recomendations</a>
     <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
     <div>
       <div id="username">%Cusername%</div>

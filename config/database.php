@@ -56,7 +56,26 @@ function addRestrictions(string $user_name, array $restrictions) {
     $result = mysqli_query($mysqli, "SELECT restriction_id FROM restrictions WHERE restriction_name = '$restriction';");
     $row = mysqli_fetch_row($result);
     $restriction_id = $row[0];
-    mysqli_query($mysqli, "INSERT IGNORE INTO user_restrictions (user_id, restriction_id) VALUES ('$user_id', '$restriction_id');");
+    mysqli_query($mysqli, "INSERT INTO user_restrictions (user_id, restriction_id) VALUES ('$user_id', '$restriction_id');");
+  }
+  return true;
+}
+
+/**
+ * Removes restrictions for a given user. No change if the user does not have the restriction.
+ * @param string $user_name The username of the user.
+ * @param array $restrictions An array of strings representing the user's restrictions.
+ * @return bool True if the restrictions were removed successfully, false otherwise.
+ */
+function removeRestriction(string $user_name, array $restrictions) {
+  $user_id = getIDFromUsername($user_name);
+  $mysqli = getConnection();
+  for ($i = 0; $i < count($restrictions); $i++) {
+    $restriction = $restrictions[$i];
+    $result = mysqli_query($mysqli, "SELECT restriction_id FROM restrictions WHERE restriction_name = '$restriction';");
+    $row = mysqli_fetch_row($result);
+    $restriction_id = $row[0];
+    mysqli_query($mysqli, "DELETE FROM user_restrictions WHERE user_id = '$user_id' AND restriction_id = '$restriction_id';");
   }
   return true;
 }
