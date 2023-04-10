@@ -40,6 +40,7 @@ require __DIR__ . "../../../config/database.php";
         <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile
             Page</a>
         <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
+        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation">Recomendations</a>
         <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
         <div>
 
@@ -113,9 +114,11 @@ require __DIR__ . "../../../config/database.php";
 
 
                         <?php
+                        date_default_timezone_set('America/New_York');
                         $output = "";
                         $meals = getDailyCalories($_SESSION['user_name'], date("y-m-d"));
                         for ($i = 0; $i < count($meals); $i++) {
+                            //dsaf
                             $meal = $meals[$i];
                             $output .= "<tr><td> $meal[4] </td>";
                             $output .= "<td class = 'tableCalories'>" . $meal[0] .  "</td>";
