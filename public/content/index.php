@@ -113,6 +113,7 @@ require __DIR__ . "../../../config/database.php";
 
 
                         <?php
+                        date_default_timezone_set('America/New_York');
                         $output = "";
                         $meals = getDailyCalories($_SESSION['user_name'], date("y-m-d"));
                         for ($i = 0; $i < count($meals); $i++) {
