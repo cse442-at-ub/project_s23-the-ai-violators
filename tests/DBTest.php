@@ -160,6 +160,10 @@ final class DBTest extends TestCase
         $didAddRestriction = addRestrictions("testUser", ['Lactose Intolerance','Gluten Intolerance']);
         $this->assertTrue($didAddRestriction);
 
+        removeRestriction("testUser", ["Lactose Intolerance"]);
+        $restrictions = getRestrictions("testUser");
+        $this->assertEquals($restrictions[0], "Gluten Intolerance");
+
         $this->assertEquals(getRestrictionId("Lactose Intolerance"), 1);
         $this->assertEquals(getRestrictionId("Gluten Intolerance"), 2);
 
