@@ -164,6 +164,10 @@ final class DBTest extends TestCase
         $restrictions = getRestrictions("testUser");
         $this->assertEquals($restrictions[0], "Gluten Intolerance");
 
+        removeRestriction("testUser", ["Gluten Intolerance"]);
+        $restrictions = getRestrictions("testUser");
+        $this->assertEquals($restrictions, []);
+
         $this->assertEquals(getRestrictionId("Lactose Intolerance"), 1);
         $this->assertEquals(getRestrictionId("Gluten Intolerance"), 2);
 

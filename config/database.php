@@ -56,7 +56,7 @@ function addRestrictions(string $user_name, array $restrictions) {
     $result = mysqli_query($mysqli, "SELECT restriction_id FROM restrictions WHERE restriction_name = '$restriction';");
     $row = mysqli_fetch_row($result);
     $restriction_id = $row[0];
-    mysqli_query($mysqli, "INSERT INTO user_restrictions (user_id, restriction_id) VALUES ('$user_id', '$restriction_id');");
+    mysqli_query($mysqli, "INSERT IGNORE INTO user_restrictions (user_id, restriction_id) VALUES ('$user_id', '$restriction_id');");
   }
   return true;
 }
@@ -153,6 +153,38 @@ function trackCaloriesAndMacros(string $user_name, string $meal_name, string $da
   } else {
     return false;
   }
+}
+
+/**
+ * Returns the daily calories and macros for a user.
+ * @param string $user_name The username of the user.
+ * @return array An array of the user's daily calories and macros in the form [cals, carbs, protien, fat].
+ */
+
+function getRemainingMacros(string $user_name) {
+  $macros = getMacroGoals($user_name);
+    $cals = getCalorieGoals($user_name);
+
+    $dailyMacros = getDailyCalories($user_name, date("y-m-d"));
+
+    $todaysCarbs = 0;
+    $todaysCals = 0;
+    $todaysProtien = 0;
+    $todaysFat = 0;
+
+    foreach ($dailyMacros as $macro) {
+        $todaysCarbs += $macro[2];
+        $todaysCals += $macro[0];
+        $todaysProtien += $macro[1];
+        $todaysFat += $macro[3];
+    }
+
+    $carbsLeft = $macros[1] - $todaysCarbs;
+    $calsLeft = $cals - $todaysCals;
+    $protienLeft = $macros[0] - $todaysProtien;
+    $fatLeft = $macros[2] - $todaysFat;
+
+    return [$calsLeft, $carbsLeft, $protienLeft, $fatLeft];
 }
 
 
