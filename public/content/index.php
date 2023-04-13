@@ -30,25 +30,8 @@ require __DIR__ . "../../../config/database.php";
 
 <body>
 
-    <div class="navbar">
-        <a id="NUTRIO" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content">
-            <div>
-                <img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
-                <p id="logoName">nutr.io</p>
-            </div>
-        </a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile
-            Page</a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation">Recomendations</a>
-        <button onclick="logout()">Logout</button>
-        <div>
-
-            <div id="username">%username%</div>
-
-        </div>
-
-    </div>
+   <?php include "../../templates/navbar.php" ?>
+    
 
     <div class="mainContent">
 
@@ -145,21 +128,7 @@ require __DIR__ . "../../../config/database.php";
     <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/mainpage.js"></script>
     <script src="mainpage.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script>
-        // dont use jquery for this
-        function logout() {
-            fetch('/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/logout.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            }).then(res => {
-                if (res.status === 200) {
-                    window.location.href = "/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login";
-                }
-            })
-        }
-    </script>
+   
 </body>
 
 

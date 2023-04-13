@@ -31,32 +31,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
     <form method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/editIntake.php">
 
 
-        <nav class="navbar navbar-expand-lg bg-secondary-subtle">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                    nutr.io
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav m-auto ">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/">Content Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/" onclick="sessionStorage.removeItem('username')">Logout</a>
-                        </li>
-
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
+        <?php include "../../templates/navbar.php" ?>
 
 
 
@@ -93,8 +68,8 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         <div class="col-sm-6 text-secondary">
                             <select name="sex">
                                 <option value="" disabled>Select your sex...</option>
-                                <option value="male" <?php if ($userInfo[3]=="MALE") echo "selected"?>>Male</option>
-                                <option value="female" <?php if ($userInfo[3]=="FEMALE") echo "selected"?>>Female</option>
+                                <option value="male" <?php if ($userInfo[3] == "MALE") echo "selected" ?>>Male</option>
+                                <option value="female" <?php if ($userInfo[3] == "FEMALE") echo "selected" ?>>Female</option>
                                 <option value="other">Other/Prefer Not To Say</option>
                             </select>
                         </div>
@@ -105,7 +80,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                             <h6 class="mb-0">Height:</h6>
                         </div>
                         <div class="col-sm-6 text-secondary">
-                            <input type="number" value=<?php echo $userInfo[1] ?>  name="height" placeholder="Enter Your Height(In)" min="1" max="999" oninput="check()">
+                            <input type="number" value=<?php echo $userInfo[1] ?> name="height" placeholder="Enter Your Height(In)" min="1" max="999" oninput="check()">
                         </div>
                     </div>
                     <hr>
@@ -125,9 +100,9 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         <div class="col-sm-6 text-secondary">
                             <select name="goal" id="goal">
                                 <option value="" disabled>Select your goal...</option>
-                                <option value="cut" <?php if ($userInfo[10]=="cut") echo "selected"?>>Lose Weight/Cut</option>
-                                <option value="bulk"  <?php if ($userInfo[10]=="bulk") echo "selected"?>>Gain Weight/Bulk</option>
-                                <option value="maintain"  <?php if ($userInfo[10]=="maintain") echo "selected"?>>Maintain</option>
+                                <option value="cut" <?php if ($userInfo[10] == "cut") echo "selected" ?>>Lose Weight/Cut</option>
+                                <option value="bulk" <?php if ($userInfo[10] == "bulk") echo "selected" ?>>Gain Weight/Bulk</option>
+                                <option value="maintain" <?php if ($userInfo[10] == "maintain") echo "selected" ?>>Maintain</option>
                             </select>
                         </div>
                     </div>
@@ -162,9 +137,9 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         <div class="col-sm-6 text-secondary">
                             <input type="checkbox" id="lactose" name="lactose" <?php if (in_array("Lactose Intolerance", $userRestrictions)) echo "checked" ?>>
                             <label for="lactose">Lactose Intolerance</label>
-                            <input type="checkbox" id="" name="gluten"  <?php if (in_array("Gluten Intolerance", $userRestrictions)) echo "checked" ?> >
+                            <input type="checkbox" id="" name="gluten" <?php if (in_array("Gluten Intolerance", $userRestrictions)) echo "checked" ?>>
                             <label for="gluten">Gluten Intolerance</label>
-                            <input type="checkbox" id="vegetarian" name="vegetarian" <?php if (in_array("Vegetarian", $userRestrictions)) echo "checked" ?> >
+                            <input type="checkbox" id="vegetarian" name="vegetarian" <?php if (in_array("Vegetarian", $userRestrictions)) echo "checked" ?>>
                             <label for="vegetarian">Vegetarian</label>
                             <input type="checkbox" id="vegan" name="vegan" <?php if (in_array("Vegan", $userRestrictions)) echo "checked" ?>>
                             <label for="vegan">Vegan</label>
