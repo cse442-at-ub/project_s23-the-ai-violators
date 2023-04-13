@@ -41,7 +41,7 @@ require __DIR__ . "../../../config/database.php";
             Page</a>
         <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
         <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation">Recomendations</a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
+        <button onclick="logout()">Logout</button>
         <div>
 
             <div id="username">%username%</div>
@@ -145,6 +145,21 @@ require __DIR__ . "../../../config/database.php";
     <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/mainpage.js"></script>
     <script src="mainpage.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        // dont use jquery for this
+        function logout() {
+            fetch('/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/logout.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            }).then(res => {
+                if (res.status === 200) {
+                    window.location.href = "/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login";
+                }
+            })
+        }
+    </script>
 </body>
 
 
