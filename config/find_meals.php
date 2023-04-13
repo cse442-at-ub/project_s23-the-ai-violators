@@ -12,34 +12,14 @@ function getMeal($user_name, $number = 5)
 {
     $endpoint = 'https://api.spoonacular.com/recipes/findByNutrients';
 
-    $macros = getMacroGoals($user_name);
-    $cals = getCalorieGoals($user_name);
-
-    $dailyMacros = getDailyCalories($user_name, date("y-m-d"));
-
-    $todaysCarbs = 0;
-    $todaysCals = 0;
-    $todaysProtien = 0;
-    $todaysFat = 0;
-
-    foreach ($dailyMacros as $macro) {
-        $todaysCarbs += $macro[2];
-        $todaysCals += $macro[0];
-        $todaysProtien += $macro[1];
-        $todaysFat += $macro[3];
-    }
-
-    $carbsLeft = $macros[1] - $todaysCarbs;
-    $calsLeft = $cals - $todaysCals;
-    $protienLeft = $macros[0] - $todaysProtien;
-    $fatLeft = $macros[2] - $todaysFat;
+    $remainingMacros = getRemainingMacros($user_name);
 
     $params = array(
         'apiKey' => '29253a411e424ef3a1ab3f15779cd62f',
-        'maxCarbs' => $carbsLeft,
-        'maxCalories' => $calsLeft,
-        'maxProtein' => $protienLeft,
-        'maxFat' => $fatLeft,
+        'maxCarbs' => $remainingMacros[1],
+        'maxCalories' => $remainingMacros[0],
+        'maxProtein' => $remainingMacros[2],
+        'maxFat' => $remainingMacros[3],
         'number' => $number,
         'random' => true
     );
@@ -59,4 +39,4 @@ function getMeal($user_name, $number = 5)
     return $json;
 }
 
-// getMeal("chad");
+getMeal("chad");
