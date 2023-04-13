@@ -22,7 +22,8 @@ function getConnection()
  * @param string $recipe_name The name of the recipe.
  * @return int The ID of the recipe.
  */
-function getRestrictionId(string $restriction_name) {
+function getRestrictionId(string $restriction_name)
+{
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT restriction_id FROM restrictions WHERE restriction_name = '$restriction_name';");
   $row = mysqli_fetch_row($result);
@@ -34,7 +35,8 @@ function getRestrictionId(string $restriction_name) {
  * @param int $restriction_id The ID of the restriction.
  * @return string The name of the restriction.
  */
-function getRestrictionName(int $restriction_id) {
+function getRestrictionName(int $restriction_id)
+{
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "SELECT restriction_name FROM restrictions WHERE restriction_id = '$restriction_id';");
   $row = mysqli_fetch_row($result);
@@ -47,7 +49,8 @@ function getRestrictionName(int $restriction_id) {
  * @param array $restrictions An array of strings representing the user's restrictions.
  * @return bool True if the restrictions were set successfully, false otherwise.
  */
-function addRestrictions(string $user_name, array $restrictions) {
+function addRestrictions(string $user_name, array $restrictions)
+{
   $user_id = getIDFromUsername($user_name);
   // print_r($user_id);
   $mysqli = getConnection();
@@ -67,7 +70,8 @@ function addRestrictions(string $user_name, array $restrictions) {
  * @param array $restrictions An array of strings representing the user's restrictions.
  * @return bool True if the restrictions were removed successfully, false otherwise.
  */
-function removeRestriction(string $user_name, array $restrictions) {
+function removeRestriction(string $user_name, array $restrictions)
+{
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   for ($i = 0; $i < count($restrictions); $i++) {
@@ -161,30 +165,31 @@ function trackCaloriesAndMacros(string $user_name, string $meal_name, string $da
  * @return array An array of the user's daily calories and macros in the form [cals, carbs, protien, fat].
  */
 
-function getRemainingMacros(string $user_name) {
+function getRemainingMacros(string $user_name)
+{
   $macros = getMacroGoals($user_name);
-    $cals = getCalorieGoals($user_name);
+  $cals = getCalorieGoals($user_name);
 
-    $dailyMacros = getDailyCalories($user_name, date("y-m-d"));
+  $dailyMacros = getDailyCalories($user_name, date("y-m-d"));
 
-    $todaysCarbs = 0;
-    $todaysCals = 0;
-    $todaysProtien = 0;
-    $todaysFat = 0;
+  $todaysCarbs = 0;
+  $todaysCals = 0;
+  $todaysProtien = 0;
+  $todaysFat = 0;
 
-    foreach ($dailyMacros as $macro) {
-        $todaysCarbs += $macro[2];
-        $todaysCals += $macro[0];
-        $todaysProtien += $macro[1];
-        $todaysFat += $macro[3];
-    }
+  foreach ($dailyMacros as $macro) {
+    $todaysCarbs += $macro[2];
+    $todaysCals += $macro[0];
+    $todaysProtien += $macro[1];
+    $todaysFat += $macro[3];
+  }
 
-    $carbsLeft = $macros[1] - $todaysCarbs;
-    $calsLeft = $cals - $todaysCals;
-    $protienLeft = $macros[0] - $todaysProtien;
-    $fatLeft = $macros[2] - $todaysFat;
+  $carbsLeft = $macros[1] - $todaysCarbs;
+  $calsLeft = $cals - $todaysCals;
+  $protienLeft = $macros[0] - $todaysProtien;
+  $fatLeft = $macros[2] - $todaysFat;
 
-    return [$calsLeft, $carbsLeft, $protienLeft, $fatLeft];
+  return [$calsLeft, $carbsLeft, $protienLeft, $fatLeft];
 }
 
 

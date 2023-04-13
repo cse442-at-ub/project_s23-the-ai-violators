@@ -39,4 +39,4 @@ function getMeal($user_name, $number = 5)
     return $json;
 }
 
-// getMeal("chad");
+getMeal("chad");
