@@ -31,32 +31,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
 
 
 
-    <nav class="navbar navbar-expand-lg bg-secondary-subtle">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                nutr.io
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav m-auto ">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/">Content Page</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/" onclick="sessionStorage.removeItem('username')">Logout</a>
-                    </li>
-
-                </ul>
-
-            </div>
-        </div>
-    </nav>
+    <?php include "../../templates/navbar.php" ?>
 
     <p class="fs-1">Your Profile
     <p>
@@ -141,13 +116,13 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         <h6 class="mb-0">Restrictions:</h6>
                     </div>
                     <div class="col-sm-6 text-secondary">
-<?php
-    $out = "";
-    for ($i=0; $i<count($userRestrictions); $i++) {
-        $out .= $userRestrictions[$i] . ", ";
-    }
-    echo $out;
-?>
+                        <?php
+                        $out = "";
+                        for ($i = 0; $i < count($userRestrictions); $i++) {
+                            $out .= $userRestrictions[$i] . ", ";
+                        }
+                        echo $out;
+                        ?>
                     </div>
                 </div>
                 <hr>
@@ -161,7 +136,6 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
 
 </body>
 

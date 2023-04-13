@@ -3,11 +3,11 @@ session_start();
 
 // Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_name'])) {
-    header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
-    exit();
+  header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+  exit();
 }
 
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,28 +26,13 @@ if (!isset($_SESSION['user_name'])) {
 </head>
 
 <body>
-  
-  <div class="navbar">
-    <a id="NUTRIO" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content">
-      <div>
-        <img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
-        <p id="logoName">nutr.io</p>
-      </div>
-    </a>
-    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile Page</a>
-    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation">Recomendations</a>
-    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
-    <div>
-      <div id="username">%Cusername%</div>
-    </div>
 
-  </div>
+  <?php include "../../templates/navbar.php" ?>
 
   <h1>Add a meal or snack</h1>
   <div id="trackForm">
     <form method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/handleIntake.php">
-      <div class = "dateIn">
+      <div class="dateIn">
         <label for="date">Date</label>
         <input type="date" id="date" name="date" required>
         <label for="meal">Meal</label>
@@ -59,23 +44,23 @@ if (!isset($_SESSION['user_name'])) {
         <button id="dinner" type="button">Dinner</button>
         <button id="snack" type="button">Snack</button>
       </div-->
-      <div class = "cal">
+      <div class="cal">
         <label for="calories">Calories</label>
         <input type="number" name="calories" id="calories" required>
       </div>
-      <div class = "carb"> 
+      <div class="carb">
         <label for="carbs">Carbs</label>
         <input type="number" name="carbs" id="carbs" placeholder="             g" required>
       </div>
-      <div class = "pro">
+      <div class="pro">
         <label for="protein">Protein</label>
         <input type="number" name="protein" id="protein" placeholder="             g" required>
       </div>
-      <div class = "fat">
+      <div class="fat">
         <label for="fats">Fats</label>
         <input type="number" name="fats" id="fats" placeholder="             g" required>
       </div>
-      <div class = "sub">
+      <div class="sub">
         <button id="add" type="submit">Add</button>
       </div>
     </form>
@@ -89,4 +74,5 @@ if (!isset($_SESSION['user_name'])) {
   <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/track.js"></script>
 
 </body>
+
 </html>
