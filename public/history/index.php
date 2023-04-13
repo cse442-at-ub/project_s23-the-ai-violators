@@ -7,6 +7,8 @@ if (!isset($_SESSION['user_name'])) {
     exit();
 }
 
+require __DIR__ . "../../../config/database.php";
+
 ?> 
 
 <!DOCTYPE html>
@@ -45,74 +47,60 @@ if (!isset($_SESSION['user_name'])) {
   <h1>Lets see how you did last week...</h1>
 
   <div id="box">
-    <div id="current">
-      <h2 class ="tday">Today Mon. 4/3</h2>
-      <div id="lable">
-        <h2 class ="mac">Carbs</h2>
-        <h2 class ="mac">Protein</h2>
-        <h2 class ="mac">Fats</h2>
-        <h2 class ="cal">Calories</h2>
-      </div>
-      <div id="g">
-        <h2 class ="goals">110g / 216</h2>
-        <h2 class ="goals">420g / 600</h2>
-        <h2 class ="goals">51g / 72</h2>
-        <h2 class ="cgoals">2278 / 2800</h2>
-      </div>
-      <hr size="1" color="black" width= "1050px">
-      <div id="date">
-        <h2 class ="d">Sun. 4/2</h2>
-        <h2 class ="d">Sat. 4/1</h2>
-        <h2 class ="d">Fri. 3/31</h2>
-        <h2 class ="d">Thu. 3/30</h2>
-        <h2 class ="d">Wed. 3/29</h2>
-        <h2 class ="d">Tue. 3/28</h2>
-        <h2 class ="d">Mon. 3/27</h2>
-      </div>
-      <div id="week">
-        <h2 class ="w">110g / 216</h2>
-        <h2 class ="w">420g / 600</h2>
-        <h2 class ="w">51g / 72</h2>
-        <h2 class ="cw">2278 / 2800</h2>
-      </div>
-      <div id="week">
-        <h2 class ="w">110g / 216</h2>
-        <h2 class ="w">420g / 600</h2>
-        <h2 class ="w">51g / 72</h2>
-        <h2 class ="cw">2278 / 2800</h2>
-      </div>
-      <div id="week">
-        <h2 class ="w">110g / 216</h2>
-        <h2 class ="w">420g / 600</h2>
-        <h2 class ="w">51g / 72</h2>
-        <h2 class ="cw">2278 / 2800</h2>
-      </div>
-      <div id="week">
-        <h2 class ="w">110g / 216</h2>
-        <h2 class ="w">420g / 600</h2>
-        <h2 class ="w">51g / 72</h2>
-        <h2 class ="cw">2278 / 2800</h2>
-      </div>
-      <div id="week">
-        <h2 class ="w">110g / 216</h2>
-        <h2 class ="w">420g / 600</h2>
-        <h2 class ="w">51g / 72</h2>
-        <h2 class ="cw">2278 / 2800</h2>
-      </div>
-      <div id="week">
-        <h2 class ="w">110g / 216</h2>
-        <h2 class ="w">420g / 600</h2>
-        <h2 class ="w">51g / 72</h2>
-        <h2 class ="cw">2278 / 2800</h2>
-      </div>
-      <div id="week">
-        <h2 class ="w">110g / 216</h2>
-        <h2 class ="w">420g / 600</h2>
-        <h2 class ="w">51g / 72</h2>
-        <h2 class ="cw">2278 / 2800</h2>
-      </div>
+    <div class="historyContainer">
+      <form id = "form">
+          <table id = "myTable" class="GeneratedTable">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Meal</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Carbs</th>
+                    <th>Fats</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                <?php
+                $row = array();
+                $rowId = array();
+                $meals = getHistory($_SESSION['user_name']);
+                for ($i = 0; $i < count($meals); $i++) {
+                    $output = "";
+                    $meal = $meals[$i];
+                    $output .= "<tr><td>$meal[3]</td>";
+                    $output .= "<td class = 'tableMeal'>$meal[2]</td>";
+                    $output .= "<td class = 'tableCalories'>$meal[4]</td>";
+                    $output .= "<td class = 'tableProtein'>$meal[5]</td>";
+                    $output .= "<td class = 'tableCarbs'>$meal[6]</td>";
+                    $output .= "<td class = 'tableFats'>$meal[7]</td>";
+                    $output .= "<td class = 'tableId'>$meal[1]</td>";
+                    $row[] = $output;
+                    $rowId[] = $meal[1];
+                }
+
+                for ($i = 0; $i < count($row); $i++) {
+                  echo $row[$i];
+                  ?>
+                  <td class = "edit"><button onclick="findRow(<?php echo $rowId[$i];?>)">Edit</td>
+                  <td class = 'delete'><button type ="button" onclick="del(<?php echo $rowId[$i];?>)">Delete</td></tr>
+                  <?php
+                }
+                ?>
+
+            </tbody>
+
+        </div>
+        </table>
+      </form>
     </div>
   </div>
+
+  <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/history/history.js"></script>
 
 </body>
 </html>
