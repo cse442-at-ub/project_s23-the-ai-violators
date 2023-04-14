@@ -48,16 +48,16 @@
 
 <script>
     // dont use jquery for this
-    function logout() {
-        fetch('/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/logout.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then(res => {
-            if (res.status === 200) {
-                window.location.href = "/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login";
-            }
-        })
-    }
+    fetch('/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/logout.php', {
+        method: 'POST'
+    }).then(response => {
+        if (response.ok) {
+            console.log('Logged out successfully');
+            // Redirect or perform any other action after successful logout
+        } else {
+            console.error('Logout failed');
+        }
+    }).catch(error => {
+        console.error('Error during logout:', error);
+    });
 </script>
