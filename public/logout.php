@@ -1,10 +1,9 @@
 <?php
-function logout() {
-    session_start();
-    session_destroy();
-}
+session_start();
+$_SESSION = array();
+session_destroy();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    logout();
-}
-?>
+
+header("X-Redirect-URL: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/");
+echo json_encode(['redirect' => true]);
+exit();
