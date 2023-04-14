@@ -24,7 +24,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation/">Recomendation Page</a>
                 <li class="nav-item">
-                    <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/" onclick="logout()">Logout</a>
+                    <button class="nav-link" onclick="logout()">Logout</button>
                 </li>
 
             </ul>
@@ -48,16 +48,21 @@
 
 <script>
     // dont use jquery for this
-    fetch('/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/logout.php', {
-        method: 'POST'
-    }).then(response => {
-        if (response.ok) {
-            console.log('Logged out successfully');
-            // Redirect or perform any other action after successful logout
-        } else {
-            console.error('Logout failed');
-        }
-    }).catch(error => {
-        console.error('Error during logout:', error);
-    });
+    function logout() {
+        fetch('/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/logout.php', {
+            method: 'POST'
+        }).then(response => {
+            if (response.ok) {
+                if (response.headers.get("X-Redirect-Url")) {
+                    window.location.href = response.headers.get("X-Redirect-Url");
+                }
+                console.log('Logged out successfully');
+                // Redirect or perform any other action after successful logout
+            } else {
+                console.error('Logout failed');
+            }
+        }).catch(error => {
+            console.error('Error during logout:', error);
+        });
+    }
 </script>
