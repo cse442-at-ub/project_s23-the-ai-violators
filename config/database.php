@@ -30,6 +30,32 @@ function getRestrictionId(string $restriction_name)
   return $row[0];
 }
 
+function reccomendExercise(string $user_name, int $num)
+{
+  $mysqli = getConnection();
+  $user_id = getIDFromUsername($user_name);
+  $user_info = getUserInfo($user_name);
+  $goal = $user_info[10];
+  $query = "";
+  if ($goal == "CUT") {
+    $query = "SELECT * FROM exercises WHERE exercise_type = 'aerobic' ORDER BY RAND() LIMIT $num";
+  } else if ($goal == "BULK") {
+    $query = "SELECT * FROM exercises WHERE exercise_type = 'anaerobic' ORDER BY RAND() LIMIT $num";
+  } else {
+    $query = "SELECT * FROM exercises ORDER BY RAND() LIMIT $num";
+  }
+  
+  $excersises = array();
+  
+  $result = mysqli_query($mysqli, $query);
+  while ($row = mysqli_fetch_row($result)) {
+    $excersises[] = $row;
+  }
+
+  return $excersises;
+}
+
+
 /**
  *  Retrieves all meal input history for a given user.
  *  @param string $user_name The username of the user whose meal input history should be retrieved.
