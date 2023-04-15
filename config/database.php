@@ -31,6 +31,23 @@ function getRestrictionId(string $restriction_name)
 }
 
 /**
+ *  Retrieves all meal input history for a given user.
+ *  @param string $user_name The username of the user whose meal input history should be retrieved.
+ *  @return array A 2D Matrix with rows in the form [userID, mealID, meal_name, date, calories, carbs, protein, fats]. Each row is a seperate meal.
+ */
+function getHistory(string $user_name)
+{
+  $user_id = getIDFromUsername($user_name);
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT * FROM daily_intake WHERE user_id='$user_id'");
+  $rows = array();
+  while ($row = mysqli_fetch_row($result)) {
+    $rows[] = $row;
+  }
+  return $rows;
+}
+
+/**
  * Returns the name of a restriction given its ID.
  * @param int $restriction_id The ID of the restriction.
  * @return string The name of the restriction.
