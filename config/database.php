@@ -136,20 +136,6 @@ function trackCaloriesAndMacros(string $user_name, string $meal_name, string $da
   }
 }
 
-function edit(string $user_name, string $meal_name, string $date, float $calories, float $protein, float $carbs, float $fat, float $mId)
-{
-  // echo "HELLO! This probaly worked, but useres arent set up yet, so expect error";
-  $user_id = getIDFromUsername($user_name);
-  $mysqli = getConnection();
-  $result = mysqli_query($mysqli, "UPDATE daily_intake SET meal_name = '$meal_name', date = '$date', calories = '$calories', protein ='$protein', carbs = '$carbs', fat = '$fat' WHERE user_id='$user_id' AND meal_id='$mId'");
-  // echo $result;
-  if ($result) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 
 /**
  *  Retrieves the daily calorie goal for the given user.
@@ -196,31 +182,6 @@ function getDailyCalories(string $user_name, string $date)
     $rows[] = $row;
   }
   return $rows;
-}
-
-function getHistory(string $user_name)
-{
-  $user_id = getIDFromUsername($user_name);
-  $mysqli = getConnection();
-  $result = mysqli_query($mysqli, "SELECT * FROM daily_intake WHERE user_id='$user_id'");
-  $rows = array();
-  while ($row = mysqli_fetch_row($result)) {
-    $rows[] = $row;
-  }
-  return $rows;
-}
-
-function del(string $user_name, string $id)
-{
-  $user_id = getIDFromUsername($user_name);
-  $mysqli = getConnection();
-  $result = mysqli_query($mysqli, "DELETE FROM daily_intake WHERE user_id='$user_id' AND meal_id='$id'");
-  
-  if ($result) {
-    return true;
-  } else {
-    return false;
-  }
 }
 
 
