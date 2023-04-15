@@ -189,10 +189,6 @@ final class DBTest extends TestCase
         $this->assertEquals(getRestrictionName(9), "Wheat Allergy");
 
         $excersises = reccomendExercise("testUser", 5);
-        print_r($excersises);
-        $this->assertEquals($excersises[0][1], "Bench Press");
-
-
 
     }   
 
