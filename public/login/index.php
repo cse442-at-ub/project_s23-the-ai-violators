@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,38 +15,40 @@
 </head>
 
 <body>
-    <div id="name">
-        <h1>nutr.io</h1>
-        <h3>nutrition made easy</h1>
-            <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="It's a carrot" />
-    </div>
-    <div id="loginForm">
-        <h2>login</h2>
-        <form method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/handleIntake.php">
-            <div class="userInfo">
-                <label for="username">username:</label>
-                <input type="text" id="username" name="username" placeholder="username" required>
-            </div>
-            <div class="userInfo">
-                <label for="password">password:</label>
-                <input type="password" name="password" id="password" placeholder="password" required>
-            </div>
-            <!--div class = "remember"> 
-            <label for="remember">remember me</label>
-            <input type="checkbox" id="remember" name="remember">
-        </div-->
-            <button type="submit" id="button">Login</button>
-        </form>
-        <footer>don't have an account? <span><a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup">signup</a></span>
-        </footer>
-
-        <div class="error-msg">
-            <i class="fa fa-times-circle"></i>
-            %Error%
+    <div class="con">
+        <div id="name">
+            <h1>nutr.io</h1>
+            <h3>nutrition made easy</h1>
+                <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="It's a carrot" />
         </div>
-    </div>
+        <div id="loginForm">
+            <h2>login</h2>
+            <form method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/handleIntake.php">
+                <div class="userInfo">
+                    <label for="username">username:</label>
+                    <input type="text" id="username" name="username" placeholder="username" required>
+                </div>
+                <div class="userInfo">
+                    <label for="password">password:</label>
+                    <input type="password" name="password" id="password" placeholder="password" required>
+                </div>
+                <!--div class = "remember"> 
+                <label for="remember">remember me</label>
+                <input type="checkbox" id="remember" name="remember">
+            </div-->
+                <button type="submit" id="button">Login</button>
+            </form>
+            <footer>don't have an account? <span><a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup">signup</a></span>
+            </footer>
 
-    <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/login.js"></script>
+            <div class="error-msg">
+                <i class="fa fa-times-circle"></i>
+                %Error%
+            </div>
+
+
+        <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/login.js"></script>
+    </div>
 </body>
 
 </html>
