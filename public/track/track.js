@@ -33,12 +33,10 @@ let submit = document.getElementById("submitButton")
 let form = document.getElementsByTagName("form")[0]
 
 let errorCircle = '<i class="fa fa-times-circle"></i>'
-let error = document.querySelector(".error-msg")
+let error = document.getElementById("er")
 
-let user = document.querySelector('#username')
-user.innerText = sessionStorage.getItem('username')
-
-
+//let user = document.querySelector('#username')
+let user = sessionStorage.getItem('username')
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
