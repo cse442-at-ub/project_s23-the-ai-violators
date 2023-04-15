@@ -129,6 +129,18 @@ final class DBTest extends TestCase
 
     }
 
+    public function testGetHistory(): void {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+        $date = date("Y-m-d");
+
+
+        $history = getHistory("testUser");
+        $this->assertEquals($history,[]);
+
+    }
+
     public function testTrackCaloriesAndMacros(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
