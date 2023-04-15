@@ -9,39 +9,8 @@ body {
     margin: 0;
 }
 
-#logoName {
-    margin: 5px;
-    font-weight: 700;
-    font-size: 25px;
-    text-align: left;
-    display: inline-block;
-}
 
-#carrot {
-    width: 40px;
-    float: left;
-    padding-left: 5px;
-    /*padding-left: 1.2rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;*/
-}
 
-#username {
-    float: right;
-    padding-right: 1.4rem;
-}
-
-.navbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    /*border: 1px solid rgb(168, 168, 168);*/
-    border-top: none;
-    width: 100%;
-    background-color: #D9D9D9;
-}
 
 h1 {
     text-align: center;
@@ -78,12 +47,29 @@ h2 {
 
 #trackForm {
     margin: auto;
-    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: 2rem;
-    max-width: 999px;
-    height: 600px;
+    width: 85%;
+    height: 675px;
     background: #D9D9D9;
 }
+
+.inputs{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.sub{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
 
 label {
     display: inline-block;
@@ -108,7 +94,6 @@ label {
     margin-right: 15px;
     font-size: 15px;
 }
-
 
 .meals {
     text-align: center;
@@ -138,8 +123,7 @@ label {
 
 .cal label {
     display: block;
-    margin-left: 220px;
-    margin-top: 100px;
+    margin-left: 15%;
     width: 50px;
 }
 
@@ -148,10 +132,7 @@ label {
     box-sizing: content-box;
     border-radius: .5em;
     border: none;
-    margin: 20px;
-    margin-top: 20px;
-    margin-left: 190px;
-    margin-right: 80px;
+    
     font-size: 40px;
     padding: 10px 10px;
     height: 80px;
@@ -159,72 +140,48 @@ label {
     text-align: center;
 }
 
-.carb {
-    float: right;
-    margin-top: 60px;
-    margin-right: 141px;
-}
+
 
 .carb input {
     padding: 1px 1px;
     box-sizing: content-box;
     border-radius: .5em;
     border: none;
-    margin: 20px;
-    margin-left: 48px;
+   
     width: 100px;
     height: 35px;
     font-size: 20px;
     text-align: center;
 }
 
-.pro {
-    float: right;
-    margin-top: 20px;
-    margin-right: 143px;
-}
+
 
 .pro input {
     padding: 1px 1px;
     box-sizing: content-box;
     border-radius: .5em;
     border: none;
-    margin: 20px;
     width: 100px;
     height: 35px;
     font-size: 20px;
     text-align: center;
 }
 
-.fat {
-    float: right;
-    margin-top: 20px;
-    margin-right: 143px;
-}
 
 .fat input {
     padding: 1px 1px;
     box-sizing: content-box;
     border-radius: .5em;
     border: none;
-    margin: 20px;
-    margin-left: 67px;
     width: 100px;
     height: 35px;
     font-size: 20px;
     text-align: center;
 }
 
-.sub {
-    position: relative;
-    top: 60px;
-    left: 400px;
-    height: 5px;
-}
 
 
-
-button {
+.sub button {
     border: none;
     color: white;
     text-align: center;
@@ -234,7 +191,7 @@ button {
     cursor: pointer;
     /*margin-top: 0.5rem;*/
     margin-top: 20px;
-    margin-bottom: 1px;
+    margin-bottom: 0px;
     font-size: 15px;
 
 }
@@ -259,7 +216,7 @@ form div {
     font-size: .8em;
     text-align: center;
     /*margin-top: 460px*/
-    margin-top: 440px;
+    margin-top: 0px;
 }
 
 .error-msg {
