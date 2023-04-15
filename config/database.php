@@ -47,6 +47,7 @@ function getHistory(string $user_name)
   return $rows;
 }
 
+
 /**
  * Returns the name of a restriction given its ID.
  * @param int $restriction_id The ID of the restriction.
