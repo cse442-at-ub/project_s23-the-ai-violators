@@ -8,35 +8,41 @@ require __dir__ . '/database.php';
  * @param int $number Optional, defauts to 5; The number of meals to return
  * @return json a json object containing the meals
  */
-function getMeal($user_name, $number = 5)
+function getMeal($user_name, $number = 3)
 {
-    $endpoint = 'https://api.spoonacular.com/recipes/findByNutrients';
+    $endpoint = 'https://api.spoonacular.com/recipes/complexSearch';
 
     $remainingMacros = getRemainingMacros($user_name);
 
     $params = array(
-        'apiKey' => '29253a411e424ef3a1ab3f15779cd62f',
-        'maxCarbs' => $remainingMacros[1],
-        'maxCalories' => $remainingMacros[0],
-        'maxProtein' => $remainingMacros[2],
-        'maxFat' => $remainingMacros[3],
+        'apiKey' => '4a9fc2eb8037493eb0eb80171d999ce9',
+        'maxCarbs' => (int)$remainingMacros[1],
+        'maxCalories' => (int)$remainingMacros[0],
+        'maxProtein' => (int)$remainingMacros[2],
+        'maxFat' => (int)$remainingMacros[3],
         'number' => $number,
-        'random' => true
+        'sort' => 'random'
     );
 
     $url = $endpoint . '?' . http_build_query($params);
 
-    print_r($url);
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
 
+    // Set the cURL options
+    curl_setopt($ch, CURLOPT_URL, $url); // Set the URL
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Return the response as a string
+    curl_setopt($ch, CURLOPT_HEADER, false); // Exclude the header from the response
 
+    // Execute the API call and get the response
     $response = curl_exec($ch);
 
-    $json = json_decode($response, true);
-
-    return $json;
+    // Check for cURL errors
+    if (curl_errno($ch)) {
+        echo 'Error: ' . curl_error($ch);
+    } else {
+        // Process the API response
+        $json = json_decode($response, true); // Decode the JSON response into an associative array
+        return $json['results'];
+    }
 }
-
-getMeal("chad");
