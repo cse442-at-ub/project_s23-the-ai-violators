@@ -3,11 +3,11 @@ session_start();
 
 // Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_name'])) {
-    header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
-    exit();
+  header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+  exit();
 }
 
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_name'])) {
   <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey/survey.css">
   <link rel="stylesheet" href="survey.css">
 
-  
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,71 +27,72 @@ if (!isset($_SESSION['user_name'])) {
 </head>
 
 
-<div id ="surveyForm">
-<body>
+<div id="surveyForm">
+
+  <body>
     <h1>Nutr.io</h1>
     <div>
       <h2>Tell us a little bit about you and your nutritional goals!</h2>
-      <form action="survey/surveyIntake.php" method ="POST">
-        
+      <form action="survey/surveyIntake.php" method="POST">
+
         <div>
           <h4>How old are you?</h4>
         </div>
 
-        <div class = "userInfoNum">
-          <input type="number" name="age" id="age" placeholder="Enter Your Age" min = "1" max="150" oninput="check()" required>
-      </div>
+        <div class="userInfoNum">
+          <input type="number" name="age" id="age" placeholder="Enter Your Age" min="1" max="150" oninput="check()" required>
+        </div>
 
         <div>
-            <h4>What is your sex?</h4>
-          </div>
-          <div class = "box">
-
-            <select name = "sex">
-              <option value="" disabled selected>Select your sex...</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
+          <h4>What is your sex?</h4>
         </div>
-      
+        <div class="box">
+
+          <select name="sex">
+            <option value="" disabled selected>Select your sex...</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
         <div>
           <h4>What is your height and weight?</h4>
-          </div>
+        </div>
 
-          <div class = "userInfoNum2">
-        
-          
-          <input type="number" name="height" id="height" placeholder="Enter Your Height(In)" min = "1" max="999" oninput="check()" required>
-          
-          
-          <input type="number" name="weight" id="weight" placeholder="Enter Your Weight(lbs)" min = "1" max="999" oninput="check()" required>
-          
-        
+        <div class="userInfoNum2">
+
+
+          <input type="number" name="height" id="height" placeholder="Enter Your Height(In)" min="1" max="999" oninput="check()" required>
+
+
+          <input type="number" name="weight" id="weight" placeholder="Enter Your Weight(lbs)" min="1" max="999" oninput="check()" required>
+
+
         </div>
 
         <div>
-            <h4>What fitness goal best highlights what you're trying to achieve?</h4>
-          </div>
-
-          <div class = "box">
-            <select name="goal" id="goal">
-              <option value="" disabled selected>Select your goal...</option>
-              <option value="cut">Lose Weight/Cut</option>
-              <option value="bulk">Gain Weight/Bulk</option>
-              <option value="maintain">Maintain</option>
-            </select>  
+          <h4>What fitness goal best highlights what you're trying to achieve?</h4>
         </div>
-        
+
+        <div class="box">
+          <select name="goal" id="goal">
+            <option value="" disabled selected>Select your goal...</option>
+            <option value="cut">Lose Weight/Cut</option>
+            <option value="bulk">Gain Weight/Bulk</option>
+            <option value="maintain">Maintain</option>
+          </select>
+        </div>
+
         <div>
           <h4>Set a starting daily calorie goal:</h4>
         </div>
 
-        <div class = "userInfoNum">
-          <input type="number" name="calorie" id="calorie" placeholder="Enter Your Goal" min = "1" max="9999999" oninput="check()" required>
-      </div>
-        
+        <div class="userInfoNum">
+          <input type="number" name="calorie" id="calorie" placeholder="Enter Your Goal" min="1" max="9999999" oninput="check()" required>
+        </div>
+
         <div>
-            <h4>What food macros are you looking to center recommendations around?</h4>
+          <h4>What food macros are you looking to center recommendations around?</h4>
         </div>
         <div>
           <input type="radio" id="protien" name="macros" value="protien">
@@ -105,56 +106,56 @@ if (!isset($_SESSION['user_name'])) {
           <h4>Do you have any dietary restrictions?</h4>
         </div>
         <div>
-          <input type="checkbox" id="lactose" name="lactose" checked>
+          <input type="checkbox" id="lactose" name="lactose">
           <label for="lactose">Lactose Intolerance</label>
-          <input type="checkbox" id="" name="gluten" checked>
+          <input type="checkbox" id="" name="gluten">
           <label for="gluten">Gluten Intolerance</label>
-          <input type="checkbox" id="vegetarian" name="vegetarian" checked>
+          <input type="checkbox" id="vegetarian" name="vegetarian">
           <label for="vegetarian">Vegetarian</label>
-          <input type="checkbox" id="vegan" name="vegan" checked>
+          <input type="checkbox" id="vegan" name="vegan">
           <label for="vegan">Vegan</label>
-          <input type="checkbox" id="kosher" name="kosher" checked>
+          <input type="checkbox" id="kosher" name="kosher">
           <label for="kosher">Kosher</label>
-          <input type="checkbox" id="dairy" name="dairy" checked>
+          <input type="checkbox" id="dairy" name="dairy">
           <label for="dairy">Dairy Free</label>
-          <input type="checkbox" id="peanuts" name="peanuts" checked>
+          <input type="checkbox" id="peanuts" name="peanuts">
           <label for="peanuts">Peanut Allergy</label>
-          <input type="checkbox" id="fish" name="fish" checked>
+          <input type="checkbox" id="fish" name="fish">
           <label for="fish">Fish/Shellfish Allergy</label>
-          <input type="checkbox" id="wheat" name="wheat" checked>
+          <input type="checkbox" id="wheat" name="wheat">
           <label for="wheat">Wheat Allergy</label>
 
-        
-        
+
+
         </div>
-        
+
         <div>
           <h4>On a scale from 1 (not acive at all) to 7 (extremely active), how would you describe your activity level?</h4>
         </div>
 
-        <div class = "userInfoNum">
-          <input type="number" name="actlevel" id="actlevel" placeholder="Enter Your Level" min = "1" max="7" oninput="check()" required>
-      </div>
+        <div class="userInfoNum">
+          <input type="number" name="actlevel" id="actlevel" step="0.001" min="0" placeholder="Enter Your Level" oninput="check()" required>
+        </div>
 
         <div>
-        
-          <button id="submitButton" type="submit"  onclick="window.location.href= 'www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/'">
-          Get Started
+
+          <button id="submitButton" type="submit" onclick="window.location.href= 'www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/'">
+            Get Started
           </button>
-        
-      </div> 
-     
+
+        </div>
+
       </form>
-      
-  
-      
-    
+
+
+
+
     </div>
-  </div> 
-  
-  
-    <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey/survey.js"></script>
-    <script src="surver.js"></script>
-  </body>
-  
-  </html>
+</div>
+
+
+<script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey/survey.js"></script>
+<script src="surver.js"></script>
+</body>
+
+</html>

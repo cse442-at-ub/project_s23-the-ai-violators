@@ -324,9 +324,9 @@ function storeSurveyInformation(string $user_name, int $height, int $weight, str
   $bmr = 0;
 
   if ($sex == "MALE") {
-    $bmr = 88.362 + (6.23 * $weight) + (12.7 * $height) - (6.76 * $age);
+    $bmr = 66.47 + (6.24 * $weight) + (12.7 * $height) - (6.75 * $age);
   } else {
-    $bmr = 447.593 + (4.3 * $weight) + (4.7 * $height) - (4.68 * $age);
+    $bmr = 65.51 + (4.3 * $weight) + (4.7 * $height) - (4.68 * $age);
   }
 
   $targetCAL = $bmr * $activityLvl;
