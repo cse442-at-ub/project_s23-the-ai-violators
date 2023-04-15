@@ -9,8 +9,8 @@ let mId
 let submit = ""
 let form = document.getElementsByTagName("form")[0]
 
-let user = document.querySelector('#username')
-user.innerText = sessionStorage.getItem('username')
+//let user = document.querySelector('#username')
+let user= sessionStorage.getItem('username')
 
 function findRow(searchValue) {
     // Get the table by its ID

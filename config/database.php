@@ -97,11 +97,11 @@ function del(string $user_name, string $id)
  * @param string $user_name The username of the user.
  * @param string $meal_name New name of the meal input.
  * @param string $date New date of the meal input.
- * @param string $calories New calories of the meal input.
- * @param string $protein New protein of the meal input.
- * @param string $carbs New carbs of the meal input.
- * @param string $fat New fat of the meal input.
- * @param string $mId Meal id number of the meal input.
+ * @param float $calories New calories of the meal input.
+ * @param float $protein New protein of the meal input.
+ * @param float $carbs New carbs of the meal input.
+ * @param float $fat New fat of the meal input.
+ * @param float $mId Meal id number of the meal input.
  * @return bool True if the meal was edited successfully, false otherwise.
  */
 function edit(string $user_name, string $meal_name, string $date, float $calories, float $protein, float $carbs, float $fat, float $mId)
