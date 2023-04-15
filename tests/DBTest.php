@@ -98,7 +98,7 @@ final class DBTest extends TestCase
         $this->assertEquals($targetMacros[1], 597.461);
         $this->assertEquals($targetMacros[2], 70);
 
-        updateUserInfo("testUser", weight: 190);
+        updateUserInfo("testUser", null, 190, null, null, null, null, null, null, null, null);
 
         $this->assertEquals(getUserInfo('testUser')[2], 190);
 
@@ -134,8 +134,17 @@ final class DBTest extends TestCase
         createUser("testUser", "test@email.com", "testPassword");
         $date = date("Y-m-d");
         $userId = getIDFromUsername("testUser");
+
+        storeSurveyInformation("testUser", 70, 160, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+
         $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", "eggs", $date, 2000, 100, 100, 100);
         $this->assertTrue($didTrackCaloriesAndMacros);
+
+        $remaining = getRemainingMacros("testUser");
+        $this->assertEquals(intval($remaining[0]), 1494);
+        $this->assertEquals(intval($remaining[1]), 469);
+        $this->assertEquals($remaining[2], 92);
+        $this->assertEquals($remaining[3], -36);
 
         $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", "steak", $date, 2000, 100, 100, 100);
         $this->assertTrue($didTrackCaloriesAndMacros);
@@ -159,6 +168,14 @@ final class DBTest extends TestCase
 
         $didAddRestriction = addRestrictions("testUser", ['Lactose Intolerance','Gluten Intolerance']);
         $this->assertTrue($didAddRestriction);
+
+        removeRestriction("testUser", ["Lactose Intolerance"]);
+        $restrictions = getRestrictions("testUser");
+        $this->assertEquals($restrictions[0], "Gluten Intolerance");
+
+        removeRestriction("testUser", ["Gluten Intolerance"]);
+        $restrictions = getRestrictions("testUser");
+        $this->assertEquals($restrictions, []);
 
         $this->assertEquals(getRestrictionId("Lactose Intolerance"), 1);
         $this->assertEquals(getRestrictionId("Gluten Intolerance"), 2);

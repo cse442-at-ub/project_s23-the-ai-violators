@@ -10,149 +10,136 @@ if (!isset($_SESSION['user_name'])) {
 require __DIR__ . "../../../config/database.php";
 
 $userInfo = getUserInfo($_SESSION['user_name']);
+$userRestrictions = getRestrictions($_SESSION['user_name']);
 
-?> 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/profile.css">
-  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/profile.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="profile_test.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;800&display=swap" rel="stylesheet">
 </head>
 
 
-    <body>
-    <form>
-        
-        <div class = "userIcon">
-            <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/user.png" alt="">
-        </div>
-        
+<body>
 
 
-        <h1>Your Profile</h1>
-        <h2>Here's a look at you...</h2>
-       
-        <div id ="profileForm">
-        </div>
 
-        <div id ="userName">
-            <p> <?php echo $_SESSION['user_name'] ?> </p>
-        </div>
+    <?php include "../../templates/navbar.php" ?>
 
-        
-        <div id = "logout">
-            <button id="logoutButton" type="button" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'; sessionStorage.removeItem('username')">Logout</button>
-        </div>
-
-        <div id = "editProfile">
-        <button id="submitButton" type="button" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/'">
-            Edit Profile
-        </button>
-        </div>
+    <p class="fs-1">Your Profile
+    <p>
+    <p class="fs-4">Here's a look at you...
+    <p>
 
 
-        <div id ="email">
-            <p>chad69@gmail.com</p>
-        </div>
-        
-    
-        
-        <div class="navbar">
-        <a id="NUTRIO" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content">
-            <div>
-                <img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
-                <p id="logoName">nutr.io</p>
-            </div>
-        </a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile
-            Page</a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
+    <div class=".col6">
         <div>
-
-            <div id="username">
-                <p> <?php echo $_SESSION['user_name'] ?> </p>
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                    <p class="fs-3"><?php echo $_SESSION['user_name'] ?></p>
+                    <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/user.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                        <p class="text-secondary mb-1">timmy2time@gmail.com</p>
+                        <button class="btn btn-primary" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'; sessionStorage.removeItem('username')">Logout</button>
+                    </div>
+                </div>
             </div>
-
         </div>
-
     </div>
 
-
-        
-        <div id = "sex">
-            <p>Sex:</p>
+    <div class=".col6">
+        <div class="card mb-3">
+            <div class="card-body align-items-center text-center">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="mb-0">Sex:</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                        <?php echo $userInfo[4] ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="mb-0">Height:</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                        <?php echo $userInfo[1] ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="mb-0">Weight:</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                        <?php echo $userInfo[2] ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="mb-0">Current Goal:</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                        <?php echo $userInfo[10] ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="mb-0">Focus Macro:</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                        <?php echo $userInfo[11] ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="mb-0">Current Calorie Goal:</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                        <?php echo $userInfo[6] ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="mb-0">Restrictions:</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                        <?php
+                        $out = "";
+                        for ($i = 0; $i < count($userRestrictions); $i++) {
+                            $out .= $userRestrictions[$i] . ", ";
+                        }
+                        echo $out;
+                        ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit'">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div id = "sexDisplay">
-            <p> <?php echo $userInfo[4] ?> </p>
-        </div>
- 
-        
-        <div id = "height">
-            <p>Height:</p>
-        </div>
 
-        <div id = "heightDisplay">
-            <p> <?php echo $userInfo[1] ?> </p>
-        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
-        <div id = "weight">
-            <p>Weight:</p>
-        </div>
-        
-        <div id = "weightDisplay">
-            <p> <?php echo $userInfo[2] ?> </p>
-        </div>
+</body>
 
 
-        <div id = "curgoal">
-            <p>Current Goal:</p>
-        </div>
-
-        <div id = "goalDisplay">
-            <p> <?php echo $userInfo[10] ?> </p>
-        </div>
-
-        <div id = "macro">
-            <p>Focus Macro:</p>
-        </div>
-
-        <div id = "macroDisplay">
-            <p> <?php echo $userInfo[11] ?> </p>
-        </div>
-       
-        <div id = "calgoal">
-            <p>Current Calorie Goal:</p>
-        </div>
-
-        <div id = "calDisplay">
-            <p> <?php echo $userInfo[6] ?> </p>
-        </div>
-
-        <div id = "restrict">
-            <p>Restrictions:</p>
-        </div>
-
-
-
-
-
-
-    </form>
-    </body>
-
-  
 
 
 </html>

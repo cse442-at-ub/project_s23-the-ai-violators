@@ -30,24 +30,8 @@ require __DIR__ . "../../../config/database.php";
 
 <body>
 
-    <div class="navbar">
-        <a id="NUTRIO" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content">
-            <div>
-                <img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
-                <p id="logoName">nutr.io</p>
-            </div>
-        </a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile
-            Page</a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-        <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
-        <div>
-
-            <div id="username">%username%</div>
-
-        </div>
-
-    </div>
+   <?php include "../../templates/navbar.php" ?>
+    
 
     <div class="mainContent">
 
@@ -113,9 +97,11 @@ require __DIR__ . "../../../config/database.php";
 
 
                         <?php
+                        date_default_timezone_set('America/New_York');
                         $output = "";
                         $meals = getDailyCalories($_SESSION['user_name'], date("y-m-d"));
                         for ($i = 0; $i < count($meals); $i++) {
+                            //dsaf
                             $meal = $meals[$i];
                             $output .= "<tr><td> $meal[4] </td>";
                             $output .= "<td class = 'tableCalories'>" . $meal[0] .  "</td>";
@@ -142,6 +128,7 @@ require __DIR__ . "../../../config/database.php";
     <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/mainpage.js"></script>
     <script src="mainpage.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   
 </body>
 
 

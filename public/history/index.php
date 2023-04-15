@@ -3,8 +3,8 @@ session_start();
 
 // Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_name'])) {
-    header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
-    exit();
+  header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+  exit();
 }
 
 require __DIR__ . "../../../config/database.php";
@@ -28,23 +28,11 @@ require __DIR__ . "../../../config/database.php";
 </head>
 
 <body>
-  
-  <div class="navbar">
-    <a id="NUTRIO" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content">
-      <div>
-        <img id="carrot" src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="">
-        <p id="logoName">nutr.io</p>
-      </div>
-    </a>
-    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile Page</a>
-    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track Page</a>
-    <a href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/">Logout</a>
-    <div>
-      <div id="username">%Cusername%</div>
-    </div>
-  </div>
 
-  <h1>Lets see how you did last week...</h1>
+  <?php include "../../templates/navbar.php" ?>
+
+
+  <h1>Your meal history</h1>
 
   <div id="box">
     <div class="historyContainer">
@@ -103,4 +91,5 @@ require __DIR__ . "../../../config/database.php";
   <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/history/history.js"></script>
 
 </body>
+
 </html>
