@@ -24,6 +24,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation/">Recomendation Page</a>
                 <li class="nav-item">
+                    <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/exercise/">Exercise Page</a>
+                <li class="nav-item">
                     <button class="nav-link" onclick="logout()">Logout</button>
                 </li>
 
