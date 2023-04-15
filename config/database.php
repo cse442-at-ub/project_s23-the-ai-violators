@@ -31,6 +31,68 @@ function getRestrictionId(string $restriction_name)
 }
 
 /**
+ *  Retrieves all meal input history for a given user.
+ *  @param string $user_name The username of the user whose meal input history should be retrieved.
+ *  @return array A 2D Matrix with rows in the form [userID, mealID, meal_name, date, calories, carbs, protein, fats]. Each row is a seperate meal.
+ */
+function getHistory(string $user_name)
+{
+  $user_id = getIDFromUsername($user_name);
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT * FROM daily_intake WHERE user_id='$user_id'");
+  $rows = array();
+  while ($row = mysqli_fetch_row($result)) {
+    $rows[] = $row;
+  }
+  return $rows;
+}
+
+/**
+ * Deltes a users meal input.
+ * @param string $user_name The username of the user.
+ * @param string $id The id of the meal
+ * @return bool True if the meal was deleted successfully, false otherwise.
+ */
+function del(string $user_name, string $id)
+{
+  $user_id = getIDFromUsername($user_name);
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "DELETE FROM daily_intake WHERE user_id='$user_id' AND meal_id='$id'");
+  
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Edits a users meal input.
+ * @param string $user_name The username of the user.
+ * @param string $meal_name New name of the meal input.
+ * @param string $date New date of the meal input.
+ * @param string $calories New calories of the meal input.
+ * @param string $protein New protein of the meal input.
+ * @param string $carbs New carbs of the meal input.
+ * @param string $fat New fat of the meal input.
+ * @param string $mId Meal id number of the meal input.
+ * @return bool True if the meal was edited successfully, false otherwise.
+ */
+function edit(string $user_name, string $meal_name, string $date, float $calories, float $protein, float $carbs, float $fat, float $mId)
+{
+  $user_id = getIDFromUsername($user_name);
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "UPDATE daily_intake SET meal_name = '$meal_name', date = '$date', calories = '$calories', protein ='$protein', carbs = '$carbs', fat = '$fat' WHERE user_id='$user_id' AND meal_id='$mId'");
+  // echo $result;
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+/**
  * Returns the name of a restriction given its ID.
  * @param int $restriction_id The ID of the restriction.
  * @return string The name of the restriction.
