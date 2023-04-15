@@ -47,6 +47,50 @@ function getHistory(string $user_name)
   return $rows;
 }
 
+/**
+ * Deltes a users meal input.
+ * @param string $user_name The username of the user.
+ * @param string $id The id of the meal
+ * @return bool True if the meal was deleted successfully, false otherwise.
+ */
+function del(string $user_name, string $id)
+{
+  $user_id = getIDFromUsername($user_name);
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "DELETE FROM daily_intake WHERE user_id='$user_id' AND meal_id='$id'");
+  
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Edits a users meal input.
+ * @param string $user_name The username of the user.
+ * @param string $meal_name New name of the meal input.
+ * @param string $date New date of the meal input.
+ * @param string $calories New calories of the meal input.
+ * @param string $protein New protein of the meal input.
+ * @param string $carbs New carbs of the meal input.
+ * @param string $fat New fat of the meal input.
+ * @param string $mId Meal id number of the meal input.
+ * @return bool True if the meal was edited successfully, false otherwise.
+ */
+function edit(string $user_name, string $meal_name, string $date, float $calories, float $protein, float $carbs, float $fat, float $mId)
+{
+  $user_id = getIDFromUsername($user_name);
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "UPDATE daily_intake SET meal_name = '$meal_name', date = '$date', calories = '$calories', protein ='$protein', carbs = '$carbs', fat = '$fat' WHERE user_id='$user_id' AND meal_id='$mId'");
+  // echo $result;
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 /**
  * Returns the name of a restriction given its ID.
