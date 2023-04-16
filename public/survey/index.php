@@ -83,19 +83,13 @@ if (!isset($_SESSION['user_name'])) {
           </select>
         </div>
 
-        <div>
-          <h4>Set a starting daily calorie goal:</h4>
-        </div>
-
-        <div class="userInfoNum">
-          <input type="number" name="calorie" id="calorie" placeholder="Enter Your Goal" min="1" max="9999999" oninput="check()" required>
-        </div>
+      
 
         <div>
           <h4>What food macros are you looking to center recommendations around?</h4>
         </div>
         <div>
-          <input type="radio" id="protien" name="macros" value="protien">
+          <input type="radio" id="protein" name="macros" value="protein">
           <label for="protein">Proteins</label><br>
           <input type="radio" id="carbs" name="macros" value="carb">
           <label for="carb">Carbohydrates</label><br>
