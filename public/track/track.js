@@ -41,7 +41,8 @@ let user = sessionStorage.getItem('username')
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
     /*let res = await makeRequest('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/handleIntake.php/?username=' + sessionStorage.getItem("username") + '&date=' + date.value + '&meal=' + meal + '&calories=' + calories.value + '&carbs=' + carbs.value + '&protein=' + protein.value + '&fats=' + fats.value)*/
-    let res = await makeRequest('POST', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/handleIntake.php/',  [sessionStorage.getItem("username"),  date.value, meal.value, calories.value, carbs.value, protein.value, fats.value])
+    let res = await makeRequest('POST', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/handleIntake.php/',
+        [sessionStorage.getItem("username"), date.value, meal.value, calories.value, carbs.value, protein.value, fats.value])
 
 
     if (res.includes("2")) { // failed to login
@@ -59,7 +60,7 @@ function makeRequest(method, url, data) {
         formData = new FormData();
         formData.append("username", data[0])
         formData.append("date", data[1])
-        formData.append("meal", data[2])        
+        formData.append("meal", data[2])
         formData.append("calories", data[3])
         formData.append("protein", data[4])
         formData.append("carbs", data[5])

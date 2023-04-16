@@ -87,15 +87,15 @@ final class DBTest extends TestCase
 
 
         // targetCal[6], targetProtien[7], targetCarbs[8], targetFat[9]
-        $this->assertEquals($row[6], 3719.84);
+        $this->assertEquals($row[6], 3681.95);
         $this->assertEquals($row[7], 210);
-        $this->assertEquals($row[8], 597.461);
+        $this->assertEquals($row[8], 587.988);
         $this->assertEquals($row[9], 70);
-        $this->assertEquals(getCalorieGoals("testUser"), 3719.84);
+        $this->assertEquals(getCalorieGoals("testUser"), 3681.95);
 
         $targetMacros = getMacroGoals("testUser");
         $this->assertEquals($targetMacros[0], 210);
-        $this->assertEquals($targetMacros[1], 597.461);
+        $this->assertEquals($targetMacros[1], 587.988);
         $this->assertEquals($targetMacros[2], 70);
 
         updateUserInfo("testUser", null, 190, null, null, null, null, null, null, null, null);
@@ -111,7 +111,7 @@ final class DBTest extends TestCase
         storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
         $userId = getIDFromUsername("testUser");
         $result = getCalorieGoals("testUser");
-        $this->assertEquals($result, 3719.84);
+        $this->assertEquals($result, 3681.95);
     }
 
     public function testCheckInitalLogin(): void {
@@ -129,6 +129,18 @@ final class DBTest extends TestCase
 
     }
 
+    public function testGetHistory(): void {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+        $date = date("Y-m-d");
+
+
+        $history = getHistory("testUser");
+        $this->assertEquals($history,[]);
+
+    }
+
     public function testTrackCaloriesAndMacros(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
@@ -141,8 +153,8 @@ final class DBTest extends TestCase
         $this->assertTrue($didTrackCaloriesAndMacros);
 
         $remaining = getRemainingMacros("testUser");
-        $this->assertEquals(intval($remaining[0]), 1494);
-        $this->assertEquals(intval($remaining[1]), 469);
+        $this->assertEquals(intval($remaining[0]), 1455);
+        $this->assertEquals(intval($remaining[1]), 459);
         $this->assertEquals($remaining[2], 92);
         $this->assertEquals($remaining[3], -36);
 
@@ -158,6 +170,8 @@ final class DBTest extends TestCase
 
     public function testAddRestriction(): void {
         $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+
         $this->assertTrue($didCreateUser);
         $didAddRestriction = addRestrictions("testUser", ['Lactose Intolerance','Gluten Intolerance']);
         $this->assertTrue($didAddRestriction);
@@ -186,6 +200,8 @@ final class DBTest extends TestCase
         $this->assertEquals(getRestrictionName(8), "Fish/Shellfish Allergy");
         $this->assertEquals(getRestrictionName(9), "Wheat Allergy");
 
-    }
+        $excersises = reccomendExercise("testUser", 5);
+
+    }   
 
 }

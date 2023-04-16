@@ -23,6 +23,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation/">Recomendation Page</a>
+                </li>
+                <li class="nav-item">
+                    <h6 id ="use" class="nav-link">username</h6>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/exercise/">Exercise Page</a>
                 <li class="nav-item">
@@ -67,4 +71,7 @@
             console.error('Error during logout:', error);
         });
     }
+    let Navuser= sessionStorage.getItem('username')
+    let Navname= document.getElementById("use")
+    Navname.innerText = Navuser
 </script>

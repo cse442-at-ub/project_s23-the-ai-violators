@@ -35,8 +35,6 @@ let curFat_K = currentFat * 9
 
 let totalCur_K = curPro_K + curCarb_K + curFat_K*/
 
-let user = document.querySelector('#username')
-user.innerText = sessionStorage.getItem('username')
 
 
 let protienProgress = document.querySelector(".protienProgress")
