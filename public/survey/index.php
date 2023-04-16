@@ -33,7 +33,7 @@ if (!isset($_SESSION['user_name'])) {
     <h1>Nutr.io</h1>
     <div>
       <h2>Tell us a little bit about you and your nutritional goals!</h2>
-      <form action="survey/surveyIntake.php" method="POST">
+      <form action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey/surveyIntake.php" method="POST">
 
         <div>
           <h4>How old are you?</h4>
@@ -83,19 +83,13 @@ if (!isset($_SESSION['user_name'])) {
           </select>
         </div>
 
-        <div>
-          <h4>Set a starting daily calorie goal:</h4>
-        </div>
-
-        <div class="userInfoNum">
-          <input type="number" name="calorie" id="calorie" placeholder="Enter Your Goal" min="1" max="9999999" oninput="check()" required>
-        </div>
+      
 
         <div>
           <h4>What food macros are you looking to center recommendations around?</h4>
         </div>
         <div>
-          <input type="radio" id="protien" name="macros" value="protien">
+          <input type="radio" id="protein" name="macros" value="protein">
           <label for="protein">Proteins</label><br>
           <input type="radio" id="carbs" name="macros" value="carb">
           <label for="carb">Carbohydrates</label><br>
@@ -139,7 +133,7 @@ if (!isset($_SESSION['user_name'])) {
 
         <div>
 
-          <button id="submitButton" type="submit" onclick="window.location.href= 'www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/'">
+          <button id="submitButton" type="submit" onsubmit="window.location.href= 'www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/'">
             Get Started
           </button>
 
@@ -154,8 +148,7 @@ if (!isset($_SESSION['user_name'])) {
 </div>
 
 
-<script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey/survey.js"></script>
-<script src="surver.js"></script>
+
 </body>
 
 </html>

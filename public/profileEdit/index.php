@@ -70,7 +70,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                                 <option value="" disabled>Select your sex...</option>
                                 <option value="male" <?php if ($userInfo[3] == "MALE") echo "selected" ?>>Male</option>
                                 <option value="female" <?php if ($userInfo[3] == "FEMALE") echo "selected" ?>>Female</option>
-                                <option value="other">Other/Prefer Not To Say</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -114,22 +114,14 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         <div class="col-sm-6 text-secondary">
                             <select name="macros" id="goal">
                                 <option value="" disabled>Select your macro...</option>
-                                <option value="protien" <?php ?>>Proteins</option>
+                                <option value="protein" <?php ?>>Proteins</option>
                                 <option value="carb">Carbohydrates</option>
                                 <option value="fat">Fats</option>
                             </select>
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h6 class="mb-0">Current Calorie Goal:</h6>
-                        </div>
-                        <div class="col-sm-6 text-secondary">
-                            <input type="number" name="targetCAL" id="calorie" placeholder="Enter Your Goal" min="1" max="9999999" oninput="check()">
-                        </div>
-                    </div>
-                    <hr>
+                    
                     <div class="row">
                         <div class="col-sm-6">
                             <h6 class="mb-0">Restrictions:</h6>

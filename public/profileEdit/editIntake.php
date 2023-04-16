@@ -35,10 +35,7 @@ session_start();
     if ($goal == ''){
         $goal = null;
     }
-    $targetCAL = $_POST['targetCAL'];
-    if ($targetCAL == ''){
-        $targetCAL = null;
-    }
+    
     
     updateUserInfo($_SESSION['user_name'], $height, $weight, strtoupper($sex), null, null, strtoupper($goal),$macros);
 
