@@ -1,37 +1,35 @@
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+/*@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');*/
 
-html{
+html {
     font-family: 'Montserrat', Courier, monospace;
 }
 
 body {
     overflow-x: hidden;
     margin: 0;
-  }
-  
+}
 
 
-h1{
+
+
+h1 {
     text-align: center;
     font-weight: 700;
     font-size: 2.5rem;
-    margin-top: 25px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-img{
-    height: 40px;
-    width: 40px;
-}
 
-p{
+p {
     margin: 5px;
     font-weight: 700;
     font-size: 25px;
     text-align: left;
     display: inline-block;
 }
-h2{
+
+h2 {
     text-align: center;
     margin: 5px;
     font-weight: 400;
@@ -39,21 +37,37 @@ h2{
     text-align: right;
     display: inline-block;
     margin-right: 10px;
-    margin-left: 1100px;
+    margin-left: 720px;
 }
 
 
 #trackForm {
     margin: auto;
-    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: 2rem;
-    max-width: 999px;
-    height: 700px;
+    width: 85%;
+    height: 675px;
     background: #D9D9D9;
-    
 }
 
-label{
+.inputs{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.sub{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+
+label {
     display: inline-block;
     font-size: 30px;
     font-weight: 700;
@@ -62,15 +76,15 @@ label{
 .dateIn {
     text-align: center;
 }
-
-.dateIn input{
-    width: 15%;
+ 
+.dateIn input {
+    width: 25%;
     padding: 12px 10px;
     box-sizing: border-box;
     border-radius: .7em;
     border: none;
     margin: 20px;
-    /**/
+    text-align: center;
     margin-top: 60px;
     margin-left: 15px;
     margin-right: 15px;
@@ -81,19 +95,20 @@ label{
     text-align: center;
 }
 
-.meals button{
+.meals button {
     display: none;
     background: white;
     color: black;
     font-size: 15px;
+    margin-top: 0px;
 }
 
-.meals button:hover{
+.meals button:hover {
     background: #0658d3;
     color: white;
 }
 
-.meals button:active{
+.meals button:active {
     color: white;
     background: #0D6EFD;
 }
@@ -102,22 +117,18 @@ label{
     float: left;
 }
 
-.cal label{
-    display:block;
-    margin-left: 220px;
-    margin-top: 100px;
+.cal label {
+    display: block;
+    margin-left: 15%;
     width: 50px;
 }
 
-.cal input{
+.cal input {
     padding: 50px 110px;
-    box-sizing:content-box;
+    box-sizing: content-box;
     border-radius: .5em;
     border: none;
-    margin: 20px;
-    margin-top: 20px;
-    margin-left: 190px;
-    margin-right: 80px;
+    
     font-size: 40px;
     padding: 10px 10px;
     height: 80px;
@@ -125,72 +136,48 @@ label{
     text-align: center;
 }
 
-.carb {
-    float: right;
-    margin-top: 60px;
-    margin-right: 141px;
-}
 
-.carb input{
+
+.carb input {
     padding: 1px 1px;
-    box-sizing:content-box;
+    box-sizing: content-box;
     border-radius: .5em;
     border: none;
-    margin: 20px;
-    margin-left: 48px;
+   
     width: 100px;
     height: 35px;
     font-size: 20px;
     text-align: center;
 }
 
-.pro {
-    float: right;
-    margin-top: 20px;
-    margin-right: 143px;
-}
 
-.pro input{
+
+.pro input {
     padding: 1px 1px;
-    box-sizing:content-box;
+    box-sizing: content-box;
     border-radius: .5em;
     border: none;
-    margin: 20px;
     width: 100px;
     height: 35px;
     font-size: 20px;
     text-align: center;
 }
 
-.fat {
-    float: right;
-    margin-top: 20px;
-    margin-right: 143px;
-}
 
-.fat input{
+.fat input {
     padding: 1px 1px;
-    box-sizing:content-box;
+    box-sizing: content-box;
     border-radius: .5em;
     border: none;
-    margin: 20px;
-    margin-left: 67px;
     width: 100px;
     height: 35px;
     font-size: 20px;
     text-align: center;
 }
 
-.sub {
-    position: relative;
-    top: 60px;
-    left: 400px;
-    height: 5px;
-}
 
-  
 
-button{
+.sub button {
     border: none;
     color: white;
     text-align: center;
@@ -199,16 +186,17 @@ button{
     border-radius: .4em;
     cursor: pointer;
     /*margin-top: 0.5rem;*/
-    margin-top: 70px;
-    margin-bottom: 1rem;
+    margin-top: 20px;
+    margin-bottom: 0px;
     font-size: 15px;
-    
+
 }
-button:hover{
+
+button:hover {
     background: #0658d3;
 }
 
-form div{
+form div {
     padding: 0;
     margin: 4px;
 }
@@ -224,13 +212,13 @@ form div{
     font-size: .8em;
     text-align: center;
     /*margin-top: 460px*/
-    margin-top: 540px;
+    margin-top: 0px;
 }
-    
-    .error-msg {
+
+.error-msg {
     color: #270;
     background-color: #DFF2BF;
-    }
+}
 
 .header {
     margin: 0;

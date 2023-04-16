@@ -2,9 +2,22 @@ html{
     font-family: 'Montserrat', Courier, monospace;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: auto;
+}
 
 .userInfo label{
     display: none;
+}
+
+.con{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 h1{
@@ -25,12 +38,6 @@ h3{
     font-size: 2rem;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
 
 img {
     width: 400px;
@@ -100,3 +107,40 @@ footer{
     color: #D8000C;
     background-color: #FFBABA;
   }
+
+
+@media (max-width: 700px) {
+   .con{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-shrink: 1;
+   }
+    h1{
+        text-align: center;
+        font-weight: 700;
+        margin-top: 50px;
+        font-size: 6rem;
+        margin-bottom: 0px;
+    }
+
+    h3{
+        margin-top: 0px;
+        text-align: center;
+        font-weight: 200;
+        font-size: 2rem;
+    }
+
+    #loginForm{
+        width: 70%;
+        margin-bottom: 15px;
+    }
+
+    img {
+        width: 240px;
+        height: 240px;
+        margin-bottom: 15px;
+        margin-left: 60px;
+    }
+
+}

@@ -2,8 +2,8 @@
 
     require __DIR__ . '/../../config/database.php';
 
-    $user_id = $_GET['user_id'];
+    $user_name = $_GET['user_name'];
 
-    $macros = getMacroGoals($user_id);
+    $macros = getMacroGoals($user_name);
 
     echo json_encode($macros);
