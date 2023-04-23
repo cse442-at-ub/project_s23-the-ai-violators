@@ -8,9 +8,10 @@ $age = $_POST['age'];
 $height = $_POST['height'];
 $weight = $_POST['weight'];
 $macros = $_POST['macros'];
-$actlevel = $_POST['actlevel'];
+$actlevel = $_POST['activity-level'];
 $sex = $_POST['sex'];
 $goal = $_POST['goal'];
+
 
 
 // $gluten = $_POST['gluten'];
