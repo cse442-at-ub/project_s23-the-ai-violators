@@ -23,10 +23,10 @@ session_start();
     if ($macros == ''){
         $macros = null;
     }
-    // $actlevel = $_POST['actlevel'];
-    // if ($actlevel == ''){
-    //     $actlevel= null;
-    // }
+    $actlevel = $_POST['activity-level'];
+    if ($actlevel == ''){
+        $actlevel= null;
+    }
     $sex = $_POST['sex'];
     if ($sex == ''){
         $sex = null;
@@ -37,7 +37,7 @@ session_start();
     }
     
     
-    updateUserInfo($_SESSION['user_name'], $height, $weight, strtoupper($sex), null, null, strtoupper($goal),$macros);
+    updateUserInfo($_SESSION['user_name'], $height, $weight, strtoupper($sex), null, $actlevel, strtoupper($goal),$macros);
 
     $restrictions = array();
 

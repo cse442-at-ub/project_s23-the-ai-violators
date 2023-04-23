@@ -70,7 +70,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                                 <option value="" disabled>Select your sex...</option>
                                 <option value="male" <?php if ($userInfo[3] == "MALE") echo "selected" ?>>Male</option>
                                 <option value="female" <?php if ($userInfo[3] == "FEMALE") echo "selected" ?>>Female</option>
-                                
+
                             </select>
                         </div>
                     </div>
@@ -121,7 +121,27 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         </div>
                     </div>
                     <hr>
-                    
+
+                    <div class="row">
+                    <div class="col-sm-6">
+                            <h6 class="mb-0">Activity Level:</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                            <select name="activity-level">
+                                <option value="" disabled selected>Select your activity level...</option>
+                                <option value="1.2">Not Active At All</option>
+                                <option value="1.3">Lightly Active</option>
+                                <option value="1.4">Moderately Active</option>
+                                <option value="1.5">Active</option>
+                                <option value="1.6">Very Active</option>
+                                <option value="1.7">Extremely Active</option>
+                                <option value="1.9">Professional Athlete</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr>
+
                     <div class="row">
                         <div class="col-sm-6">
                             <h6 class="mb-0">Restrictions:</h6>
