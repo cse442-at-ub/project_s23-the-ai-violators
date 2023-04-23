@@ -478,9 +478,9 @@ function checkIfUserNameUsed($user_name)
 }
 
 /**
- * Returns the a users email.
+ * Returns a users email.
  * @param string $user_name The username to linked to the email.
- * @return bool True if the username is already in use, false otherwise.
+ * @return string The string email of the input user.
  */
 function getEmail($user_name)
 {
