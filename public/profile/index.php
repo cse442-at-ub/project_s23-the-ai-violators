@@ -48,7 +48,6 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                     <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/user.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
                         <p class="text-secondary mb-1">timmy2time@gmail.com</p>
-                        <button class="btn btn-primary" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'; sessionStorage.removeItem('username')">Logout</button>
                     </div>
                 </div>
             </div>

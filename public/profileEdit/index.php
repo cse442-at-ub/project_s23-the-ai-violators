@@ -129,13 +129,13 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         <div class="col-sm-6 text-secondary">
                             <select name="activity-level">
                                 <option value="" disabled selected>Select your activity level...</option>
-                                <option value="1.2">Not Active At All</option>
-                                <option value="1.3">Lightly Active</option>
-                                <option value="1.4">Moderately Active</option>
-                                <option value="1.5">Active</option>
-                                <option value="1.6">Very Active</option>
-                                <option value="1.7">Extremely Active</option>
-                                <option value="1.9">Professional Athlete</option>
+                                <option <?php if ($userInfo[5] == 1.2) echo "selected" ?> value="1.2">Not Active At All</option>
+                                <option <?php if ($userInfo[5] == 1.3) echo "selected" ?> value="1.3">Lightly Active</option>
+                                <option <?php if ($userInfo[5] == 1.4) echo "selected" ?> value="1.4">Moderately Active</option>
+                                <option <?php if ($userInfo[5] == 1.5) echo "selected" ?> value="1.5">Active</option>
+                                <option <?php if ($userInfo[5] == 1.6) echo "selected" ?> value="1.6">Very Active</option>
+                                <option <?php if ($userInfo[5] == 1.7) echo "selected" ?> value="1.7">Extremely Active</option>
+                                <option <?php if ($userInfo[5] == 1.9) echo "selected" ?> value="1.9">Professional Athlete</option>
                             </select>
                         </div>
                     </div>
