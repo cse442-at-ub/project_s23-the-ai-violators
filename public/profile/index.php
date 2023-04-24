@@ -123,7 +123,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         <?php if ($userInfo[5] == 1.5) echo "Active"?>
                         <?php if ($userInfo[5] == 1.6) echo "Very Active"?>
                         <?php if ($userInfo[5] == 1.7) echo "Extremely Active"?>
-                        <?php if ($userInfo[5] == 1.8) echo "Professional Athlete"?>
+                        <?php if ($userInfo[5] == 1.9) echo "Professional Athlete"?>
                     </div>
                 </div>
                 <hr>
