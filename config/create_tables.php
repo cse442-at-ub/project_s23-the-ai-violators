@@ -133,7 +133,7 @@ if (mysqli_query($mysqli, $chad_query)) {
 storeSurveyInformation("chad", 74, 180, "MALE", 25, 1.8, "BULK", "PROTEIN");
 
 // Create test user cam with id 88 if it doesn't exist
-$camhash = password_hash('testcam', PASSWORD_DEFAULT);
+$camhash = password_hash('camtest', PASSWORD_DEFAULT);
 $cam_query = "INSERT INTO users (user_id, user_name, email, password_hash) SELECT 88, 'cam', 'cam@test.com', '$camhash' FROM dual WHERE NOT EXISTS (SELECT * FROM users WHERE user_id = 88);";
 if (mysqli_query($mysqli, $cam_query)) {
     echo "cam created successfully\n";
