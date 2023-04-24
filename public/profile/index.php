@@ -117,7 +117,13 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         <h6 class="mb-0">Activity Level:</h6>
                     </div>
                     <div class="col-sm-6 text-secondary">
-                        <?php echo $userInfo[5] ?>
+                        <?php if ($userInfo[5] == 1.2) echo "Not Active At All"?>
+                        <?php if ($userInfo[5] == 1.3) echo "Lightly Active"?>
+                        <?php if ($userInfo[5] == 1.4) echo "Moderately Active"?>
+                        <?php if ($userInfo[5] == 1.5) echo "Active"?>
+                        <?php if ($userInfo[5] == 1.6) echo "Very Active"?>
+                        <?php if ($userInfo[5] == 1.7) echo "Extremely Active"?>
+                        <?php if ($userInfo[5] == 1.8) echo "Professional Athlete"?>
                     </div>
                 </div>
                 <hr>
