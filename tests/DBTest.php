@@ -141,6 +141,16 @@ final class DBTest extends TestCase
 
     }
 
+    public function testGetEmail(): void {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+        $email = "test@email.com";
+        $getMail = getEmail("testUser");
+        $this->assertEquals($getMail, $email);
+        
+    }
+
     public function testTrackCaloriesAndMacros(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");

@@ -15,7 +15,7 @@ if ($db_hostname == 'yes') {
 $mysqli = mysqli_connect($db_hostname, "sjrichel", "50338787", "cse442_2023_spring_team_g_db", 3306);
 
 $users_query = "CREATE TABLE IF NOT EXISTS users (user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,user_name text NOT NULL,email text NOT NULL,password_hash text NOT NULL)";
-$user_info_query = "CREATE TABLE IF NOT EXISTS user_info (user_id INT NOT NULL,height FLOAT NOT NULL,weight FLOAT NOT NULL,age INT NOT NULL,sex ENUM('MALE', 'FEMALE'),activityLevel INT NOT NULL,targetCAL FLOAT NOT NULL,targetPROTIEN FLOAT NOT NULL,targetCARBS FLOAT NOT NULL,targetFAT FLOAT NOT NULL,goal ENUM('CUT', 'BULK', 'MAINTAIN') NOT NULL,focus ENUM('PROTEIN', 'CARB', 'FAT') NOT NULL,PRIMARY KEY (user_id),CONSTRAINT fk_user_info_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE)";
+$user_info_query = "CREATE TABLE IF NOT EXISTS user_info (user_id INT NOT NULL,height FLOAT NOT NULL,weight FLOAT NOT NULL,age INT NOT NULL,sex ENUM('MALE', 'FEMALE'),activityLevel FLOAT NOT NULL,targetCAL FLOAT NOT NULL,targetPROTIEN FLOAT NOT NULL,targetCARBS FLOAT NOT NULL,targetFAT FLOAT NOT NULL,goal ENUM('CUT', 'BULK', 'MAINTAIN') NOT NULL,focus ENUM('PROTEIN', 'CARB', 'FAT') NOT NULL,PRIMARY KEY (user_id),CONSTRAINT fk_user_info_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE)";
 $daily_intake_query = "CREATE TABLE IF NOT EXISTS daily_intake (user_id INT NOT NULL, meal_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, meal_name TEXT NOT NULL, date DATE NOT NULL,calories INT NOT NULL,protein INT NOT NULL,carbs INT NOT NULL,fat INT NOT NULL,CONSTRAINT fk_daily_intake_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE)";
 $restrictions_query = "CREATE TABLE IF NOT EXISTS restrictions (restriction_id INT AUTO_INCREMENT NOT NULL, restriction_name VARCHAR(255) NOT NULL, UNIQUE(restriction_name), PRIMARY KEY (restriction_id));";
 $user_restrictions_query = "CREATE TABLE IF NOT EXISTS user_restrictions (user_id INT NOT NULL, restriction_id INT NOT NULL, PRIMARY KEY (user_id, restriction_id), CONSTRAINT fk_user_restrictions_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE, CONSTRAINT fk_user_restrictions_restriction_id FOREIGN KEY (restriction_id) REFERENCES restrictions(restriction_id) ON DELETE CASCADE);";
@@ -131,6 +131,17 @@ if (mysqli_query($mysqli, $chad_query)) {
 }
 
 storeSurveyInformation("chad", 74, 180, "MALE", 25, 1.8, "BULK", "PROTEIN");
+
+// Create test user cam with id 88 if it doesn't exist
+$camhash = password_hash('camtest', PASSWORD_DEFAULT);
+$cam_query = "INSERT INTO users (user_id, user_name, email, password_hash) SELECT 88, 'cam', 'cam@test.com', '$camhash' FROM dual WHERE NOT EXISTS (SELECT * FROM users WHERE user_id = 88);";
+if (mysqli_query($mysqli, $cam_query)) {
+    echo "cam created successfully\n";
+} else {
+    echo "Error creating cam: " . mysqli_error($mysqli) . "\n";
+}
+
+storeSurveyInformation("cam", 70, 167, "MALE", 21, 1.5, "CUT", "PROTEIN");
 
 $date = date("Y-m-d");
 trackCaloriesAndMacros("chad", "eggs", $date, 2000, 100, 200, 50);

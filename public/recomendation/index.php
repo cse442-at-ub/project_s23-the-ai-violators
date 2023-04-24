@@ -34,9 +34,7 @@ require __DIR__ . "../../../config/find_meals.php";
 
     </div>
 
-    <?php
-    $meals = getMeal($_SESSION['user_name'], 3);
-    ?>
+
 
 
     <div id="mainShit">
@@ -47,67 +45,87 @@ require __DIR__ . "../../../config/find_meals.php";
                 <div>
                     <?php
                     $output = "";
-
                     $remainingMacros = getRemainingMacros($_SESSION['user_name']);
+                    if ($remainingMacros[0] <= 100) {
+                        echo 'You do not have sufficient calories to be recommended anything at the moment';
+                        exit();
+                    }
                     $output .=
-                        'remaining calories: ' . $remainingMacros[0] .
-                        ' protien:' . $remainingMacros[2] . 'g ' .
-                        ' carbs:' . $remainingMacros[1] . 'g ' .
-                        ' fats:' . $remainingMacros[3] . 'g ';
+                        'remaining calories: ' . round($remainingMacros[0]) .
+                        ' protien:' . round($remainingMacros[2]) . 'g ' .
+                        ' carbs:' . round($remainingMacros[1]) . 'g ' .
+                        ' fats:' . round($remainingMacros[3]) . 'g ';
                     echo $output;
                     ?>
                 </div>
             </div>
 
+            <?php
+            $meals = getMeal($_SESSION['user_name'], 3);
+            $foodName = array();
+            $foodCalories = array();
+            $protein = array();
+            $fats = array();
+            $carbs = array();
+
+            for ($i = 0; $i < count($meals); $i++) {
+                array_push($foodName, $meals[$i]['title']);
+                array_push($foodCalories, round($meals[$i]['nutrition']['nutrients'][0]['amount']));
+                array_push($protein, round($meals[$i]['nutrition']['nutrients'][1]['amount'], 1));
+                array_push($fats, round($meals[$i]['nutrition']['nutrients'][2]['amount'], 1));
+                array_push($carbs, round($meals[$i]['nutrition']['nutrients'][3]['amount'], 1));
+            }
+            ?>
+
             <div id="content">
                 <div class="mealRecs">
-                    <h2><?= $meals[0]['title']; ?> - <?= $meals[0]['nutrition']['nutrients'][0]['amount']; ?> calories</h2>
+                    <h2><?= $foodName[0]; ?> - <?= $foodCalories[0]; ?> calories</h2>
                     <p>Macro nutritional breakdown:
-                        protein: <?= $meals[0]['nutrition']['nutrients'][1]['amount']; ?>
-                        carbs: <?= $meals[0]['nutrition']['nutrients'][3]['amount']; ?>
-                        fats: <?= $meals[0]['nutrition']['nutrients'][2]['amount']; ?>
+                        protein: <?= $protein[0]; ?>
+                        carbs: <?= $carbs[0]; ?>
+                        fats: <?= $fats[0]; ?>
                     </p>
 
                     <form method="POST" action="">
-                        <input type="hidden" name="meal1" id="meal1" value="<?= $meals[0]['title']; ?>">
-                        <input type="hidden" name="calories1" id="calories1" value=<?= $meals[0]['nutrition']['nutrients'][0]['amount']; ?>>
-                        <input type="hidden" name="protein1" id="protein1" value=<?= $meals[0]['nutrition']['nutrients'][1]['amount']; ?>>
-                        <input type="hidden" name="carbs1" id="carbs1" value=<?= $meals[0]['nutrition']['nutrients'][3]['amount']; ?>>
-                        <input type="hidden" name="fats1" id="fats1" value=<?= $meals[0]['nutrition']['nutrients'][2]['amount']; ?>>
+                        <input type="hidden" name="meal1" id="meal1" value="<?= $foodName[0]; ?>">
+                        <input type="hidden" name="calories1" id="calories1" value=<?= $foodCalories[0]; ?>>
+                        <input type="hidden" name="protein1" id="protein1" value=<?= $protein[0]; ?>>
+                        <input type="hidden" name="carbs1" id="carbs1" value=<?= $carbs[0]; ?>>
+                        <input type="hidden" name="fats1" id="fats1" value=<?= $fats[0]; ?>>
                         <button class="add">Add</button>
                     </form>
                 </div>
                 <div class="mealRecs">
-                    <h2><?= $meals[1]['title']; ?> - <?= $meals[1]['nutrition']['nutrients'][0]['amount']; ?> calories</h2>
+                    <h2><?= $foodName[1]; ?> - <?= $foodCalories[1]; ?> calories</h2>
                     <p>Macro nutritional breakdown:
-                        protein: <?= $meals[1]['nutrition']['nutrients'][1]['amount']; ?>
-                        carbs: <?= $meals[1]['nutrition']['nutrients'][3]['amount']; ?>
-                        fats: <?= $meals[1]['nutrition']['nutrients'][2]['amount']; ?>
+                        protein: <?= $protein[1]; ?>
+                        carbs: <?= $carbs[1]; ?>
+                        fats: <?= $fats[1]; ?>
                     </p>
 
                     <form method="POST" action="">
-                        <input type="hidden" name="meal2" id="meal2" value="<?= $meals[1]['title']; ?>">
-                        <input type="hidden" name="calories2" id="calories2" value=<?= $meals[1]['nutrition']['nutrients'][0]['amount']; ?>>
-                        <input type="hidden" name="protein2" id="protein2" value=<?= $meals[1]['nutrition']['nutrients'][1]['amount']; ?>>
-                        <input type="hidden" name="carbs2" id="carbs2" value=<?= $meals[1]['nutrition']['nutrients'][3]['amount']; ?>>
-                        <input type="hidden" name="fats2" id="fats2" value=<?= $meals[1]['nutrition']['nutrients'][2]['amount']; ?>>
+                        <input type="hidden" name="meal2" id="meal2" value="<?= $foodName[1]; ?>">
+                        <input type="hidden" name="calories2" id="calories2" value=<?= $foodCalories[1]; ?>>
+                        <input type="hidden" name="protein2" id="protein2" value=<?= $protein[1]; ?>>
+                        <input type="hidden" name="carbs2" id="carbs2" value=<?= $carbs[1]; ?>>
+                        <input type="hidden" name="fats2" id="fats2" value=<?= $fats[1]; ?>>
                         <button class="add">Add</button>
                     </form>
                 </div>
                 <div class="mealRecs">
-                    <h2><?= $meals[2]['title']; ?> - <?= $meals[2]['nutrition']['nutrients'][0]['amount']; ?> calories</h2>
+                    <h2><?= $foodName[2]; ?> - <?= $foodCalories[2]; ?> calories</h2>
                     <p>Macro nutritional breakdown:
-                        protein: <?= $meals[2]['nutrition']['nutrients'][1]['amount']; ?>
-                        carbs: <?= $meals[2]['nutrition']['nutrients'][3]['amount']; ?>
-                        fats: <?= $meals[2]['nutrition']['nutrients'][2]['amount']; ?>
+                        protein: <?= $protein[2]; ?>
+                        carbs: <?= $carbs[2]; ?>
+                        fats: <?= $fats[2]; ?>
                     </p>
 
                     <form method="POST" action="">
-                        <input type="hidden" name="meal3" id="meal3" value="<?= $meals[2]['title']; ?>">
-                        <input type="hidden" name="calories3" id="calories3" value=<?= $meals[2]['nutrition']['nutrients'][0]['amount']; ?>>
-                        <input type="hidden" name="protein3" id="protein3" value=<?= $meals[2]['nutrition']['nutrients'][1]['amount']; ?>>
-                        <input type="hidden" name="carbs3" id="carbs3" value=<?= $meals[2]['nutrition']['nutrients'][3]['amount']; ?>>
-                        <input type="hidden" name="fats3" id="fats3" value=<?= $meals[2]['nutrition']['nutrients'][2]['amount']; ?>>
+                        <input type="hidden" name="meal3" id="meal3" value="<?= $foodName[2]; ?>">
+                        <input type="hidden" name="calories3" id="calories3" value=<?= $foodCalories[2]; ?>>
+                        <input type="hidden" name="protein3" id="protein3" value=<?= $protein[2]; ?>>
+                        <input type="hidden" name="carbs3" id="carbs3" value=<?= $carbs[2]; ?>>
+                        <input type="hidden" name="fats3" id="fats3" value=<?= $fats[2]; ?>>
                         <button class="add">Add</button>
                     </form>
                 </div>

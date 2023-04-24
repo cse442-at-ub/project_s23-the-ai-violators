@@ -47,7 +47,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                     <p class="fs-3"><?php echo $_SESSION['user_name'] ?></p>
                     <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/user.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                        <p class="text-secondary mb-1">timmy2time@gmail.com</p>
+                        <p class="text-secondary mb-1"><?php echo getEmail($_SESSION['user_name']) ?></p>
                         <button class="btn btn-primary" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login'; sessionStorage.removeItem('username')">Logout</button>
                     </div>
                 </div>
@@ -117,7 +117,13 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                         <h6 class="mb-0">Activity Level:</h6>
                     </div>
                     <div class="col-sm-6 text-secondary">
-                        <?php echo $userInfo[5] ?>
+                        <?php if ($userInfo[5] == 1.2) echo "Not Active At All"?>
+                        <?php if ($userInfo[5] == 1.3) echo "Lightly Active"?>
+                        <?php if ($userInfo[5] == 1.4) echo "Moderately Active"?>
+                        <?php if ($userInfo[5] == 1.5) echo "Active"?>
+                        <?php if ($userInfo[5] == 1.6) echo "Very Active"?>
+                        <?php if ($userInfo[5] == 1.7) echo "Extremely Active"?>
+                        <?php if ($userInfo[5] == 1.8) echo "Professional Athlete"?>
                     </div>
                 </div>
                 <hr>
