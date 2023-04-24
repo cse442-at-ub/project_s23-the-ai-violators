@@ -28,7 +28,11 @@ let fats = document.getElementById("fats")
 
 let submit = document.getElementById("submitButton")
 
-//console.log(date.value)
+let today = new Date()
+today = today.toISOString().slice(0, 10)
+
+dateParts = today.split('-')
+date.value  = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`
 
 let form = document.getElementsByTagName("form")[0]
 
