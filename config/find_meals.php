@@ -14,6 +14,12 @@ function getMeal($user_name, $number = 3)
 
     $remainingMacros = getRemainingMacros($user_name);
 
+    for ($i = 0; $i < count($remainingMacros); $i++) {
+        if ($remainingMacros[$i] < 5) {
+            $remainingMacros[$i] = 4;
+        }
+    }
+
     $params = array(
         'apiKey' => '4a9fc2eb8037493eb0eb80171d999ce9',
         'maxCarbs' => (int)$remainingMacros[1],
