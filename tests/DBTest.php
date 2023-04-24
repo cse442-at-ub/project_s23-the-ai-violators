@@ -81,7 +81,7 @@ final class DBTest extends TestCase
     public function testStoreSurveyInformation(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
-        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
 
         $row = getUserInfo("testUser");
 
@@ -108,7 +108,7 @@ final class DBTest extends TestCase
     public function testGetCalorieGoals(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
-        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
         $userId = getIDFromUsername("testUser");
         $result = getCalorieGoals("testUser");
         $this->assertEquals($result, 3681.95);
@@ -122,7 +122,7 @@ final class DBTest extends TestCase
         $didInitalLogin = checkInitalLogin("testUser");
         $this->assertFalse($didInitalLogin);
 
-        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
 
         $didInitalLogin = checkInitalLogin("testUser");
         $this->assertTrue($didInitalLogin);
@@ -141,13 +141,23 @@ final class DBTest extends TestCase
 
     }
 
+    public function testGetEmail(): void {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+        $email = "test@email.com";
+        $getMail = getEmail("testUser");
+        $this->assertEquals($getMail, $email);
+        
+    }
+
     public function testTrackCaloriesAndMacros(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
         $date = date("Y-m-d");
         $userId = getIDFromUsername("testUser");
 
-        storeSurveyInformation("testUser", 70, 160, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 70, 160, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
 
         $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", "eggs", $date, 2000, 100, 100, 100);
         $this->assertTrue($didTrackCaloriesAndMacros);
@@ -170,7 +180,7 @@ final class DBTest extends TestCase
 
     public function testAddRestriction(): void {
         $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
-        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
 
         $this->assertTrue($didCreateUser);
         $didAddRestriction = addRestrictions("testUser", ['Lactose Intolerance','Gluten Intolerance']);

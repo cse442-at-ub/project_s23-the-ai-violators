@@ -132,6 +132,17 @@ if (mysqli_query($mysqli, $chad_query)) {
 
 storeSurveyInformation("chad", 74, 180, "MALE", 25, 1.8, "BULK", "PROTEIN");
 
+// Create test user cam with id 88 if it doesn't exist
+$camhash = password_hash('testcam', PASSWORD_DEFAULT);
+$cam_query = "INSERT INTO users (user_id, user_name, email, password_hash) SELECT 88, 'cam', 'cam@test.com', '$camhash' FROM dual WHERE NOT EXISTS (SELECT * FROM users WHERE user_id = 88);";
+if (mysqli_query($mysqli, $cam_query)) {
+    echo "cam created successfully\n";
+} else {
+    echo "Error creating cam: " . mysqli_error($mysqli) . "\n";
+}
+
+storeSurveyInformation("cam", 70, 167, "MALE", 21, 1.5, "CUT", "PROTEIN");
+
 $date = date("Y-m-d");
 trackCaloriesAndMacros("chad", "eggs", $date, 2000, 100, 200, 50);
 

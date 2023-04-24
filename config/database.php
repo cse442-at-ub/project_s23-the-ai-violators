@@ -478,6 +478,19 @@ function checkIfUserNameUsed($user_name)
 }
 
 /**
+ * Returns a users email.
+ * @param string $user_name The username to linked to the email.
+ * @return string The string email of the input user.
+ */
+function getEmail($user_name)
+{
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT email FROM users WHERE user_name='$user_name'");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
+}
+
+/**
  * Creates a new user in the database.
  * @param string $user_name The username of the new user.
  * @param string $email The email of the new user.
