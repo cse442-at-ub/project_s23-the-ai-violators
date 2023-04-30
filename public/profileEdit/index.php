@@ -28,38 +28,32 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
 
 
 <body>
-    <form method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/editIntake.php">
+    <?php include "../../templates/navbar.php" ?>
 
+    <p class="fs-1">Your Profile
+    <p>
+    <p class="fs-4">Here's a look at you...
+    <p>
 
-        <?php include "../../templates/navbar.php" ?>
-
-
-
-
-
-        <p class="fs-1">Your Profile
-        <p>
-        <p class="fs-4">Here's a look at you...
-        <p>
-
-
-        <div class=".col6">
-            <div>
-                <div class="card-body">
-                    <div class="d-flex flex-column align-items-center text-center">
-                        <p class="fs-3"><?php echo $_SESSION['user_name'] ?></p>
-                        <img src="<?php echo getProfilePic($_SESSION['user_name']) ?>" alt="Profile Picture" class="rounded-circle" width="150">
-                        <form action="uploadPfp.php" method="post">
-                            S
-                        </form>
-                        <div class="mt-3">
-                            <p class="text-secondary mb-1"><?php echo getEmail($_SESSION['user_name']) ?></p>
-                        </div>
+    <div class=".col6">
+        <div>
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                    <p class="fs-3"><?php echo $_SESSION['user_name'] ?></p>
+                    <img src="<?php echo getProfilePic($_SESSION['user_name']) ?>" alt="Profile Picture" class="rounded-circle" width="150">
+                    <form action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/uploadPfp.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <button type="submit" name="submit" id="submit"> Update Profile Picture </button>
+                    </form>
+                    <div class="mt-3">
+                        <p class="text-secondary mb-1"><?php echo getEmail($_SESSION['user_name']) ?></p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
+    <form method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/editIntake.php">
         <div class=".col6">
             <div class="card mb-3">
                 <div class="card-body align-items-center text-center">
@@ -125,19 +119,19 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                     <hr>
 
                     <div class="row">
-                    <div class="col-sm-6">
+                        <div class="col-sm-6">
                             <h6 class="mb-0">Activity Level:</h6>
                         </div>
                         <div class="col-sm-6 text-secondary">
                             <select name="activity-level">
                                 <option value="" disabled selected>Select your activity level...</option>
-                                <option value="1.2"<?php if ($userInfo[5] == 1.2) echo "selected" ?>>Not Active At All</option>
-                                <option value="1.3"<?php if ($userInfo[5] == 1.3) echo "selected" ?>>Lightly Active</option>
-                                <option value="1.4"<?php if ($userInfo[5] == 1.4) echo "selected" ?>>Moderately Active</option>
-                                <option value="1.5"<?php if ($userInfo[5] == 1.5) echo "selected" ?>>Active</option>
-                                <option value="1.6"<?php if ($userInfo[5] == 1.6) echo "selected" ?>>Very Active</option>
-                                <option value="1.7"<?php if ($userInfo[5] == 1.7) echo "selected" ?>>Extremely Active</option>
-                                <option value="1.9"<?php if ($userInfo[5] == 1.8) echo "selected" ?>>Professional Athlete</option>
+                                <option value="1.2" <?php if ($userInfo[5] == 1.2) echo "selected" ?>>Not Active At All</option>
+                                <option value="1.3" <?php if ($userInfo[5] == 1.3) echo "selected" ?>>Lightly Active</option>
+                                <option value="1.4" <?php if ($userInfo[5] == 1.4) echo "selected" ?>>Moderately Active</option>
+                                <option value="1.5" <?php if ($userInfo[5] == 1.5) echo "selected" ?>>Active</option>
+                                <option value="1.6" <?php if ($userInfo[5] == 1.6) echo "selected" ?>>Very Active</option>
+                                <option value="1.7" <?php if ($userInfo[5] == 1.7) echo "selected" ?>>Extremely Active</option>
+                                <option value="1.9" <?php if ($userInfo[5] == 1.8) echo "selected" ?>>Professional Athlete</option>
                             </select>
                         </div>
                     </div>
