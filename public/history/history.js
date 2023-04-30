@@ -8,6 +8,73 @@ let mId
 
 let submit = ""
 let form = document.getElementsByTagName("form")[0]
+let all = document.getElementById("all");
+
+
+function allHis(){
+    window.location.reload()
+    localStorage.setItem("inputDate", "");
+}
+
+function onPageReload() {
+    const table = document.getElementById("myTable");
+    var dels = []
+    for (let i = 1; i < table.rows.length; i++) {
+        // Get the row
+        const row = table.rows[i];
+        console.log((localStorage.getItem("inputDate")))
+        console.log("hello")
+        if ((localStorage.getItem("inputDate")) !== null){
+            if ((localStorage.getItem("inputDate")) !== ""){
+            // Iterate through the cells in the row
+                for (let j = 0; j < row.cells.length; j++) {
+                    // Get the cell
+                    const cell = row.cells[j];
+                    console.log("here")
+                    console.log(cell.textContent)
+
+                    if (j == 0){
+                        console.log(cell.textContent)
+                        console.log((localStorage.getItem("inputDate")))
+                        if (cell.textContent !== (localStorage.getItem("inputDate"))){
+                            dels.push(i)
+                            j = row.cells.length
+                        }
+                    }
+                }
+            }
+        }
+    }
+    dels.reverse()
+
+    for (var i = 0; i < dels.length; i++) {
+        table.deleteRow(dels[i])
+    }
+}
+
+// Run the onPageReload function when the DOMContentLoaded event is triggered
+//document.addEventListener("DOMContentLoaded", onPageReload);
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var dateInput = document.getElementById("date-input");
+
+    var savedDate = localStorage.getItem("inputDate");
+    if (savedDate) {
+        dateInput.value = savedDate;
+    }
+
+    dateInput.addEventListener("input", function() {
+        if (this.value) {
+            localStorage.setItem("inputDate", this.value);
+            location.reload();
+        }
+    });
+
+    onPageReload()
+});
+
+console.log(localStorage.getItem("inputDate"))
 
 //let user = document.querySelector('#username')
 let user= sessionStorage.getItem('username')
