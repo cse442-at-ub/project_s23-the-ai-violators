@@ -1,3 +1,5 @@
 .DS_Store
 .phpunit.result.cache
 .vscode
+public/uploads/*
+!public/uploads/no-pfp.png

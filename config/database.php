@@ -117,6 +117,22 @@ function edit(string $user_name, string $meal_name, string $date, float $calorie
   }
 }
 
+function setProfilePic(string $user, string $pfp) {
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "UPDATE users SET profile_pic='$pfp' WHERE user_name = '$user'");
+}
+
+function getProfilePic(string $user) {
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT profile_pic FROM users WHERE user_name='$user'");
+  $row = mysqli_fetch_row($result);
+
+  if ($row == NULL || $row[0] == ""){
+    return '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/uploads/no-pfp.png';
+  }
+  return '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/' . substr($row[0], 3);
+}
+
 
 /**
  * Returns the name of a restriction given its ID.
