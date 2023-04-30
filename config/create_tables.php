@@ -147,3 +147,6 @@ $date = date("Y-m-d");
 trackCaloriesAndMacros("chad", "eggs", $date, 2000, 100, 200, 50);
 
 createUser("timmy", "tim@email.com", "password");
+
+createUser("sib", "sib@email.com", "password");
+storeSurveyInformation("sib", 72, 155, "MALE", 31, 1.3, "MAINTAIN", "PROTEIN");
