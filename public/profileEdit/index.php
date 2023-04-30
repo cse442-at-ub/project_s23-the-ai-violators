@@ -48,7 +48,10 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
                         <p class="fs-3"><?php echo $_SESSION['user_name'] ?></p>
-                        <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/user.png" alt="Admin" class="rounded-circle" width="150">
+                        <img src="<?php echo getProfilePic($_SESSION['user_name']) ?>" alt="Profile Picture" class="rounded-circle" width="150">
+                        <form action="uploadPfp.php" method="post">
+                            S
+                        </form>
                         <div class="mt-3">
                             <p class="text-secondary mb-1"><?php echo getEmail($_SESSION['user_name']) ?></p>
                         </div>
