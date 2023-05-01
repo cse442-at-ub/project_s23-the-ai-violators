@@ -59,38 +59,53 @@ $userInfo = getUserInfo($_SESSION['user_name']);
                 array_push($difficulty, $exercises[$i]['difficulty']);
                 array_push($instructions, $exercises[$i]['instructions']);
             }
+
+            // Define the number of exercises to display
+            $num_exercises = 3;
+
+            // Generate a set of unique random indexes
+            $unique_indexes = array();
+            while (count($unique_indexes) < $num_exercises) {
+                $rand_index = rand(0, count($exerciseName) - 1);
+                if (!in_array($rand_index, $unique_indexes)) {
+                    $unique_indexes[] = $rand_index;
+                }
+            }
+
+            // Display the exercises using the unique indexes
+            foreach ($unique_indexes as $index) {
+                $exercise_name = $exerciseName[$index];
+                $exercise_difficulty = $difficulty[$index];
+                $exercise_instructions = $instructions[$index];
             ?>
 
-            <div id="content">
                 <div class="exerciseRecs">
-                    <h2><?= $exerciseName[0]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[0]; ?></h5>
-                    <p><?= $instructions[0]; ?>
-                    </p>
-
+                    <h2><?= $exercise_name; ?></h2>
+                    <h5>Difficulty: <?= $exercise_difficulty; ?></h5>
+                    <p><?= $exercise_instructions; ?></p>
                 </div>
-                <div class="exerciseRecs">
-                    <h2><?= $exerciseName[1]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[1]; ?></h5>
-                    <p><?= $instructions[1]; ?>
-                    </p>
 
-                </div>
-                <div class="exerciseRecs">
-                    <h2><?= $exerciseName[2]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[2]; ?></h5>
-                    <p><?= $instructions[2]; ?>
-                    </p>
+            <?php } ?>
 
-                </div>
-                <div class="exerciseRecs">
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <div class="exerciseRecs">
                     <h2><?= $exerciseName[3]; ?></h2>
                     <h5>Difficulty: <?= $difficulty[3]; ?></h5>
                     <p><?= $instructions[3]; ?>
                     </p>
 
                 </div>
-             
+
                 <div class="exerciseRecs">
                     <h2><?= $exerciseName[4]; ?></h2>
                     <h5>Difficulty: <?= $difficulty[4]; ?></h5>
@@ -133,7 +148,7 @@ $userInfo = getUserInfo($_SESSION['user_name']);
                     </p>
 
                 </div>
-            </div>
+                </div> -->
 
             <button id="refreshButton">Show More</button>
         </div>

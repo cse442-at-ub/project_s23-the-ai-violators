@@ -26,7 +26,7 @@ function getExercise($user_name)
         $type = "stretching";
     }
 
-    $api_url = 'https://api.api-ninjas.com/v1/exercises?type=' . $type;
+    $api_url = 'https://api.api-ninjas.com/v1/exercises?type=' . $type .'&random=true';
     $api_key = 'nVXNJKB20TItJlyh6IewAA==Nv8RebMKasOV9MWF';
 
 
