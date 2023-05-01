@@ -8,7 +8,7 @@ require __dir__ . '/database.php';
  * @param int $number Optional, defauts to 5; The number of excercises to return
  * @return json a json object containing the meals
  */
-function getExcercise($user_name)
+function getExercise($user_name)
 {
     
 
@@ -16,9 +16,19 @@ function getExcercise($user_name)
 
     if ($userInfo[10] = "CUT"){
         $type = 'cardio';
-        $api_url = 'https://api.api-ninjas.com/v1/exercises?type=' . $type;
-        $api_key = 'nVXNJKB20TItJlyh6IewAA==Nv8RebMKasOV9MWF';
+ 
     }
+    else if ($userInfo[10] = "BULK"){
+        $type = "strength";
+
+    }
+    else if($userInfo[10] = "MAINTAIN"){
+        $type = "stretching";
+    }
+
+    $api_url = 'https://api.api-ninjas.com/v1/exercises?type=' . $type;
+    $api_key = 'nVXNJKB20TItJlyh6IewAA==Nv8RebMKasOV9MWF';
+
 
     
     
@@ -46,6 +56,6 @@ function getExcercise($user_name)
       echo 'cURL Error #:' . $err;
     } else {
         $json = json_decode($response, true); // Decode the JSON response into an associative array
-        return $json['results'];
+        return $json;
     }
 }
