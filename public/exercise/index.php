@@ -88,7 +88,7 @@ $userInfo = getUserInfo($_SESSION['user_name']);
             <?php } ?>
 
 
-            <button id="refreshButton">Show More</button>
+            <button id="refreshButton" onClick="window.location.reload();">Refresh</button>
         </div>
     </div>
 
