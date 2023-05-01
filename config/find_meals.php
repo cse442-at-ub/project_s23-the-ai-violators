@@ -28,7 +28,8 @@ function getMeal($user_name, $number = 3)
         'maxFat' => (int)$remainingMacros[3],
         'number' => $number,
         'sort' => 'random',
-        'maxAlcohol' => 0
+        'maxAlcohol' => 0,
+        'maxSugar' => 10
     );
 
     $url = $endpoint . '?' . http_build_query($params);
