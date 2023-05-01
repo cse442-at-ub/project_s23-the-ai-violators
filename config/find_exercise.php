@@ -4,9 +4,8 @@ require __dir__ . '/database.php';
 
 /** 
  * Get a list of excercises based on the users current fitness goal 
- * @param string $user_name The username of the user
- * @param int $number Optional, defauts to 5; The number of excercises to return
- * @return json a json object containing the meals
+ * @param string $userInfo The username of the user
+ * @return json a json object containing the exercises
  */
 function getExercise($user_name)
 {
@@ -14,21 +13,27 @@ function getExercise($user_name)
 
     $userInfo = getUserInfo($user_name);
 
-    if ($userInfo[10] = "CUT"){
+    if ($userInfo[10] == "CUT"){
         $type = 'cardio';
+        $api_url = 'https://api.api-ninjas.com/v1/exercises?type=' . $type .'&random=true';
+        $api_key = 'nVXNJKB20TItJlyh6IewAA==Nv8RebMKasOV9MWF';
  
     }
-    else if ($userInfo[10] = "BULK"){
+    
+    if ($userInfo[10] == "BULK"){
         $type = "strength";
+        $api_url = 'https://api.api-ninjas.com/v1/exercises?type=' . $type .'&random=true';
+        $api_key = 'nVXNJKB20TItJlyh6IewAA==Nv8RebMKasOV9MWF';
 
     }
-    else if($userInfo[10] = "MAINTAIN"){
+    
+    if($userInfo[10] == "MAINTAIN"){
         $type = "stretching";
+        $api_url = 'https://api.api-ninjas.com/v1/exercises?type=' . $type .'&random=true';
+        $api_key = 'nVXNJKB20TItJlyh6IewAA==Nv8RebMKasOV9MWF';
     }
 
-    $api_url = 'https://api.api-ninjas.com/v1/exercises?type=' . $type .'&random=true';
-    $api_key = 'nVXNJKB20TItJlyh6IewAA==Nv8RebMKasOV9MWF';
-
+   
 
     
     

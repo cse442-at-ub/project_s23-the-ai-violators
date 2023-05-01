@@ -88,68 +88,6 @@ $userInfo = getUserInfo($_SESSION['user_name']);
             <?php } ?>
 
 
-
-
-
-
-
-
-
-
-
-
-            <!-- <div class="exerciseRecs">
-                    <h2><?= $exerciseName[3]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[3]; ?></h5>
-                    <p><?= $instructions[3]; ?>
-                    </p>
-
-                </div>
-
-                <div class="exerciseRecs">
-                    <h2><?= $exerciseName[4]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[4]; ?></h5>
-                    <p><?= $instructions[4]; ?>
-                    </p>
-
-                </div>
-                <div class="exerciseRecs">
-                    <h2><?= $exerciseName[5]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[5]; ?></h5>
-                    <p><?= $instructions[5]; ?>
-                    </p>
-
-                </div>
-                <div class="exerciseRecs">
-                    <h2><?= $exerciseName[6]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[6]; ?></h5>
-                    <p><?= $instructions[6]; ?>
-                    </p>
-
-                </div>
-                <div class="exerciseRecs">
-                    <h2><?= $exerciseName[7]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[7]; ?></h5>
-                    <p><?= $instructions[7]; ?>
-                    </p>
-
-                </div>
-                <div class="exerciseRecs">
-                    <h2><?= $exerciseName[8]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[8]; ?></h5>
-                    <p><?= $instructions[8]; ?>
-                    </p>
-
-                </div>
-                <div class="exerciseRecs">
-                    <h2><?= $exerciseName[9]; ?></h2>
-                    <h5>Difficulty: <?= $difficulty[9]; ?></h5>
-                    <p><?= $instructions[9]; ?>
-                    </p>
-
-                </div>
-                </div> -->
-
             <button id="refreshButton">Show More</button>
         </div>
     </div>
