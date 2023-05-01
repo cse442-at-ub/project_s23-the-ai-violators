@@ -39,6 +39,15 @@ require __DIR__ . "../../../config/find_meals.php";
 
     <div id="mainShit">
 
+        <!--<form action="">
+            <select id="diets" name="diets">
+                <option value="none" selected>None</option>
+                <option value="gluten-free">gluten free</option>
+                <option value="keto">Keto</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+        </form>-->
+
         <div class="mealHolder">
             <div id="header">
                 <h1>Meal Recomendations</h1>
@@ -86,7 +95,7 @@ require __DIR__ . "../../../config/find_meals.php";
                         fats: <?= $fats[0]; ?>
                     </p>
 
-                    <form method="POST" action="">
+                    <form class="mealdata" method="POST" action="">
                         <input type="hidden" name="meal1" id="meal1" value="<?= $foodName[0]; ?>">
                         <input type="hidden" name="calories1" id="calories1" value=<?= $foodCalories[0]; ?>>
                         <input type="hidden" name="protein1" id="protein1" value=<?= $protein[0]; ?>>
@@ -103,7 +112,7 @@ require __DIR__ . "../../../config/find_meals.php";
                         fats: <?= $fats[1]; ?>
                     </p>
 
-                    <form method="POST" action="">
+                    <form class="mealdata" method="POST" action="">
                         <input type="hidden" name="meal2" id="meal2" value="<?= $foodName[1]; ?>">
                         <input type="hidden" name="calories2" id="calories2" value=<?= $foodCalories[1]; ?>>
                         <input type="hidden" name="protein2" id="protein2" value=<?= $protein[1]; ?>>
@@ -120,7 +129,7 @@ require __DIR__ . "../../../config/find_meals.php";
                         fats: <?= $fats[2]; ?>
                     </p>
 
-                    <form method="POST" action="">
+                    <form class="mealdata" method="POST" action="">
                         <input type="hidden" name="meal3" id="meal3" value="<?= $foodName[2]; ?>">
                         <input type="hidden" name="calories3" id="calories3" value=<?= $foodCalories[2]; ?>>
                         <input type="hidden" name="protein3" id="protein3" value=<?= $protein[2]; ?>>

@@ -15,7 +15,7 @@ const date = today,
 
 
 
-let forms = document.getElementsByTagName('form')
+let forms = document.getElementsByClassName('mealdata')
 
 for (let i = 0; i < forms.length; i++) {
     forms[i].addEventListener("submit", function (e) {
