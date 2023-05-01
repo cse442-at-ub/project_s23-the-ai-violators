@@ -34,13 +34,25 @@ require __DIR__ . "../../../config/database.php";
 
   <h1>Your meal history</h1>
 
+  <div class = "top">
+
+    <div>
+      <button id="all" onclick="allHis()">All History</button>
+    </div>
+    <div class = "dateIn">
+      <input type="date" id="date-input" name="date">
+    </div>
+
+  </div>
+
+
   <div id="box">
     <div class="historyContainer">
       <form id = "form">
           <table id = "myTable" class="GeneratedTable">
             <thead>
                 <tr>
-                    <th></th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     <th>Meal</th>
                     <th>Calories</th>
                     <th>Protein</th>

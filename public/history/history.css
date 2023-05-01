@@ -13,10 +13,18 @@ h1 {
     text-align: center;
     font-weight: 700;
     font-size: 2.5rem;
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 30px;
 }
 
+.top{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+
+}
 
 p {
     margin: 5px;
