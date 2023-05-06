@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-secondary-subtle">
+<link rel="shortcut icon" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/favicon.ico">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
