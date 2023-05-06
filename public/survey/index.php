@@ -40,7 +40,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div class="userInfoNum">
-          <input type="number" name="age" id="age" placeholder="Enter Your Age" min="1" max="150" oninput="check()" required>
+          <input type="number" name="age" id="age" placeholder="Enter Your Age" min="10" max="99" oninput="check()" required>
         </div>
 
         <div>
@@ -62,10 +62,10 @@ if (!isset($_SESSION['user_name'])) {
         <div class="userInfoNum2">
 
 
-          <input type="number" name="height" id="height" placeholder="Enter Your Height(In)" min="1" max="999" oninput="check()" required>
+          <input type="number" name="height" id="height" placeholder="Enter Your Height(In)" min="20" max="110" oninput="check()" required>
 
 
-          <input type="number" name="weight" id="weight" placeholder="Enter Your Weight(lbs)" min="1" max="999" oninput="check()" required>
+          <input type="number" name="weight" id="weight" placeholder="Enter Your Weight(lbs)" min="5" max="1400" oninput="check()" required>
 
 
         </div>
