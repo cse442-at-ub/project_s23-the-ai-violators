@@ -61,6 +61,12 @@
         color: black;
 
     }
+
+    * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Courier, monospace;
+    }
 </style>
 
 <script>
