@@ -124,7 +124,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div>
-          <h4>On a scale from 1 (not acive at all) to 7 (extremely active), how would you describe your activity level?</h4>
+          <h4>On a scale from not acive at all to extremely active, how would you describe your activity level?</h4>
         </div>
 
         <div class="userInfoNum">
