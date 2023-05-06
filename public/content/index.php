@@ -59,17 +59,17 @@ require __DIR__ . "../../../config/database.php";
                 <ul>
                     <li class="macroListItem">
                         <div class="macroHolder">
-                            <span class="macsName">Protein:</span> <span class="macs" id="protien"><span id="curPro">%curPro%</span>/ <span id="totalPro"><?php echo getMacroGoals($_SESSION['user_name'])[0] ?></span> </span>
+                            <span class="macsName">Protein:</span> <span class="macs" id="protien"><span id="curPro">%curPro%</span> / <span id="totalPro"><?php echo getMacroGoals($_SESSION['user_name'])[0] ?></span> </span>
                         </div>
                     </li>
                     <li class="macroListItem">
                         <div class="macroHolder">
-                            <span class="macsName">Carbs:</span> <span class="macs" id="carbs"><span id="curCarb">%curCar%</span>/ <span id="totalCar"><?php echo getMacroGoals($_SESSION['user_name'])[1] ?></span></span>
+                            <span class="macsName">Carbs:</span> <span class="macs" id="carbs"><span id="curCarb">%curCar%</span> / <span id="totalCar"><?php echo getMacroGoals($_SESSION['user_name'])[1] ?></span></span>
                         </div>
                     </li>
                     <li class="macroListItem">
                         <div class="macroHolder">
-                            <span class="macsName">Fats:</span> <span class="macs" id="fats"><span id="curFat">%curFat%</span>/ <span id="totalFat"><?php echo getMacroGoals($_SESSION['user_name'])[2] ?></span></span>
+                            <span class="macsName">Fats:</span> <span class="macs" id="fats"><span id="curFat">%curFat%</span> / <span id="totalFat"><?php echo getMacroGoals($_SESSION['user_name'])[2] ?></span></span>
                         </div>
                     </li>
                 </ul>
