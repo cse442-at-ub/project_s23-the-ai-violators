@@ -159,6 +159,49 @@ body {
     width: 100%;
 }
 
+#protien{
+    color: rgb(227, 52, 82);
+    text-shadow:
+    1px 0px 0px #9e9b9b,
+    0px 1px 0px #9e9b9b,
+    -1px 0px 0px #9e9b9b,
+    0px -1px 0px #9e9b9b,
+    1px 1px 0px #9e9b9b,
+    -1px -1px 0px #9e9b9b,
+    1px -1px 0px #9e9b9b,
+    -1px 1px 0px #9e9b9b;
+    letter-spacing: 0.1em;
+}
+
+#carbs{
+    color : rgb(44, 189, 246);
+    text-shadow:
+    1px 0px 0px #9e9b9b,
+    0px 1px 0px #9e9b9b,
+    -1px 0px 0px #9e9b9b,
+    0px -1px 0px #9e9b9b,
+    1px 1px 0px #9e9b9b,
+    -1px -1px 0px #9e9b9b,
+    1px -1px 0px #9e9b9b,
+    -1px 1px 0px #9e9b9b;
+    letter-spacing: 0.1em;
+}
+
+#fats{
+    color: rgb(243, 241, 81);
+    text-shadow:
+    1px 0px 0px #9e9b9b,
+    0px 1px 0px #9e9b9b,
+    -1px 0px 0px #9e9b9b,
+    0px -1px 0px #9e9b9b,
+    1px 1px 0px #9e9b9b,
+    -1px -1px 0px #9e9b9b,
+    1px -1px 0px #9e9b9b,
+    -1px 1px 0px #9e9b9b;
+    letter-spacing: 0.1em;
+
+}
+
 
 
 /*.container {
