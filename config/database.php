@@ -130,7 +130,7 @@ function getProfilePic(string $user) {
   if ($row == NULL || $row[0] == ""){
     return '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/uploads/no-pfp.png';
   }
-  return '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/' . substr($row[0], 3);
+  return substr($row[0], 4); # substr to remove /web
 }
 
 

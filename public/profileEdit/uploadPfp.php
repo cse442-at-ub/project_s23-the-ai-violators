@@ -2,7 +2,7 @@
 session_start();
 include __DIR__ . "/../../config/database.php";
 
-$target_dir = "../uploads/";
+$target_dir = "/web/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/uploads/";
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
 
