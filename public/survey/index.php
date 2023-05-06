@@ -75,7 +75,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div class="box">
-          <select name="goal" id="goal">
+          <select name="goal" id="goal" required>
             <option value="" disabled selected>Select your goal...</option>
             <option value="cut">Lose Weight/Cut</option>
             <option value="bulk">Gain Weight/Bulk</option>
@@ -89,7 +89,7 @@ if (!isset($_SESSION['user_name'])) {
           <h4>What food macros are you looking to center recommendations around?</h4>
         </div>
         <div>
-          <input type="radio" id="protein" name="macros" value="protein">
+          <input type="radio" id="protein" name="macros" value="protein" required>
           <label for="protein">Proteins</label><br>
           <input type="radio" id="carbs" name="macros" value="carb">
           <label for="carb">Carbohydrates</label><br>
@@ -128,7 +128,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div class="userInfoNum">
-          <select class="form-select" name="activity-level">
+          <select class="form-select" name="activity-level" required>
             <option value="" disabled selected>Select your activity level...</option>
             <option value="1.2">Not Active At All</option>
             <option value="1.3">Lightly Active</option>
