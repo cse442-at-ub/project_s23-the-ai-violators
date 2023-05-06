@@ -48,7 +48,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
         <div class="box">
 
-          <select name="sex">
+          <select name="sex" required>
             <option value="" disabled selected>Select your sex...</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
