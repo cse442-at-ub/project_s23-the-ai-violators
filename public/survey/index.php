@@ -40,7 +40,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div class="userInfoNum">
-          <input type="number" name="age" id="age" placeholder="Enter Your Age" min="1" max="150" oninput="check()" required>
+          <input type="number" name="age" id="age" placeholder="Enter Your Age" min="10" max="99" oninput="check()" required>
         </div>
 
         <div>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
         <div class="box">
 
-          <select name="sex">
+          <select name="sex" required>
             <option value="" disabled selected>Select your sex...</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -62,10 +62,10 @@ if (!isset($_SESSION['user_name'])) {
         <div class="userInfoNum2">
 
 
-          <input type="number" name="height" id="height" placeholder="Enter Your Height(In)" min="1" max="999" oninput="check()" required>
+          <input type="number" name="height" id="height" placeholder="Enter Your Height(In)" min="20" max="110" oninput="check()" required>
 
 
-          <input type="number" name="weight" id="weight" placeholder="Enter Your Weight(lbs)" min="1" max="999" oninput="check()" required>
+          <input type="number" name="weight" id="weight" placeholder="Enter Your Weight(lbs)" min="5" max="1400" oninput="check()" required>
 
 
         </div>
@@ -75,7 +75,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div class="box">
-          <select name="goal" id="goal">
+          <select name="goal" id="goal" required>
             <option value="" disabled selected>Select your goal...</option>
             <option value="cut">Lose Weight/Cut</option>
             <option value="bulk">Gain Weight/Bulk</option>
@@ -89,7 +89,7 @@ if (!isset($_SESSION['user_name'])) {
           <h4>What food macros are you looking to center recommendations around?</h4>
         </div>
         <div>
-          <input type="radio" id="protein" name="macros" value="protein">
+          <input type="radio" id="protein" name="macros" value="protein" required>
           <label for="protein">Proteins</label><br>
           <input type="radio" id="carbs" name="macros" value="carb">
           <label for="carb">Carbohydrates</label><br>
@@ -124,11 +124,20 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div>
-          <h4>On a scale from 1 (not acive at all) to 7 (extremely active), how would you describe your activity level?</h4>
+          <h4>On a scale from not acive at all to extremely active, how would you describe your activity level?</h4>
         </div>
 
         <div class="userInfoNum">
-          <input type="number" name="actlevel" id="actlevel" step="0.001" min="0" placeholder="Enter Your Level" oninput="check()" required>
+          <select class="form-select" name="activity-level" required>
+            <option value="" disabled selected>Select your activity level...</option>
+            <option value="1.2">Not Active At All</option>
+            <option value="1.3">Lightly Active</option>
+            <option value="1.4">Moderately Active</option>
+            <option value="1.5">Active</option>
+            <option value="1.6">Very Active</option>
+            <option value="1.7">Extremely Active</option>
+            <option value="1.9">Professional Athlete</option>
+          </select>
         </div>
 
         <div>

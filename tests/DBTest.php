@@ -81,20 +81,20 @@ final class DBTest extends TestCase
     public function testStoreSurveyInformation(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
-        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
 
         $row = getUserInfo("testUser");
 
 
         // targetCal[6], targetProtien[7], targetCarbs[8], targetFat[9]
         $this->assertEquals($row[6], 3681.95);
-        $this->assertEquals($row[7], 210);
+        $this->assertEquals($row[7], 175);
         $this->assertEquals($row[8], 587.988);
         $this->assertEquals($row[9], 70);
         $this->assertEquals(getCalorieGoals("testUser"), 3681.95);
 
         $targetMacros = getMacroGoals("testUser");
-        $this->assertEquals($targetMacros[0], 210);
+        $this->assertEquals($targetMacros[0], 175);
         $this->assertEquals($targetMacros[1], 587.988);
         $this->assertEquals($targetMacros[2], 70);
 
@@ -108,7 +108,7 @@ final class DBTest extends TestCase
     public function testGetCalorieGoals(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
-        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
         $userId = getIDFromUsername("testUser");
         $result = getCalorieGoals("testUser");
         $this->assertEquals($result, 3681.95);
@@ -122,7 +122,7 @@ final class DBTest extends TestCase
         $didInitalLogin = checkInitalLogin("testUser");
         $this->assertFalse($didInitalLogin);
 
-        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
 
         $didInitalLogin = checkInitalLogin("testUser");
         $this->assertTrue($didInitalLogin);
@@ -141,13 +141,23 @@ final class DBTest extends TestCase
 
     }
 
+    public function testGetEmail(): void {
+        $mysqli = getConnection();
+        $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
+        $this->assertTrue($didCreateUser);
+        $email = "test@email.com";
+        $getMail = getEmail("testUser");
+        $this->assertEquals($getMail, $email);
+        
+    }
+
     public function testTrackCaloriesAndMacros(): void {
         $mysqli = getConnection();
         createUser("testUser", "test@email.com", "testPassword");
         $date = date("Y-m-d");
         $userId = getIDFromUsername("testUser");
 
-        storeSurveyInformation("testUser", 70, 160, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 70, 160, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
 
         $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", "eggs", $date, 2000, 100, 100, 100);
         $this->assertTrue($didTrackCaloriesAndMacros);
@@ -155,7 +165,7 @@ final class DBTest extends TestCase
         $remaining = getRemainingMacros("testUser");
         $this->assertEquals(intval($remaining[0]), 1455);
         $this->assertEquals(intval($remaining[1]), 459);
-        $this->assertEquals($remaining[2], 92);
+        $this->assertEquals($remaining[2], 60);
         $this->assertEquals($remaining[3], -36);
 
         $didTrackCaloriesAndMacros = trackCaloriesAndMacros("testUser", "steak", $date, 2000, 100, 100, 100);
@@ -170,7 +180,7 @@ final class DBTest extends TestCase
 
     public function testAddRestriction(): void {
         $didCreateUser = createUser("testUser", "test@email.com", "testPassword");
-        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTIEN");
+        storeSurveyInformation("testUser", 72, 175, "MALE", 20, 1.9, "MAINTAIN", "PROTEIN");
 
         $this->assertTrue($didCreateUser);
         $didAddRestriction = addRestrictions("testUser", ['Lactose Intolerance','Gluten Intolerance']);

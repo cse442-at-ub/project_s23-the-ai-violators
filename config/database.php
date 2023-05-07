@@ -44,9 +44,9 @@ function reccomendExercise(string $user_name, int $num)
   } else {
     $query = "SELECT * FROM exercises ORDER BY RAND() LIMIT $num";
   }
-  
+
   $excersises = array();
-  
+
   $result = mysqli_query($mysqli, $query);
   while ($row = mysqli_fetch_row($result)) {
     $excersises[] = $row;
@@ -84,7 +84,7 @@ function del(string $user_name, string $id)
   $user_id = getIDFromUsername($user_name);
   $mysqli = getConnection();
   $result = mysqli_query($mysqli, "DELETE FROM daily_intake WHERE user_id='$user_id' AND meal_id='$id'");
-  
+
   if ($result) {
     return true;
   } else {
@@ -115,6 +115,24 @@ function edit(string $user_name, string $meal_name, string $date, float $calorie
   } else {
     return false;
   }
+}
+
+function setProfilePic(string $user, string $pfp)
+{
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "UPDATE users SET profile_pic='$pfp' WHERE user_name = '$user'");
+}
+
+function getProfilePic(string $user)
+{
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT profile_pic FROM users WHERE user_name='$user'");
+  $row = mysqli_fetch_row($result);
+
+  if ($row == NULL || $row[0] == "") {
+    return '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/uploads/no-pfp.png';
+  }
+  return substr($row[0], 4); # substr to remove /web
 }
 
 
@@ -359,7 +377,7 @@ function getUserInfo(string $user_name)
  * @param string $focus "PROTIEN" OR "CARB" OR "FAT", The user's primary area of focus.
  * @return void
  */
-function updateUserInfo(string $user_name, int $height = NULL, int $weight = NULL, string $sex = NULL, int $age = NULL, float $activityLvl = NULL, string $goal = NULL, string $focus = NULL)
+function updateUserInfo(string $user_name, int $height = NULL, int $weight = NULL, string $sex = NULL, int $age = NULL, float $activityLvl = NULL, string $goal = NULL, string $focus = NULL, string $diet = NULL)
 {
   $mysqli = getConnection();
   $user_id = getIDFromUsername($user_name);
@@ -385,12 +403,35 @@ function updateUserInfo(string $user_name, int $height = NULL, int $weight = NUL
   if ($focus != NULL) {
     $query .= "focus='$focus', ";
   }
+  if ($diet != NULL) {
+    $query .= "diet='$diet', ";
+  }
+
 
   $query = substr($query, 0, -2);
   $query .= " WHERE user_id='$user_id'";
 
   $result = mysqli_query($mysqli, $query);
+
+
+
+
+  $user_info = getUserInfo($user_name);
+
+  $newGoals = calcualteGoals($user_info[1], $user_info[2], $user_info[3], $user_info[4], $user_info[5], $user_info[8], $user_info[9]);
+
+  $query = "UPDATE user_info SET ";
+  $query .= "targetCAL='$newGoals[0]', ";
+  $query .= "targetPROTIEN='$newGoals[1]', ";
+  $query .= "targetCARBS='$newGoals[2]', ";
+  $query .= "targetFAT='$newGoals[3]'";
+  $query .= " WHERE user_id='$user_id'";
+
+  // echo $query;
+
+  $result = mysqli_query($mysqli, $query);
 }
+
 
 
 /**
@@ -409,8 +450,19 @@ function storeSurveyInformation(string $user_name, int $height, int $weight, str
 {
   $mysqli = getConnection();
   $userID = getIDFromUsername($user_name);
-  $bmr = 0;
+  $goals = calcualteGoals($height, $weight, $age, $sex, $activityLvl, $goal, $focus);
 
+  $targetCAL = $goals[0];
+  $targetPROTIEN = $goals[1];
+  $targetCARBS = $goals[2];
+  $targetFAT = $goals[3];
+
+  // SQL INJECTION?
+  $result = mysqli_query($mysqli, "INSERT INTO user_info (user_id, height, weight, age, sex, activityLevel, targetCAL, targetPROTIEN, targetCARBS, targetFAT, goal, focus) VALUES ('$userID', '$height', '$weight', '$age', '$sex', '$activityLvl', '$targetCAL', '$targetPROTIEN', '$targetCARBS', '$targetFAT', '$goal', '$focus')");
+}
+
+function calcualteGoals($height, $weight, $age, $sex, $activityLvl, $goal, $focus)
+{
   if ($sex == "MALE") {
     $bmr = 66.47 + (6.24 * $weight) + (12.7 * $height) - (6.75 * $age);
   } else {
@@ -438,8 +490,7 @@ function storeSurveyInformation(string $user_name, int $height, int $weight, str
     $targetFAT *= 1.1;
   }
 
-  // SQL INJECTION?
-  $result = mysqli_query($mysqli, "INSERT INTO user_info (user_id, height, weight, age, sex, activityLevel, targetCAL, targetPROTIEN, targetCARBS, targetFAT, goal, focus) VALUES ('$userID', '$height', '$weight', '$age', '$sex', '$activityLvl', '$targetCAL', '$targetPROTIEN', '$targetCARBS', '$targetFAT', '$goal', '$focus')");
+  return [$targetCAL, $targetPROTIEN, $targetCARBS, $targetFAT];
 }
 
 /**
@@ -475,6 +526,19 @@ function checkIfUserNameUsed($user_name)
   } else {
     return false;
   }
+}
+
+/**
+ * Returns a users email.
+ * @param string $user_name The username to linked to the email.
+ * @return string The string email of the input user.
+ */
+function getEmail($user_name)
+{
+  $mysqli = getConnection();
+  $result = mysqli_query($mysqli, "SELECT email FROM users WHERE user_name='$user_name'");
+  $row = mysqli_fetch_row($result);
+  return $row[0];
 }
 
 /**

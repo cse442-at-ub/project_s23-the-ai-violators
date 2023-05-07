@@ -8,11 +8,21 @@ require __dir__ . '/database.php';
  * @param int $number Optional, defauts to 5; The number of meals to return
  * @return json a json object containing the meals
  */
-function getMeal($user_name, $number = 3)
+function getMeal($user_name, $number = 3, $diet = NULL)
 {
     $endpoint = 'https://api.spoonacular.com/recipes/complexSearch';
 
     $remainingMacros = getRemainingMacros($user_name);
+
+    for ($i = 0; $i < count($remainingMacros); $i++) {
+        if ($remainingMacros[$i] < 5) {
+            $remainingMacros[$i] = 4;
+        }
+    }
+
+    if ($diet == 'None') {
+        $diet = NULL;
+    }
 
     $params = array(
         'apiKey' => '4a9fc2eb8037493eb0eb80171d999ce9',
@@ -21,7 +31,10 @@ function getMeal($user_name, $number = 3)
         'maxProtein' => (int)$remainingMacros[2],
         'maxFat' => (int)$remainingMacros[3],
         'number' => $number,
-        'sort' => 'random'
+        'sort' => 'random',
+        'maxAlcohol' => 0,
+        'maxSugar' => 10,
+        'diet' => $diet
     );
 
     $url = $endpoint . '?' . http_build_query($params);
