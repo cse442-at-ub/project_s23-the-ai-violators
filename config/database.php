@@ -377,7 +377,7 @@ function getUserInfo(string $user_name)
  * @param string $focus "PROTIEN" OR "CARB" OR "FAT", The user's primary area of focus.
  * @return void
  */
-function updateUserInfo(string $user_name, int $height = NULL, int $weight = NULL, string $sex = NULL, int $age = NULL, float $activityLvl = NULL, string $goal = NULL, string $focus = NULL)
+function updateUserInfo(string $user_name, int $height = NULL, int $weight = NULL, string $sex = NULL, int $age = NULL, float $activityLvl = NULL, string $goal = NULL, string $focus = NULL, string $diet = NULL)
 {
   $mysqli = getConnection();
   $user_id = getIDFromUsername($user_name);
@@ -403,21 +403,23 @@ function updateUserInfo(string $user_name, int $height = NULL, int $weight = NUL
   if ($focus != NULL) {
     $query .= "focus='$focus', ";
   }
+  if ($diet != NULL) {
+    $query .= "diet='$diet', ";
+  }
 
-  
-  
+
   $query = substr($query, 0, -2);
   $query .= " WHERE user_id='$user_id'";
-  
+
   $result = mysqli_query($mysqli, $query);
 
 
-  
-  
+
+
   $user_info = getUserInfo($user_name);
-  
+
   $newGoals = calcualteGoals($user_info[1], $user_info[2], $user_info[3], $user_info[4], $user_info[5], $user_info[8], $user_info[9]);
-  
+
   $query = "UPDATE user_info SET ";
   $query .= "targetCAL='$newGoals[0]', ";
   $query .= "targetPROTIEN='$newGoals[1]', ";
@@ -426,7 +428,7 @@ function updateUserInfo(string $user_name, int $height = NULL, int $weight = NUL
   $query .= " WHERE user_id='$user_id'";
 
   // echo $query;
-  
+
   $result = mysqli_query($mysqli, $query);
 }
 

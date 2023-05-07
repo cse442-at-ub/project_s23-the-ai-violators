@@ -4,6 +4,7 @@ let today = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
 let mm = String(today.getMonth() + 1).padStart(2, '0');
 let yyyy = today.getFullYear();
+let diet = ""
 
 today = yyyy + '-' + mm + '-' + dd;
 
@@ -15,6 +16,7 @@ const date = today,
 
 
 
+let dietForm = document.getElementById('dietSelect')
 let forms = document.getElementsByClassName('mealdata')
 
 for (let i = 0; i < forms.length; i++) {
@@ -36,6 +38,11 @@ for (let i = 0; i < forms.length; i++) {
     })
 }
 
+
+dietForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+    diet = document.getElementById('diets').value
+})
 
 
 

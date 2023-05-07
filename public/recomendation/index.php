@@ -32,22 +32,8 @@ require __DIR__ . "../../../config/find_meals.php";
 <body>
     <?php include "../../templates/navbar.php" ?>
 
-    </div>
-
-
-
 
     <div id="mainShit">
-
-        <!--<form action="">
-            <select id="diets" name="diets">
-                <option value="none" selected>None</option>
-                <option value="gluten-free">gluten free</option>
-                <option value="keto">Keto</option>
-                <option value="vegetarian">Vegetarian</option>
-                <option value="vegan">Vegan</option>
-        </form>-->
-
         <div class="mealHolder">
             <div id="header">
                 <h1>Meal Recomendations</h1>
@@ -55,6 +41,7 @@ require __DIR__ . "../../../config/find_meals.php";
                     <?php
                     $output = "";
                     $remainingMacros = getRemainingMacros($_SESSION['user_name']);
+                    $info = getUserInfo($_SESSION['user_name']);
                     if ($remainingMacros[0] <= 100) {
                         echo 'You do not have sufficient calories to be recommended anything at the moment';
                         exit();
@@ -70,7 +57,7 @@ require __DIR__ . "../../../config/find_meals.php";
             </div>
 
             <?php
-            $meals = getMeal($_SESSION['user_name'], 3);
+            $meals = getMeal($_SESSION['user_name'], 3, $info[12]);
             $foodName = array();
             $foodCalories = array();
             $protein = array();

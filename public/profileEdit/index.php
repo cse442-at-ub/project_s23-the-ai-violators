@@ -166,6 +166,22 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                     </div>
                     <hr>
                     <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="mb-0">Diet:</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                            <select name="diet">
+                                <option value="" disabled>Select your diet...</option>
+                                <option value="None" <?php if ($userInfo[12] == "None") echo "selected" ?>>None</option>
+                                <option value="Gluten Free" <?php if ($userInfo[12] == "Gluten Free") echo "selected" ?>>Gluten Free</option>
+                                <option value="Ketogenic" <?php if ($userInfo[12] == "Ketogenic") echo "selected" ?>>Ketogenic</option>
+                                <option value="Vegetarian" <?php if ($userInfo[12] == "Vegetarian") echo "selected" ?>>Vegetarian</option>
+                                <option value="Vegan" <?php if ($userInfo[12] == "Vegan") echo "selected" ?>>Vegan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
                         <div class="col-sm-12">
                             <button class="btn btn-primary" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile'">Save Changes</button>
                         </div>
