@@ -11,6 +11,7 @@ switch ($request) {
         require __DIR__ . '/public/login/index.php';
         break;
     
+    //test
     // case '/login':
     //     require __DIR__ . '/public/loginPage/login.php';
     //     break;
