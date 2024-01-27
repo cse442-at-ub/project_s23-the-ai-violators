@@ -1,15 +1,14 @@
 version: "3.7"
 services:
 
-  devcontainer:
+  php:
     build: .
     volumes:
-      - ../..:/web/CSE442-542/2023-Spring/cse-442g/:cached
-    network_mode: service:db
-    command: sleep infinity
+      - ./:/var/www/html
     environment:
       WAIT_HOSTS: db:3306
-
+    ports:
+      - 8080:80
     depends_on:
       - db
 
@@ -19,12 +18,11 @@ services:
       ports:
           - 3306:3306
       command: --default-authentication-plugin=mysql_native_password
-      hostname: oceanus.cse.buffalo.edu
       restart: always
       environment:
-          MYSQL_USER: sjrichel
-          MYSQL_PASSWORD: 50338787
-          MYSQL_DATABASE: cse442_2023_spring_team_g_db
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: nutrio
           MYSQL_ROOT_PASSWORD: password
       volumes:
           - "test_db:/var/lib/mysql"
@@ -42,8 +40,8 @@ services:
       environment:
           PMA_HOST: db
           PMA_PORT: 3306
-          PMA_USER: sjrichel
-          PMA_PASSWORD: 50338787
+          PMA_USER: admin
+          PMA_PASSWORD: password
 
 volumes:
     test_db:

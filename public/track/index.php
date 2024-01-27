@@ -3,7 +3,7 @@ session_start();
 
 // Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_name'])) {
-  header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+  header('Location: /public/login/');
   exit();
 }
 
@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_name'])) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/track.css">
+  <link rel="stylesheet" href="/public/track/track.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@ if (!isset($_SESSION['user_name'])) {
 
   <h1>Add a meal or snack</h1>
 
-  <form id="trackForm" method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/handleIntake.php">
+  <form id="trackForm" method="POST" action="/public/track/handleIntake.php">
       
     <div class = "dateIn">
         <label for="date">Date</label>
@@ -81,7 +81,7 @@ if (!isset($_SESSION['user_name'])) {
     
   </div>
 
-  <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/track.js"></script>
+  <script src="/public/track/track.js"></script>
 
 </body>
 </html>

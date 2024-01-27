@@ -12,18 +12,18 @@ let error = document.querySelector(".error-msg")
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
-    let res = await makeRequest('POST', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/handleIntake.php/',  [username.value,  password.value])
+    let res = await makeRequest('POST', '/public/login/handleIntake.php/',  [username.value,  password.value])
 
     if (res.includes("2")) { // failed to login
         error.style.display = "block"
         error.innerHTML = `${errorCircle} Please Enter Valid Username and Password`
     }
     else if (res.includes("1")) { // logged in without survey
-        window.location.replace("/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey");
+        window.location.replace("/public/survey");
         sessionStorage.setItem("username", username.value);
     }
     else { // logged in with survey
-        window.location.replace("/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content");
+        window.location.replace("/public/content");
         sessionStorage.setItem("username", username.value);
     }
     //sessionStorage.getItem("username")

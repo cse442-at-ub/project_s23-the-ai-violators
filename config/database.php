@@ -6,15 +6,7 @@
  */
 function getConnection()
 {
-  $db_hostname = getenv('IN_DOCKER');
-
-  if ($db_hostname == 'yes') {
-    $db_hostname = 'db';
-  } else {
-    $db_hostname = 'oceanus.cse.buffalo.edu';
-  }
-
-  return mysqli_connect($db_hostname, "sjrichel", "50338787", "cse442_2023_spring_team_g_db", 3306);
+  return mysqli_connect("db", "admin", "password", "nutrio", 3306);
 }
 
 /**
@@ -130,7 +122,7 @@ function getProfilePic(string $user)
   $row = mysqli_fetch_row($result);
 
   if ($row == NULL || $row[0] == "") {
-    return '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/uploads/no-pfp.png';
+    return '/public/uploads/no-pfp.png';
   }
   return substr($row[0], 4); # substr to remove /web
 }

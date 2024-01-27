@@ -3,7 +3,7 @@ session_start();
 
 // Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_name'])) {
-  header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+  header('Location: /public/login/');
   exit();
 }
 
@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_name'])) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey/survey.css">
+  <link rel="stylesheet" href="/public/survey/survey.css">
   <link rel="stylesheet" href="survey.css">
 
 
@@ -33,7 +33,7 @@ if (!isset($_SESSION['user_name'])) {
     <h1>Nutr.io</h1>
     <div>
       <h2>Tell us a little bit about you and your nutritional goals!</h2>
-      <form action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/survey/surveyIntake.php" method="POST">
+      <form action="/public/survey/surveyIntake.php" method="POST">
 
         <div>
           <h4>How old are you?</h4>
@@ -142,7 +142,7 @@ if (!isset($_SESSION['user_name'])) {
 
         <div>
 
-          <button id="submitButton" type="submit" onsubmit="window.location.href= 'www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/'">
+          <button id="submitButton" type="submit" onsubmit="window.location.href= 'www-student.cse.buffalo.edu/public/content/'">
             Get Started
           </button>
 

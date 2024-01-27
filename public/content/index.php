@@ -3,7 +3,7 @@ session_start();
 
 // Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_name'])) {
-    header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+    header('Location: /public/login/');
     exit();
 }
 
@@ -19,7 +19,7 @@ require __DIR__ . "../../../config/database.php";
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/mainpage.css">
+    <link rel="stylesheet" href="/public/content/mainpage.css">
     <link rel="stylesheet" href="mainpage.css">
     <title>content</title>
 
@@ -125,7 +125,7 @@ require __DIR__ . "../../../config/database.php";
 
 
 
-    <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/mainpage.js"></script>
+    <script src="/public/content/mainpage.js"></script>
     <script src="mainpage.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    

@@ -91,4 +91,4 @@ for ($i = 0; $i < count($userRestrictions); $i++) {
 
 
 
-header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile");
+header("Location: /public/profile");

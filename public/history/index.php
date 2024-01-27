@@ -3,7 +3,7 @@ session_start();
 
 // Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_name'])) {
-  header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+  header('Location: /public/login/');
   exit();
 }
 
@@ -18,7 +18,7 @@ require __DIR__ . "../../../config/database.php";
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/history/history.css">
+  <link rel="stylesheet" href="/public/history/history.css">
 
   <title>history</title>
 
@@ -100,7 +100,7 @@ require __DIR__ . "../../../config/database.php";
     </div>
   </div>
 
-  <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/history/history.js"></script>
+  <script src="/public/history/history.js"></script>
 
 </body>
 

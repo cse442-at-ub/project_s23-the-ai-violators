@@ -2,7 +2,7 @@
 session_start();
 include __DIR__ . "/../../config/database.php";
 
-$target_dir = "/web/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/uploads/";
+$target_dir = "/web/public/uploads/";
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
 
@@ -61,10 +61,10 @@ if ($uploadOk == 0) {
 
 function sucess()
 {
-    header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile');
+    header('Location: /public/profile');
 }
 
 function error($errorType = 4) // 1 = file too large, 2 = file not an image, 3 = file already exists, 4 = other
 {
-    header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit?error=' . $errorType);
+    header('Location: /public/profileEdit?error=' . $errorType);
 }

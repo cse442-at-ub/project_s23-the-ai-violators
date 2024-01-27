@@ -189,7 +189,7 @@ function findRow(searchValue) {
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
     console.log("sub")
-    let res = await makeRequest('POST', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/history/handleIntake.php/',  [sessionStorage.getItem("username"), date.value, meal.value, calories.value, carbs.value, protein.value, fats.value, mId.value])
+    let res = await makeRequest('POST', '/public/history/handleIntake.php/',  [sessionStorage.getItem("username"), date.value, meal.value, calories.value, carbs.value, protein.value, fats.value, mId.value])
 
 
     if (res.includes("1")) { 
@@ -198,7 +198,7 @@ form.addEventListener("submit", async (e) => {
 })
 
 async function del(id){
-    let d = await makeRequest('POST', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/history/handleDelete.php/',  [sessionStorage.getItem("username"), id])
+    let d = await makeRequest('POST', '/public/history/handleDelete.php/',  [sessionStorage.getItem("username"), id])
 
     if (d.includes("1")) { 
         window.location.reload();

@@ -1,13 +1,13 @@
 <?php
 $request =  $_SERVER['REQUEST_URI'];
 
-
+echo "PISS";
 
 // echo $request;
 
 switch ($request) {
 
-    case '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/':
+    case '/':
         require __DIR__ . '/public/login/index.php';
         break;
     
@@ -20,7 +20,7 @@ switch ($request) {
     //     require __DIR__ . '/public/signupPage/signup.php';
     //     break; 
 
-    // case '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/db':
+    // case '/db':
     //     require __DIR__ . '/config/database.php';
     //     $info =  getUserInfo("chad");
     //     for ($i =0; $i<count($info); $i++) {

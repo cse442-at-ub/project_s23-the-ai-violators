@@ -75,6 +75,6 @@ cals.innerHTML = `${totalCur_K}/${calorieGoal}`
 
     }
   }
-  xhr.open('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/getMacroGoals.php?user_name=' + user_name, true);
+  xhr.open('GET', '/public/content/getMacroGoals.php?user_name=' + user_name, true);
   xhr.send();
 }*/

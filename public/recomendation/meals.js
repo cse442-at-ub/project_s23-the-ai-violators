@@ -33,7 +33,7 @@ for (let i = 0; i < forms.length; i++) {
 
 
         e.target.parentNode.innerHTML = "<h2>added to meals</h2>"
-        makeRequest('POST', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/handleIntake.php/',
+        makeRequest('POST', '/public/track/handleIntake.php/',
             [user, date, meal, calories, carbs, protein, fats])
     })
 }

@@ -16,6 +16,6 @@
 # HOW TO DEPLOY TO PROD
 1) ssh into cheshire with `ssh <YOUR-UBIT>@cheshire.cse.buffalo.edu` and input your ubit password
     * Note: You must be connected to the UB network to access cheshire. You must either be physicly on camput or be running UB's VPN
-2) go to our project directory with `cd /web/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators`
+2) go to our project directory with `cd /web`
 3) call `git pull origin dev`
    * Note: If this failes, make sure you have your ssh keys installed on cheshire

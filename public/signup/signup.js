@@ -21,7 +21,7 @@ function check(){
 
 form.addEventListener("submit",  async (e) => {
     e.preventDefault()
-    let res = await makeRequest('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/signup/HandleSignup.php/?username='+username.value+'&email='+email.value+'&password='+password.value)
+    let res = await makeRequest('GET', '/public/signup/HandleSignup.php/?username='+username.value+'&email='+email.value+'&password='+password.value)
     let success = document.querySelector(".success-msg")
    
    let errorCircle = '<i class="fa fa-times-circle"></i>'
@@ -83,6 +83,6 @@ function makeRequest(method, url) {
 //         cfunc(res)
 //       }
 //     }
-//     xhr.open('GET', '/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/HandleSignup.php?username='+user+'&email='+email+'&password='+password, true);
+//     xhr.open('GET', '/public/content/HandleSignup.php?username='+user+'&email='+email+'&password='+password, true);
 //   xhr.send();
 // }

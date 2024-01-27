@@ -3,7 +3,7 @@ session_start();
 
 // Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_name'])) {
-    header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+    header('Location: /public/login/');
     exit();
 }
 
@@ -21,7 +21,7 @@ require __DIR__ . "../../../config/find_meals.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation/meals.css">
+    <link rel="stylesheet" href="/public/recomendation/meals.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,7 +131,7 @@ require __DIR__ . "../../../config/find_meals.php";
         </div>
     </div>
 
-    <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation/meals.js"></script>
+    <script src="/public/recomendation/meals.js"></script>
 
 </body>
 

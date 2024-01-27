@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-secondary-subtle">
-<link rel="shortcut icon" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/favicon.ico">
+<link rel="shortcut icon" href="/public/favicon.ico">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/image/carrot.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            <img src="/public/image/carrot.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
             nutr.io
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,29 +11,29 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto ">
                 <li class="nav-item">
-                    <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content/">Content</a>
+                    <a class="nav-link" href="/public/content/">Content</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">Profile</a>
+                    <a class="nav-link" href="/public/profile/">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/history/">History</a>
+                    <a class="nav-link" href="/public/history/">History</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/track/">Track</a>
+                    <a class="nav-link" href="/public/track/">Track</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/recomendation/">Meals</a>
+                    <a class="nav-link" href="/public/recomendation/">Meals</a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/exercise/">Exercise</a>
+                    <a class="nav-link" href="/public/exercise/">Exercise</a>
                 <li class="nav-item">
                     <button class="nav-link" onclick="logout()">Logout</button>
                 </li>
                 <li class="nav-item">
                     <!--h6 id ="use" class="nav-link">username</h6-->
-                    <a class="nav-link" id = "use" href="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile/">username</a>
+                    <a class="nav-link" id = "use" href="/public/profile/">username</a>
                 </li>
 
             </ul>
@@ -72,7 +72,7 @@
 <script>
     // dont use jquery for this
     function logout() {
-        fetch('/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/logout.php', {
+        fetch('/public/logout.php', {
             method: 'POST'
         }).then(response => {
             if (response.ok) {

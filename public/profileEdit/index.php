@@ -5,7 +5,7 @@ require __DIR__ . '/../../config/database.php';
 
 // Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_name'])) {
-    header('Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/login/');
+    header('Location: /public/login/');
     exit();
 }
 
@@ -42,7 +42,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                     <p class="fs-3"><?php echo $_SESSION['user_name'] ?></p>
                     <img src="<?php echo getProfilePic($_SESSION['user_name']) ?>" alt="Profile Picture" class="rounded-circle" width="150">
                     <div id='error'></div>
-                    <form action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/uploadPfp.php" method="post" enctype="multipart/form-data">
+                    <form action="/public/profileEdit/uploadPfp.php" method="post" enctype="multipart/form-data">
                         <input type="file" name="fileToUpload" id="fileToUpload">
                         <button type="submit" name="submit" id="submit"> Update Profile Picture </button>
                     </form>
@@ -54,7 +54,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
         </div>
     </div>
 
-    <form method="POST" action="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/editIntake.php">
+    <form method="POST" action="/public/profileEdit/editIntake.php">
         <div class=".col6">
             <div class="card mb-3">
                 <div class="card-body align-items-center text-center">
@@ -183,7 +183,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
                     <hr>
                     <div class="row">
                         <div class="col-sm-12">
-                            <button class="btn btn-primary" onClick="window.location.href='/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profile'">Save Changes</button>
+                            <button class="btn btn-primary" onClick="window.location.href='/public/profile'">Save Changes</button>
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@ $userRestrictions = getRestrictions($_SESSION['user_name']);
 
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="/CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/profileEdit/profileEdit.js"></script>
+    <script src="/public/profileEdit/profileEdit.js"></script>
 </body>
 
 </html>

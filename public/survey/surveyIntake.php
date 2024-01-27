@@ -62,4 +62,4 @@ storeSurveyInformation($_SESSION['user_name'], $height, $weight, strtoupper($sex
 
 addRestrictions($_SESSION['user_name'], $restrictions);
 
-header("Location: /CSE442-542/2023-Spring/cse-442g/project_s23-the-ai-violators/public/content");
+header("Location: /public/content");
